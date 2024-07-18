@@ -7,3 +7,5 @@
 - Semiconvexity idea??
 
 - should I use I or we or leave out all pronouns
+
+- Is it also the case that the product and sum set can not both be big?
