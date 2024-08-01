@@ -436,7 +436,7 @@ Let \(P \subset \mathbb{R} ^{2}\) be a finite set of points. Let \(\mathcal{L} \
 More precisely,
 every \(l \in \mathcal{L} \) is of the form \(l = \left\{ (x(t),y(t)) : t\in \mathbb{R}  \right\} \) for some \(x,y \in C^{0}(\mathbb{R} )\). 
 
-Let \(\chi : \mathbb{R} ^{2} \times \mathcal{P} (\mathbb{R}^{2} ) \to \left\{ 0,1 \right\} \) be the incidence function
+Let \(\chi : P \times \mathcal{L}  \to \left\{ 0,1 \right\} \) be the incidence function
 between a point and a line, so
 \[
 \chi(p,l) = 
@@ -454,7 +454,7 @@ then the total number of point-line incidences,
 satisfies
 \[
     I(P,\mathcal{L} ) \ll  \left\lvert P \right\rvert^{\frac{2}{3} } \left\lvert \mathcal{L}  \right\rvert ^{\frac{2}{3} } + \left\lvert P \right\rvert + \left\lvert \mathcal{L}  \right\rvert 
-\]
+.\]
 \end{theorem}
 
 \textbf{First proven in ...}
@@ -481,10 +481,41 @@ Recalling the property of convexity, \textbf{... finish this dialogue}.
 \end{theorem}
 
 \begin{proof}
-ok
+Take \(P = \left( A + A \right) \times \left( A \cdot A \right) \). 
+
+For any \(a,b \in A\), let \(\ell _{a,b} : \mathbb{R} \to \mathbb{R} \) be defined by
+\(\ell _{a,b} (x) = (x-a)\cdot b\). Let \(L_{a,b} = \left\{ (x, \ell _{a,b} (x)) : x \in \mathbb{R}  \right\} \)
+be the graph of \(\ell _{a,b} \).
+
+Take \(\mathcal{L} = \left\{ L_{a,b} : a,b \in A \right\} \). There are \(\left\lvert A \right\rvert \) many numbers in
+\(A + A\) of the form \(x + a\) where \(x \in A\). For all of these numbers, \(\ell _{a,b} (x + a) = xb \in A\cdot A\).
+
+We have shown that for each choice of \(a,b \in A\), there are \(\left\lvert A \right\rvert \) many numbers
+\(z \in A+A\) such that \(\ell _{a,b} (z) \in A\cdot A\), or that there are \(\left\lvert A \right\rvert \) many
+incidences between \(P\) and \(L_{a,b} \). It follows that there are \(\left\lvert A \right\rvert ^{3} \) total incidences
+between \(\mathcal{L} \) and \(P\). Because \(\mathcal{L} \) is a set of lines, the Szemeredi-Trotter theorem holds.
+
+\[
+    \left\lvert A \right\rvert ^{3} \ll \left\lvert A + A \right\rvert ^{\frac{2}{3} } \left\lvert A \cdot A \right\rvert ^{\frac{2}{3} } \left\lvert A \right\rvert ^{\frac{4}{3} } + \left\lvert A + A \right\rvert \left\lvert A \cdot A \right\rvert + \left\lvert A \right\rvert ^{2}
+\]
+or
+\[
+    \left\lvert A \right\rvert ^{3} \ll \max \left( \left\lvert A + A \right\rvert ^{\frac{2}{3} } \left\lvert A \cdot A \right\rvert ^{\frac{2}{3} } \left\lvert A \right\rvert ^{\frac{4}{3} } , \left\lvert A + A \right\rvert \left\lvert A \cdot A \right\rvert , \left\lvert A \right\rvert ^{2} \right) 
+.\]
+
+Applying trivial inequalities,
+\[
+    \left\lvert A \right\rvert ^{2} \leq \left\lvert A+A \right\rvert \left\lvert A \cdot A \right\rvert \leq \left\lvert A+A \right\rvert \left\lvert A \cdot A \right\rvert \left( \frac{\left\lvert A \right\rvert ^{\frac{4}{3} }}{\left\lvert A+A \right\rvert ^{\frac{1}{3} }\left\lvert A \cdot A \right\rvert ^{\frac{1}{3} }}  \right) 
+,\]
+so
+\begin{align*}
+    \left\lvert A \right\rvert ^{3} \ll \left\lvert A+A \right\rvert ^{\frac{2}{3} }\left\lvert A \cdot A \right\rvert ^{\frac{2}{3} } \left\lvert A \right\rvert ^{\frac{4}{3} } & \implies \max \left( \left\lvert A + A \right\rvert , \left\lvert A \cdot A \right\rvert  \right) ^{\frac{4}{3} } \gg \left\lvert A \right\rvert ^{\frac{5}{3} } \\
+    & \implies \max \left( \left\lvert A + A \right\rvert , \left\lvert A \cdot A \right\rvert  \right) \gg \left\lvert A \right\rvert ^{\frac{5}{4} }.
+\end{align*}
+
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:elekes-non-general}
 For sufficiently large sets \(A \subset \mathbb{R} \) which are finite and convex,
 \[
     \left\lvert A+A \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} }
@@ -501,6 +532,12 @@ More generally,
 \]
 for any set \(B \subset \mathbb{R} \) with \(\left\lvert A \right\rvert = \left\lvert B \right\rvert \).
 \end{theorem}
+
+\begin{proof}
+ok
+\end{proof}
+
+Theorem \ref{thm:elekes-non-general} follows immediately from this.
 
 We also have results like
 
