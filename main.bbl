@@ -5,6 +5,9 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{}
+\begin{thebibliography}{For08}
+
+\bibitem[For08]{Ford}
+Kevin Ford, \emph{The distribution of integers with a divisor in a given interval}, Annals of Mathematics \textbf{168} (2008), 367--433.
 
 \end{thebibliography}

@@ -473,6 +473,93 @@ theorem to bound these incidences.
 
 Recalling the property of convexity, \textbf{... finish this dialogue}.
 
+
+We'll begin with a theorem which applies the Szemeredi-Trotter theorem to
+a system whose curves consist of translations of convex functions.
+
+\textbf{EMERGENCY : REWIRTE SO S HAS ARBITRARY : , NOT [n], THEN CHANGE BELOW}.
+
+\begin{theorem} \label{thm:translations-of-convex-szt}
+For some \(n \in \mathbb{N} \), let \(f : [1,n] \to \mathbb{R} \) be convex.
+
+Let \(S = \left\{ (i,f(i)) : i \in [n] \right\} \) and \(T \subset \mathbb{R} ^{2}\) be finite. We have
+\[
+    \left\lvert S + T \right\rvert \gg \max \left( \left\lvert S \right\rvert ^{\frac{3}{2} } \left\lvert T \right\rvert ^{\frac{1}{2} } , \left\lvert S \right\rvert \left\lvert T \right\rvert  \right)
+.\]
+\end{theorem}
+
+\begin{proof}
+    Let
+    \[
+        L_{t} = \left\{ (x,f(x)) + t : x \in [1,n], t \in T \right\} 
+    ,\]
+    and let
+    \[
+        \mathcal{L} = \left\{ L_{t} : t \in T \right\} 
+    .\]
+    For every \(x \in [n]\), \((x,f(x)) + t \in S + T\). Therefore, there are \(\left\lvert S \right\rvert \) incidences
+    between \(L_{t} \) and the point set \(S + T\) for all \(t \in T\). The set \(\mathcal{L} \) consists of
+    translations of the graph of a convex function, so the Szemeredi-Trotter theorem is satisfied.
+    
+    \[
+        \left\lvert S \right\rvert \left\lvert T \right\rvert \ll \left\lvert S + T \right\rvert ^{\frac{2}{3} } \left\lvert T \right\rvert ^{\frac{2}{3} } + \left\lvert S + T \right\rvert + \left\lvert T \right\rvert 
+    .\]
+    Trivially,
+    \[
+        \left\lvert S + T \right\rvert \geq \left\lvert T \right\rvert 
+    ,\]
+    so
+    \[
+        \left\lvert S \right\rvert \left\lvert T \right\rvert  \ll\max \left( \left\lvert S + T \right\rvert ^{\frac{2}{3} }\left\lvert T \right\rvert ^{\frac{2}{3} }, \left\lvert S+T \right\rvert  \right) 
+    ,\]
+    or
+    \[
+        \left\lvert S + T \right\rvert \gg \max \left( \left\lvert S \right\rvert ^{\frac{3}{2} } \left\lvert T \right\rvert ^{\frac{1}{2} }, \left\lvert S \right\rvert \left\lvert T \right\rvert  \right) 
+    .\]
+\end{proof}
+
+\textbf{this theorem very useful blah blah blah}
+
+\begin{theorem}
+For sufficiently large sets \(A \subset \mathbb{R} \), which are finite and convex, and any set \(B \subset \mathbb{R} \) with \(\left\lvert A \right\rvert = \left\lvert B \right\rvert \),
+\[
+    \left\lvert A + B \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} }
+.\]
+\end{theorem}
+
+\begin{proof}
+Let \(\left\lvert A \right\rvert = n\) and \(f : [1,n] \to \mathbb{R} \) be the convex function
+such that
+\[
+    A = \left\{ f(i): i \in [n] \right\}
+.\]
+Take
+\[
+    S = \left\{ (i,f(i)) : i \in [n] \right\} 
+\]
+and
+\[
+    T = [n] \times B
+.\]
+Observe that \(S + T \subset [2n] \times (A + B)\), so \(\left\lvert S + T \right\rvert \ll \left\lvert A \right\rvert \left\lvert A + B \right\rvert \). Applying Theorem \ref{thm:translations-of-convex-szt},
+\[
+    \left\lvert A \right\rvert \left\lvert A + B \right\rvert \gg \max \left( \left\lvert S \right\rvert ^{\frac{3}{2} }\left\lvert T \right\rvert ^{\frac{1}{2} } , \left\lvert S \right\rvert \left\lvert T \right\rvert  \right) = \max \left( \left\lvert A \right\rvert ^{\frac{3}{2} }\left\lvert A \right\rvert , \left\lvert A \right\rvert ^{3} \right) = \left\lvert A \right\rvert ^{\frac{5}{2} }
+,\]
+so
+\[
+    \left\lvert A + B \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} }
+.\]
+\end{proof}
+
+In particular, this theorem gives us the result
+\begin{theorem}
+For sufficiently large sets \(A \subset \mathbb{R} \) which are finite and convex,
+\[
+    \left\lvert A+A \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} }
+.\]
+\end{theorem}
+
+
 \begin{theorem}
     For sufficiently large sets \(A \subset \mathbb{R} \),
     \[
@@ -515,30 +602,6 @@ so
 
 \end{proof}
 
-\begin{theorem}\label{thm:elekes-non-general}
-For sufficiently large sets \(A \subset \mathbb{R} \) which are finite and convex,
-\[
-    \left\lvert A+A \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} }
-.\]
-\end{theorem}
-
-More generally,
-
-\begin{theorem}
-
-    For sufficiently large sets \(A \subset \mathbb{R} \), which are finite and convex,
-\[
-    \left\lvert A + B \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} }
-\]
-for any set \(B \subset \mathbb{R} \) with \(\left\lvert A \right\rvert = \left\lvert B \right\rvert \).
-\end{theorem}
-
-\begin{proof}
-ok
-\end{proof}
-
-Theorem \ref{thm:elekes-non-general} follows immediately from this.
-
 We also have results like
 
 \begin{theorem}
@@ -573,6 +636,33 @@ This report is based on work supported by NSF grant DMS-2051032, which we gratef
 
 \section*{Appendix}
 
-It can be useful to include additional information, long calculations that disrupt the main flow of the proof, etc. in an appendix section (usually unnumbered).
+\textbf{I need to define all things I use like little o and big O}.
+
+\begin{theorem*}[Erd\H{o}s multiplication table theorem]
+\[
+    \left\lvert [n] \cdot [n] \right\rvert = o(n^{2})
+.\]
+\end{theorem*}
+
+This is known as the ``multiplication table theorem'' because the quantity
+\[
+    \left\lvert [n] \cdot [n] \right\rvert 
+\]
+is the number of distinct numbers in an \(n \times n\) multiplication table:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{mult-table.png}
+    \caption{10 \(\times \) 10 multiplication table with distinct numbers highlighted in red.}
+\end{figure}
+
+The theorem I am proving here is just an ``upper bound'' on the asymptotic behavior of
+this quantity. In \cite{Ford}, Kevin Ford proved that the exact order of this quantity is
+\[
+    \left\lvert [n] \cdot [n] \right\rvert \asymp \frac{n^{2}}{\log \left( n^{2} \right) ^{\delta} \left( \log \log \left( n^{2} \right) \right) ^{\frac{3}{2} } } 
+,\]
+where \(\delta = 1 - \frac{1 + \log \log \left( 2 \right)  }{2} \) is the Erd\H{o}s-Tenenbaum-Ford constant.
+
+First we'll prove the following lemma.
 
 \end{document}
