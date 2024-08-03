@@ -665,7 +665,28 @@ this quantity. In \cite{Ford}, Kevin Ford proved that the exact order of this qu
 ,\]
 where \(\delta = 1 - \frac{1 + \log \log \left( 2 \right)  }{2} \) is the Erd\H{o}s-Tenenbaum-Ford constant.
 
-We require the following lemma
+A tool that will prove useful in evaluating sums is the Abel summation formula.
+
+\begin{lemma*}
+Let \(\left( a_{n}  \right) _{n = 1} ^{\infty }\) be a sequence of real numbers. Let
+\[
+    A(t) = \sum _{n \leq t} a_{n} 
+.\]
+For \(x,y \in \mathbb{R} \), with \(x < y\), and any differentiable function \(\phi : [x,y] \to \mathbb{R} \),
+\[
+    \sum _{x < n \leq y} a_{n} \phi(n) = A(y)\phi(y) - A(x) \phi(x) - \int_{x}^{y} A(t)\phi'(t) ~\mathrm{d} t
+\]
+\end{lemma*}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+
+
 \begin{lemma*}
 \[
     \sum _{\substack{ p \leq n \\ p\text{ prime}  }} \frac{1}{p}  = \log\log \left( n \right) + O(1)
