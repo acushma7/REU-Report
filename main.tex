@@ -679,7 +679,11 @@ For \(x,y \in \mathbb{R} \), with \(x < y\), and any differentiable function \(\
 \end{lemma*}
 
 \begin{proof}
-
+\begin{align*}
+    \sum _{x < n \leq y} a_{n} \phi(n) & = a_{\left\lceil x \right\rceil } \phi(\left\lceil x \right\rceil ) + \dots  + a_{\left\lfloor y \right\rfloor } \phi(\left\lfloor y \right\rfloor )\\
+    & = \left( A(x + 1) - A(x) \right) \phi(\left\lceil x \right\rceil ) + \dots + \left( A(y) - A(y-1) \right) \phi(\left\lceil y \right\rceil ) \\
+    & = \dots 
+\end{align*}
 \end{proof}
 
 
