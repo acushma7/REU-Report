@@ -1,16 +1,17 @@
 # Fdb version 4
-["bibtex main"] 1722713216 "main.aux" "main.bbl" "main" 1722713329 0
-  "./bibliography.bib" 1722552955 485 fba41ab4580e150a54abba63b2cd8231 ""
+["bibtex main"] 1722877266 "main.aux" "main.bbl" "main" 1722877267 0
+  "./bibliography.bib" 1722875644 705 6a82bae190f1d6706116306e576eeeee ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/amscls/amsalpha.bst" 1513722769 28675 71ba1b1ee8387ac88670b0ea0eb2399a ""
-  "main.aux" 1722713329 2705 67452d13fa7f07af7141df83900d16d2 "pdflatex"
+  "main.aux" 1722877267 2971 8b037ebebdd5a5789c6fd5fdac7e74aa "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1722713328 "/Users/adam/Documents/TeX2/REU Report/main.tex" "main.pdf" "main" 1722713329 0
-  "/Users/adam/Documents/TeX2/REU Report/main.tex" 1722713328 34266 1866c143e48c57bb47ef3600b1600ae6 ""
+["pdflatex"] 1722877266 "/Users/adam/Documents/TeX2/REU Report/main.tex" "main.pdf" "main" 1722877267 0
+  "/Users/adam/Documents/TeX2/REU Report/main.tex" 1722877264 36254 20cdff8be38b52af27664852464334d1 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecbi1200.tfm" 1136768653 3072 ccae1a240ab272417e4399fe942df546 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1136768653 3584 402da0b29eafbad07963b1224b222f18 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/eccc1000.tfm" 1136768653 3072 0e825b3b77feef5bf88d50fba1209c90 ""
@@ -70,6 +71,7 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1248133631 31764 459c573c03a4949a528c2cc7f557e217 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbi1200.pfb" 1215737283 205875 5958bf9326f04501f7006947acfbcae1 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb" 1215737283 145408 43d44302ca7d82d487f511f83e309505 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb" 1215737283 140176 d4962f948b4cc0adf4d3dde77a128c95 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb" 1215737283 109713 30d6420127e1c84309fa7008a69b7170 ""
@@ -173,13 +175,14 @@
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1695245715 7883453 1c3bf5172f58c90081bb3d24fc8a61b4 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "Figures//3graph.png" 1721237701 6848 a85daa0813d49a1b7a03f16071735afb ""
+  "Figures//Sol1.png" 1722877212 85249 b0ead035599a3fc1d3fc0ff659f1b8dc ""
   "Figures//cgraph.png" 1721237905 41328 73ccb7b9c62e36dd4e9153c61d4af2fb ""
   "Figures//faceimage.png" 1721238561 31917 ebe7383b8143b0659762745b1be23ce9 ""
   "Figures//mult-table.png" 1722552572 218520 d589fb102d05dd1d7f347b2ce41a1598 ""
-  "main.aux" 1722713329 2705 67452d13fa7f07af7141df83900d16d2 "pdflatex"
-  "main.bbl" 1722713216 524 c66331e812fdc67a0937054e2f83c69b "bibtex main"
-  "main.out" 1722713329 1510 159ffe100eb4138b15d7e9419d62987b "pdflatex"
-  "main.tex" 1722713328 34266 1866c143e48c57bb47ef3600b1600ae6 ""
+  "main.aux" 1722877267 2971 8b037ebebdd5a5789c6fd5fdac7e74aa "pdflatex"
+  "main.bbl" 1722877266 677 4cf30be5d02bd4419b4f7140b0a72cd7 "bibtex main"
+  "main.out" 1722877267 1683 d3fde290aa00792bb66970510b24c719 "pdflatex"
+  "main.tex" 1722877264 36254 20cdff8be38b52af27664852464334d1 ""
   "preamble.tex" 1721160075 2244 cca3d46751025a165a41e4420bc317d7 ""
   (generated)
   "main.aux"

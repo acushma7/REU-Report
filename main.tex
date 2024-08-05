@@ -40,6 +40,8 @@ This is a latex template that demonstrates how you may type up a mathematics rep
 
 \section{Introduction and Motivation} 
 
+\textbf{I need to define all things I use like little o and big O}.
+
 For any sets \(A,B\) and binary operation \(\cdot \) which acts on elements of \(A\) and \(B\), we define
 \[
     A \cdot  B = \left\{ a \cdot  b : a \in A~,~ b \in B \right\} 
@@ -618,11 +620,59 @@ We also have results like
 
 \textbf{any more results here?}
 
-\section{Additive Energy Estimates}
+\section{Additive and Multiplicative Energy Results \textbf{ew bad title} }
 
-\textbf{is this section worthy?}
+\textbf{Dyadic partitioning introduction}
 
-\textbf{why additive energy?}
+\begin{lemma}
+\textbf{dyadic partitioning}
+\end{lemma}
+
+Recall that
+\[
+    \left\lvert A + A \right\rvert \geq  \frac{\left\lvert A \right\rvert ^{4}}{ E(A) }
+\]
+and
+\[
+    \left\lvert AA \right\rvert \geq \frac{\left\lvert A \right\rvert ^{4}}{M(A) }
+.\]
+
+Observe that finding an upper bound on \(E(A)\) or \(M(A)\) in terms of \(\left\lvert A + A \right\rvert, \left\lvert AA \right\rvert    \), and \(\left\lvert A \right\rvert \)
+yields a sum product theorem. This section consists of results which employ this general idea.
+
+The simplest of which is a result in \cite{Solymosi}, which gives a stronger result
+on the sum-product conjecture than the Szemeredi-Trotter theorem. 
+
+\begin{theorem}
+Let \(A \subset \mathbb{R}^{+} \) be finite and sufficiently large.
+\[
+    \max \left( \left\lvert A+A \right\rvert , \left\lvert AA \right\rvert  \right) \gg \left\lvert A \right\rvert ^{\frac{4}{3} - o(1)}
+.\]
+\end{theorem}
+
+\begin{proof}
+We begin with a construction. Consider the set \(A^{2}\), along with the smallest set of lines
+through the origin which cover \(A^{2}\).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Sol1.png}
+    \caption{Example with \(A = \left\{ 1,2,4,8 \right\} \).}
+\end{figure}
+
+Two pairs \((a_1,a_2),(b_1,b_2) \in A^{2}\) give the same representation as a quotient if
+and only if
+\[
+    \frac{a_2}{a_1} = \frac{b_2}{b_1} 
+.\]
+Observe that this is the slope of a line through the origin and the points \((a_1,a_2), (b_1,b_2)\).
+
+It follows that \(\left\lvert \frac{A}{A} \right\rvert \) is the number of lines through the origin
+necessary to cover the point set \(A^{2}\). The slope of the line is the value the line represents 
+in \(\frac{A}{A} \), and the number of points on the line is the number of representations of that number in \(\frac{A}{A} \).
+\end{proof}
+
+\textbf{This is nearly the best known result, all others are only slight improvements, ... }
 
 
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -637,8 +687,6 @@ This report is based on work supported by NSF grant DMS-2051032, which we gratef
 \bibliography{bibliography} % the file "bibliography.bib" will be needed
 
 \section*{Appendix}
-
-\textbf{I need to define all things I use like little o and big O}.
 
 \begin{theorem*}[Erd\H{o}s multiplication table theorem]
 \[
@@ -668,7 +716,7 @@ where \(\delta = 1 - \frac{1 + \log \log \left( 2 \right)  }{2} \) is the Erd\H{
 A tool that will prove useful in evaluating sums is the Abel summation formula.
 
 \begin{lemma*}
-Let \(\left( a_{n}  \right) _{n = 1} ^{\infty }\) be a sequence of real numbers. Let
+Let \(\left( a_{n}  \right) _{n = 1} ^{\infty }\) be a sequence of real numbers. Let \(A: \mathbb{R} \to \mathbb{R} \) be defined by
 \[
     A(t) = \sum _{n \leq t} a_{n} 
 .\]
