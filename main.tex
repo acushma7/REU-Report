@@ -42,6 +42,8 @@ This is a latex template that demonstrates how you may type up a mathematics rep
 
 \textbf{I need to define all things I use like little o and big O}.
 
+\textbf{verify I have n-th moment energy defined}
+
 For any sets \(A,B\) and binary operation \(\cdot \) which acts on elements of \(A\) and \(B\), we define
 \[
     A \cdot  B = \left\{ a \cdot  b : a \in A~,~ b \in B \right\} 
@@ -54,33 +56,33 @@ by an arbitrary geometric sequence. We will determine the size of the sets \(A +
 
 \(A\) is of the form
 \[
-    A = \left\{ a , a + d , a+2d , \dots , a + (n-1)d \right\} 
+    A = \left\{ a , a + d , a+2d , \cdots , a + (n-1)d \right\} 
 \]
 and \(G\) of the form
 \[
-    G = \left\{ b, br , br^{2}, \dots , br^{k - 1} \right\} 
+    G = \left\{ b, br , br^{2}, \cdots , br^{k - 1} \right\} 
 .\]
 Observe that
 \begin{align*}
-    \left\lvert A + A \right\rvert  & = \left\lvert \left\{ 2a, 2a + d, 2a + 2d ,\dots , 2a + 2(n-1)d \right\}  \right\rvert \\
+    \left\lvert A + A \right\rvert  & = \left\lvert \left\{ 2a, 2a + d, 2a + 2d ,\cdots , 2a + 2(n-1)d \right\}  \right\rvert \\
     & = 2(n-1) + 1 \\
     & = 2 \left\lvert A \right\rvert - 1,
 \end{align*}
 and by the same argument,
 \begin{align*}
-    \left\lvert GG \right\rvert  & = \left\lvert \left\{ b^{2} , b^{2}r , \dots , b^{2}r^{2(k-1)} \right\} \right\rvert  \\
+    \left\lvert GG \right\rvert  & = \left\lvert \left\{ b^{2} , b^{2}r , \cdots , b^{2}r^{2(k-1)} \right\} \right\rvert  \\
     & =2 \left\lvert G \right\rvert -1.
 \end{align*}
 We have
 \begin{align*}
     \left\lvert G + G \right\rvert & = \left\lvert \left\{ g_1 + g_2 : g_1,g_2 \in G \right\} \right\rvert  \\
-    & = \left\lvert \left\{ b(r^{i} + r^{j}): i,j \in \left\{ 0, \dots , k-1 \right\}  \right\} \right\rvert \\
-    & = \left\lvert \left\{r^{i} + r^{j}: i,j \in \left\{ 0, \dots , k-1 \right\}  \right\} \right\rvert.
+    & = \left\lvert \left\{ b(r^{i} + r^{j}): i,j \in \left\{ 0, \cdots , k-1 \right\}  \right\} \right\rvert \\
+    & = \left\lvert \left\{r^{i} + r^{j}: i,j \in \left\{ 0, \cdots , k-1 \right\}  \right\} \right\rvert.
 \end{align*}
 For \(i \neq j\), \(r^{i} + r^{j}\) represents a number in base \(r\). By the uniqueness of representations
 in different bases (see appendix) \textbf{PUT IT IN APPENDIX}, we can conclude that there must be at least \(k^{2}- k\) many numbers in this set, that is
 \[
-    \left\lvert G + G \right\rvert = \left\lvert \left\{ r^{i} + r^{j} : i,j \in \left\{ 0 , \dots , k-1 \right\}   \right\}  \right\rvert \geq k^{2}- k = \left\lvert G \right\rvert ^{2} - \left\lvert G \right\rvert 
+    \left\lvert G + G \right\rvert = \left\lvert \left\{ r^{i} + r^{j} : i,j \in \left\{ 0 , \cdots , k-1 \right\}   \right\}  \right\rvert \geq k^{2}- k = \left\lvert G \right\rvert ^{2} - \left\lvert G \right\rvert 
 .\]
 
 \textbf{I NEED TO FINISH THIS EXAMPLE}
@@ -103,7 +105,7 @@ The rest of the report will proceed in the following way : \textbf{finish this}
 
 For any natural number \(n\), define
 \[
-    [n] = \left\{ 1, 2 , \dots , n \right\} 
+    [n] = \left\{ 1, 2 , \cdots , n \right\} 
 .\]
 
 For any functions \(f,g: \mathbb{N}  \to \mathbb{R} \), write
@@ -210,7 +212,7 @@ Let \(I \subset \mathbb{R} \) be an interval.
     A finite set \(A \subset \mathbb{R}\) is convex if there is a function \(f: [1, \left\lvert A \right\rvert ] \to \mathbb{R} \)
 such that
 \[
-    A = \left\{ f(i) : i \in \left\{ 1, \dots , \left\lvert A \right\rvert  \right\}  \right\} 
+    A = \left\{ f(i) : i \in \left\{ 1, \cdots , \left\lvert A \right\rvert  \right\}  \right\} 
 .\]
 
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -555,7 +557,22 @@ so
 .\]
 \end{proof}
 
-In particular, this theorem gives us the result
+\textbf{better dialogue}
+Another variation of this theorem is
+
+\begin{theorem}
+For finite sets \(A \subset \mathbb{R} \) which are convex and sufficiently large, and
+any set \(B \subset \mathbb{R} \),
+\[
+    \left\lvert A + B \right\rvert \gg \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{1}{2} }
+.\]
+\end{theorem}
+
+\begin{proof}
+\textbf{PROOF}
+\end{proof}
+
+In particular, both of these theorems give the result
 \begin{theorem}
 For sufficiently large sets \(A \subset \mathbb{R} \) which are finite and convex,
 \[
@@ -617,6 +634,30 @@ We also have results like
         \left\lvert \left\{ x \in A-B : \delta_{A,B} (x) \geq \tau \right\}  \right\rvert \ll \frac{\left\lvert A \right\rvert \left\lvert B \right\rvert }{\tau^{3} }
     .\]
 \end{theorem}
+
+\begin{proof}
+\textbf{PROOF}
+\end{proof}
+
+An immediate and useful corollary of this is
+
+\begin{corollary}
+Let \(A \subset \mathbb{R} \) be a sufficiently large, convex, finite set.
+Order elements \(a_{i} \in A\) such that 
+\[
+    \delta_{A} (s_1) \geq \delta_{A} (s_2) \geq \cdots \geq \delta_{A} (s _{\left\lvert A+A \right\rvert } )
+.\]
+For every \(1 \geq r \leq \left\lvert A+A \right\rvert\) we have
+\[
+    \delta_{A} (s _{r} ) \ll \frac{\left\lvert A \right\rvert }{r^{\frac{1}{3} }}
+.\]
+\end{corollary}
+
+\begin{proof}
+\[
+    r = \left\lvert \left\{ x \in A-A : \delta _{A} (x) \geq \delta_{A} (s _{r} ) \right\}  \right\rvert \ll \frac{\left\lvert A \right\rvert ^{3} }{\delta_{A} (s _{r} )^{3} } \implies \delta_{A} (s _{r} ) \ll \frac{\left\lvert A \right\rvert }{r^{\frac{1}{3} }}
+.\]
+\end{proof}
 
 \textbf{any more results here?}
 
@@ -744,6 +785,60 @@ This is proven in \cite{shkredov-new-results-higher-energy}. I did not read this
 paper because it includes a lot of unique ideas and complex notation. I plan to read it
 in the future.
 
+\textbf{REWRITE BELOW}
+Many arguments involving additive energy are not as straightforward
+as finding an upper bound. We often explore quantites such as \(E(A,S), E(D), E(S), E_{3} (A)\) etc.
+The following are examples of those style of arguments.
+
+I'll first prove a handful of theorems which will be useful. The first of which
+I will restate from before, still leaving out proof.
+
+\begin{theorem}
+For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large,
+\[
+    E(A) \ll \left\lvert A \right\rvert ^{\frac{32}{13} - o(1)}
+.\]
+\end{theorem}
+
+\begin{theorem}
+For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large,
+\[
+    E_{3} (A) \ll \left\lvert A \right\rvert ^{ 3 - o(1)}
+.\]
+\end{theorem}
+
+\begin{proof}
+Recall that upon ordering \(a_{i} \) such that \(\delta_A(a_1) \geq \delta_A(a_2) \geq \dots \geq \delta_{A} (a_{\left\lvert A+A \right\rvert } )\),
+we have that
+\[
+    \delta_{A} (a_{r} ) \ll \frac{\left\lvert A \right\rvert }{r^{\frac{1}{3} }}
+.\]
+
+With this,
+\begin{align*}
+E_3(A) & = \sum _{x \in A-A} \delta_{A} (x)^{3} \\
+& \ll \left\lvert A \right\rvert ^{3} \sum_{r=1}^{\left\lvert A+A \right\rvert } \frac{1}{r}\\
+& \asymp \left\lvert A \right\rvert ^{3} \int_{1}^{\left\lvert A+A \right\rvert } \frac{1}{r}  ~\mathrm{d} r \\
+& = \left\lvert A \right\rvert ^{3 - o(1)}
+\end{align*}
+\end{proof}
+
+\begin{theorem}
+For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large, and any finite set \(B \subset \mathbb{R} \)
+\[
+    E(A,B) \ll \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{3}{2} }
+.\]
+\end{theorem}
+
+\textbf{I NEED TO REDO PROOF WITH MORE LOGIC BEHIND WHY I CHOSE B 1/2}
+\begin{proof}
+Denote the elements of \(A-B\) by \(s_{i} \) where \(\delta_{A,B} (s_1) \geq \cdots \geq \delta_{A,B} (s _{\left\lvert A-B \right\rvert } )\)
+
+Let \(P = \left\{ x \in A - B : \delta_{A,B} (x) \geq \left\lvert B \right\rvert ^{\frac{1}{2} } \right\} \), and let \(P ^{*} = \left( A - B \right) \setminus P\).
+\[
+    \sum _{x \in P} \delta_{A,B} (x)^{2} \leq  \sum_{i=1}^{\left\lvert P \right\rvert } \delta_{A,B} (s _{r} )
+\]
+\end{proof}
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -797,9 +892,9 @@ For \(x,y \in \mathbb{R} \), with \(x < y\), and any differentiable function \(\
 
 \begin{proof}
 \begin{align*}
-    \sum _{x < n \leq y} a_{n} \phi(n) & = a_{\left\lceil x \right\rceil } \phi(\left\lceil x \right\rceil ) + \dots  + a_{\left\lfloor y \right\rfloor } \phi(\left\lfloor y \right\rfloor )\\
-    & = \left( A(x + 1) - A(x) \right) \phi(\left\lceil x \right\rceil ) + \dots + \left( A(y) - A(y-1) \right) \phi(\left\lceil y \right\rceil ) \\
-    & = \dots 
+    \sum _{x < n \leq y} a_{n} \phi(n) & = a_{\left\lceil x \right\rceil } \phi(\left\lceil x \right\rceil ) + \cdots  + a_{\left\lfloor y \right\rfloor } \phi(\left\lfloor y \right\rfloor )\\
+    & = \left( A(x + 1) - A(x) \right) \phi(\left\lceil x \right\rceil ) + \cdots + \left( A(y) - A(y-1) \right) \phi(\left\lceil y \right\rceil ) \\
+    & = \cdots 
 \end{align*}
 \end{proof}
 

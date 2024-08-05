@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1722882597 "main.aux" "main.bbl" "main" 1722882598 0
+["bibtex main"] 1722889967 "main.aux" "main.bbl" "main" 1722890512 0
   "./bibliography.bib" 1722882179 985 bfa9206fa27bc648e2c2637159638831 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/amscls/amsalpha.bst" 1513722769 28675 71ba1b1ee8387ac88670b0ea0eb2399a ""
-  "main.aux" 1722882598 3069 8b99c63bcbcac20965fe543eedbbce2b "pdflatex"
+  "main.aux" 1722890511 3070 4f678169e7a9335a7dec81243052135e "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1722882597 "/Users/adam/Documents/TeX2/REU Report/main.tex" "main.pdf" "main" 1722882598 0
-  "/Users/adam/Documents/TeX2/REU Report/main.tex" 1722882596 39223 35ac03f361885c098a2261e5fb9828b7 ""
+["pdflatex"] 1722890510 "/Users/adam/Documents/TeX2/REU Report/main.tex" "main.pdf" "main" 1722890512 0
+  "/Users/adam/Documents/TeX2/REU Report/main.tex" 1722890510 42611 4c21629c2c11ebac8f6e0c0a1ce2f43c ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecbi1200.tfm" 1136768653 3072 ccae1a240ab272417e4399fe942df546 ""
@@ -180,10 +180,10 @@
   "Figures//cgraph.png" 1721237905 41328 73ccb7b9c62e36dd4e9153c61d4af2fb ""
   "Figures//faceimage.png" 1721238561 31917 ebe7383b8143b0659762745b1be23ce9 ""
   "Figures//mult-table.png" 1722552572 218520 d589fb102d05dd1d7f347b2ce41a1598 ""
-  "main.aux" 1722882598 3069 8b99c63bcbcac20965fe543eedbbce2b "pdflatex"
-  "main.bbl" 1722882597 798 83338f16d1f3fa2bb30c383bfd8aea14 "bibtex main"
-  "main.out" 1722882598 1683 d3fde290aa00792bb66970510b24c719 "pdflatex"
-  "main.tex" 1722882596 39223 35ac03f361885c098a2261e5fb9828b7 ""
+  "main.aux" 1722890511 3070 4f678169e7a9335a7dec81243052135e "pdflatex"
+  "main.bbl" 1722889967 798 83338f16d1f3fa2bb30c383bfd8aea14 "bibtex main"
+  "main.out" 1722890511 1683 d3fde290aa00792bb66970510b24c719 "pdflatex"
+  "main.tex" 1722890510 42611 4c21629c2c11ebac8f6e0c0a1ce2f43c ""
   "preamble.tex" 1721160075 2244 cca3d46751025a165a41e4420bc317d7 ""
   (generated)
   "main.aux"
