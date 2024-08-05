@@ -5,10 +5,13 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{For08}
+\begin{thebibliography}{Shk12}
 
 \bibitem[For08]{Ford}
 Kevin Ford, \emph{The distribution of integers with a divisor in a given interval}, Annals of Mathematics \textbf{168} (2008), 367--433.
+
+\bibitem[Shk12]{shkredov-new-results-higher-energy}
+Ilya~D. Shkredov, \emph{Some new results on higher energies}, 2012.
 
 \bibitem[Sol09]{Solymosi}
 József Solymosi, \emph{Bounding multiplicative energy by the sumset}, Advances in Mathematics \textbf{222} (2009), 402--408.

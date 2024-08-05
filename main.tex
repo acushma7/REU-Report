@@ -651,6 +651,11 @@ Let \(A \subset \mathbb{R}^{+} \) be finite and sufficiently large.
 \end{theorem}
 
 \begin{proof}
+
+\textbf{FIX THIS BEGINNING PART}
+
+\textbf{THE WHOLE THING NEEDS REVISION}
+
 We begin with a construction. Consider the set \(A^{2}\), along with the smallest set of lines
 through the origin which cover \(A^{2}\).
 
@@ -670,10 +675,74 @@ Observe that this is the slope of a line through the origin and the points \((a_
 It follows that \(\left\lvert \frac{A}{A} \right\rvert \) is the number of lines through the origin
 necessary to cover the point set \(A^{2}\). The slope of the line is the value the line represents 
 in \(\frac{A}{A} \), and the number of points on the line is the number of representations of that number in \(\frac{A}{A} \).
+
+Consider 2 consecutive lines and the set of all vector sums between a point on each line.
+If our points are \(\left( a_1,a_2 \right)\) and \(\left( b_1,b_2 \right) \), with
+\[
+    \frac{a_2}{a_1} > \frac{b_2}{b_1}
+,\]
+then the slope of their sum is
+\[
+    \frac{a_2+b_2}{a_1+b_1}
+\]
+which satisfies
+\[
+    \frac{b_2}{b_1} < \frac{a_2+b_2}{a_1+b_1} < \frac{a_2}{a_1}
+.\]
+That is, the vector sum must ``lie between'' the two lines which the original vectors are on.
+More precisely, for any pairs of consecutive lines, the vector sums of all points along the lines are disjoint.
+
+We also have that the sums of any 2 points on each line are distinct. This is because a
+solution to
+\[
+    \lambda_1 v + \lambda_2 w = \lambda_3 v + \lambda_4 w \iff \left( \lambda_1 - \lambda_3 \right) v + \left( \lambda_2 - \lambda_4 \right) w
+\]
+where \(\lambda_1 \neq \lambda_3\) or \(\lambda_2 \neq \lambda_4\) exists only if \(v\) and \(w\) are linearly dependent.
+
+By dyadic partitioning on \(M(A)\), we have
+\[
+    M(A) = \sum _{x \in \frac{A}{A} } r_{\frac{A}{A} } (x)^{2} \leq  \log \left( \left\lvert \frac{A}{A} \right\rvert   \right) \tau ^{2} \left\lvert S \right\rvert
+\]
+for some \(\tau\), where \(S = \left\{ x \in \frac{A}{A}  : r_{\frac{A}{A} } (x) \asymp \tau \right\} \).
+
+Consider the reduced system of points and lines, consisting only of the \(\left\lvert S \right\rvert \) many lines which
+have \(\asymp \tau\) many points on them. Consider the set of all vector sums between points on
+consecutive lines. Because all pairs of lines give disjoint sets, each with \(\asymp \tau ^{2}\) many sums, there are
+\(\tau^{2}\left\lvert S \right\rvert \) many vector sums. Because this is a subset of \((A+A)^{2}\),
+\[
+    \tau^{2} \left\lvert S \right\rvert \leq \left\lvert A+A \right\rvert  ^{2}
+,\]
+so
+\[
+    \frac{\left\lvert A \right\rvert ^{4}}{\left\lvert AA\right\rvert } \leq M(A) \ll \log \left( \left\lvert \frac{A}{A} \right\rvert   \right)  \left\lvert A+A \right\rvert  ^{2} \implies \max \left( \left\lvert A+A \right\rvert ,\left\lvert AA \right\rvert  \right) \gg \left\lvert A \right\rvert ^{\frac{4}{3} - o(1)}
+\]
+
 \end{proof}
 
 \textbf{This is nearly the best known result, all others are only slight improvements, ... }
+\textbf{Only result purely obtaining upper bound on energy}
 
+Another instance of this type of result is
+
+\begin{theorem}
+For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large,
+\[
+    E(A) \ll \left\lvert A \right\rvert ^{\frac{32}{13} - o(1)}
+,\]
+\end{theorem}
+which immediately leads to the result
+
+\begin{corollary}
+For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large,
+\[
+    \left\lvert A+A \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} + \frac{1}{26} - o(1)}
+.\]
+\end{corollary}
+
+\textbf{FIX BELOW PARAGRAPH}
+This is proven in \cite{shkredov-new-results-higher-energy}. I did not read this
+paper because it includes a lot of unique ideas and complex notation. I plan to read it
+in the future.
 
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
