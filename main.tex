@@ -641,6 +641,8 @@ We also have results like
 
 An immediate and useful corollary of this is
 
+\textbf{REPLACE WITH A,B VERSION}
+
 \begin{corollary}
 Let \(A \subset \mathbb{R} \) be a sufficiently large, convex, finite set.
 Order elements \(a_{i} \in A\) such that 
@@ -835,9 +837,23 @@ For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently larg
 Denote the elements of \(A-B\) by \(s_{i} \) where \(\delta_{A,B} (s_1) \geq \cdots \geq \delta_{A,B} (s _{\left\lvert A-B \right\rvert } )\)
 
 Let \(P = \left\{ x \in A - B : \delta_{A,B} (x) \geq \left\lvert B \right\rvert ^{\frac{1}{2} } \right\} \), and let \(P ^{*} = \left( A - B \right) \setminus P\).
+\begin{align*}
+    \sum _{x \in P} \delta_{A,B} (x)^{2} & =  \sum_{i=1}^{\left\lvert P \right\rvert } \delta_{A,B} (s _{r} )^{2}\\
+    & \ll \left\lvert A \right\rvert ^{\frac{2}{3} } \left\lvert B \right\rvert ^{\frac{4}{3} } \sum_{i=1}^{\left\lvert P \right\rvert } \frac{1}{r^{\frac{2}{3} }} \\
+    & \asymp \left\lvert A \right\rvert ^{\frac{2}{3} } \left\lvert B \right\rvert ^{\frac{4}{3} } \left\lvert P \right\rvert ^{\frac{1}{3} }\\
+    & \ll \left\lvert A \right\rvert ^{\frac{2}{3} } \left\lvert B \right\rvert ^{\frac{4}{3} } \left( \frac{\left\lvert A \right\rvert \left\lvert B \right\rvert ^{2}}{\left\lvert B \right\rvert ^{\frac{1}{2} }}  \right) ^{\frac{1}{3} }\\
+    & = \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{3}{2} },
+\end{align*}
+and
 \[
-    \sum _{x \in P} \delta_{A,B} (x)^{2} \leq  \sum_{i=1}^{\left\lvert P \right\rvert } \delta_{A,B} (s _{r} )
-\]
+    \sum _{x \in P^{*}} \delta_{A,B} (x)^{2} < \left\lvert B \right\rvert ^{\frac{1}{2} } \sum _{x \in P^{*}} \delta_{A,B} (x) = \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{3}{2} }
+.\]
+
+Therefore,
+\[
+    E(A,B) = \sum _{x \in P} \delta_{A,B} (x)^{2} + \sum _{x \in P ^{*}} \delta_{A,B} (x)^{2} \ll \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{3}{2} } 
+.\]
+
 \end{proof}
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
