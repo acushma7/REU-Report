@@ -916,20 +916,49 @@ For \(x,y \in \mathbb{R} \), with \(x < y\), and any differentiable function \(\
 \end{align*}
 \end{proof}
 
-We will also need to use the Chebyshev theta function
+We will also need to use the Chebyshev psi function
 
 \begin{lemma}
-Let \(\theta : \mathbb{R} ^{+} \to \mathbb{N}  \) be defined by
+Let \(\psi : \mathbb{R} ^{+} \to \mathbb{N}  \) be defined by
 \[
-    \theta(t) = \sum _{\substack{ p \leq t \\ p \text{ prime}  }} \log \left( p \right) 
+    \psi(t) = \sum _{\substack{ p ^{\alpha}\leq t \\ p \text{ prime} \\ \alpha \in \mathbb{N} }} \log \left( p \right) 
 .\]
 We have
 \[
-    \theta(t) \ll t
+    \psi(t) \ll t
 .\]
 \end{lemma}
 
 \begin{proof}
+First we'll introduce the function \(\theta : \mathbb{R} ^{+ } \to \mathbb{N} \) defined by
+\[
+    \theta(t) = \sum _{\substack{ p \leq t \\ p \text{ prime}  }} \log \left( p \right)
+.\]
+The functions \(\theta\) and \(\psi\) are clearly related by
+\[
+    \psi(t) = \prod _{\substack{ p \leq N^{\frac{1}{\alpha} } \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \log \left( p \right) = \sum _{\alpha \in \mathbb{N} } \theta\left( t ^{\frac{1}{\alpha} } \right)  = \theta(t) + \sum _{\alpha \geq 2} \theta \left( t ^{\frac{1}{\alpha} } \right) 
+.\]
+Note that the sum over \(\alpha\) has only finitely many terms. The sum terminates when
+\[
+    2 \geq  t^{\frac{1}{\alpha} } \implies  \alpha \leq \log _{2} \left( t \right) 
+.\]
+
+A trivial upper bound on \(\theta (t)\) is
+\[
+    \theta(t) = \sum _{\substack{ p \leq t \\ p \text{ prime}}} \log \left( p \right) \leq t \log \left( t \right)  
+,\]
+so
+\begin{align*}
+    \psi(t) & = \theta(t) + \sum _{2 \leq \alpha \leq \log _{2} \left( t \right) } \theta(t ^{\frac{1}{\alpha} }) \\
+    & \leq \theta(t) + \log _{2} \left( t \right) \theta(t^{\frac{1}{2} }) \\
+    & \leq \theta(t) + \frac{t^{\frac{1}{2} }\log \left( t \right) ^{2}}{\log \left( 2 \right) }
+\end{align*}
+or
+\[
+    \psi(t) \ll \max \left( \theta(t), t^{\frac{1}{2} }\log \left( t \right) ^{2} \right) 
+.\]
+Therefore, it suffices to show \(\theta(t) \ll t\).
+
 We have
 \[
     \theta(t) = \sum _{\substack{ p \leq t \\ p \text{ prime}  }} \log \left( p \right) = \log \left( \prod _{\substack{ p \leq t \\  p \text{ prime}  }} p \right) 
@@ -972,7 +1001,7 @@ We have
 \end{align*}
 \end{proof}
 
-More accurately, \(\theta(t) \asymp t\), but this is not necessary to get the desired result,
+More accurately, \(\psi(t) \asymp \theta(t) \asymp t\), but this is not necessary to get the desired result,
 so I am omitting it from this report.
 
 The final lemma needed is
@@ -996,11 +1025,27 @@ It follows that
     \log \left( N! \right) & = \sum _{\substack{ p \leq N \\p \text{ prime}  }} \alpha(N,p) \log \left( p \right) \\
     & = \sum _{\substack{ p \leq N \\p \text{ prime} \\ i \leq \log _{p} \left( N \right)   }} \left\lfloor \frac{N}{p ^{i}}  \right\rfloor \log \left( p \right) \\
     & = \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{p} \left( N \right)  }} \left( \frac{N}{p ^{i}} - \delta(p) \right) \log \left( p \right) \\
-    & = N\sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{p} \left( N \right) }} \frac{\log \left( p \right) }{p ^{i}} - \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{p} \left( N \right)  }} \delta(p) \log \left( p \right) 
+    & = N\sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{p} \left( N \right) }} \frac{\log \left( p \right) }{p ^{i}} - \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{p} \left( N \right)  }} \delta(p) \log \left( p \right) .
 \end{align*}
-and therefore that
+We have that
 \[
-    \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{2} \left( N \right)  }} \frac{\log \left( p \right) }{p} \leq  \frac{\log \left( N! \right) }{N} + \psi(N)
+    i \leq \log _{p} \left( N \right) \iff p ^{i} \leq N
+,\]
+so
+\[
+    \sum  _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{p} \left( N \right)  }} \log \left( p \right) = \psi(N)
+,\]
+and therefore
+\[
+    \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{2} \left( N \right)  }} \frac{\log \left( p \right) }{p} \leq  \frac{\log \left( N! \right) }{N} + \frac{\psi(N)}{N} 
+.\]
+
+Finally, via a Riemann sum,
+\[
+    \log \left( N! \right) = \sum_{i=1}^{N} \log \left( i \right) = \int_{2}^{N}  ~\mathrm{d} x 
+\]
+\[
+    \int_{-\infty}^{\infty}  ~\mathrm{d} x 
 \]
 \end{proof}
 
