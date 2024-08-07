@@ -631,7 +631,7 @@ We also have results like
     finite set \(B \subset \mathbb{R} \) we have
 
     \[
-        \left\lvert \left\{ x \in A-B : \delta_{A,B} (x) \geq \tau \right\}  \right\rvert \ll \frac{\left\lvert A \right\rvert \left\lvert B \right\rvert }{\tau^{3} }
+        \left\lvert \left\{ x \in A-B : \delta_{A,B} (x) \geq \tau \right\}  \right\rvert \ll \frac{\left\lvert A \right\rvert \left\lvert B \right\rvert^{2} }{\tau^{3} }
     .\]
 \end{theorem}
 
@@ -906,19 +906,76 @@ For \(x,y \in \mathbb{R} \), with \(x < y\), and any differentiable function \(\
 \]
 \end{lemma*}
 
+\textbf{FINISH THIS LATER}
 \begin{proof}
 \begin{align*}
     \sum _{x < n \leq y} a_{n} \phi(n) & = a_{\left\lceil x \right\rceil } \phi(\left\lceil x \right\rceil ) + \cdots  + a_{\left\lfloor y \right\rfloor } \phi(\left\lfloor y \right\rfloor )\\
-    & = \left( A(x + 1) - A(x) \right) \phi(\left\lceil x \right\rceil ) + \cdots + \left( A(y) - A(y-1) \right) \phi(\left\lceil y \right\rceil ) \\
-    & = \cdots 
+    & = \left( A(x + 1) - A(x) \right) \phi(\left\lceil x \right\rceil ) + \cdots + \left( A(y) - A(y-1) \right) \phi(\left\lfloor y \right\rfloor ) \\
+    & = \\
+    & = A(y) \phi\left( \left\lfloor y \right\rfloor \right)  - A(x)\phi\left( \left\lceil x \right\rceil  \right) + \sum_{i= 1 }^{} \left( \phi\left( \left\lceil x \right\rceil + i \right) - \phi\left( \left\lceil x \right\rceil + 1 + i \right) \right) A(x + i)  
 \end{align*}
 \end{proof}
 
+We will also need to use the Chebyshev theta function
 
+\begin{lemma}
+Let \(\theta : \mathbb{R} ^{+} \to \mathbb{N}  \) be defined by
+\[
+    \theta(t) = \sum _{\substack{ p \leq t \\ p \text{ prime}  }} \log \left( p \right) 
+.\]
+We have
+\[
+    \theta(t) \ll t
+.\]
+\end{lemma}
 
+\begin{proof}
+We have
+\[
+    \theta(t) = \sum _{\substack{ p \leq t \\ p \text{ prime}  }} \log \left( p \right) = \log \left( \prod _{\substack{ p \leq t \\  p \text{ prime}  }} p \right) 
+,\]
+so it is sufficient to show that
+\[
+    \prod _{\substack{ p \leq t \\ p \text{ prime}  }} p \ll e^{t}
+.\]
+It is also sufficient to prove it for \(t \in \mathbb{N} \) because \(\theta(t) = \theta\left( \left\lfloor t \right\rfloor  \right) \).
 
+For some natural number \(t\), and a prime \(p\),
+\[
+    t + 1 < p \leq 2t + 1 \implies p \mid \binom{2t + 1}{t} = \frac{\left( 2t + 1 \right) !}{t! (t+1)!} 
+.\]
+Therefore, for any \(t\),
+\[
+    \prod _{\substack{ t + 1 < p \leq 2t + 1\\ p \text{ prime}   }} p   \mid \binom{2t+1}{t} \implies \prod _{\substack{ t + 1 < p \leq 2t + 1\\ p \text{ prime}   }} p   \leq  \binom{2t+1}{t}
+,\]
+which gives us
+\[
+    2 \prod _{\substack{ t + 1 < p \leq 2t + 1\\ p \text{ prime}   }} p   \leq  2 \binom{2t+1}{t} \leq (1+1)^{2t + 1} \implies \prod _{\substack{ t + 1 < p \leq 2t + 1\\ p \text{ prime}   }} p  \leq 4^{t}
+.\]
 
+The rest follows by induction on \(t\). Because we are proving
+a statement about order of magnitude, the base case is trivial. Now suppose that
+for some \(t \in \mathbb{N} \),
+\[
+    \prod _{\substack{ p \leq m \\p \text{ prime}  }} p \ll e^{t}
+.\]
+If \(t\) is odd, the induction follows trivially. If \(t\) is even, let \(t = 2m\),
+so
+\[
+    \prod  _{\substack{ p \leq 2m \\ p \text{ prime}  }} p\ll e^{2m}
+.\]
+We have
+\begin{align*}
+\prod _{\substack{ p \leq 2m + 1 \\ p \text{ prime}  }} p & = \prod _{\substack{ p \leq m + 1 \\ p \text{ prime}  }} p \prod _{\substack{ m + 1 < p \leq 2m + 1 \\ p \text{ prime}  }} p \\
+& \ll e^{m + 1} 4^{m} \\
+& \ll e^{m+1} e^{m} = e^{2m+1}. 
+\end{align*}
+\end{proof}
 
+More accurately, \(\theta(t) \asymp t\), but this is not necessary to get the desired result,
+so I am omitting it from this report.
+
+The final lemma needed is
 \begin{lemma*}
 \[
     \sum _{\substack{ p \leq n \\ p\text{ prime}  }} \frac{1}{p}  = \log\log \left( n \right) + O(1)
@@ -926,7 +983,25 @@ For \(x,y \in \mathbb{R} \), with \(x < y\), and any differentiable function \(\
 \end{lemma*}
 
 \begin{proof}[Proof of Lemma]
-ok
+Observe that for some number \(N \in \mathbb{N} \), the prime factorization of \(N!\) is of the form
+\[
+    N! = \prod _{\substack{ p \leq N \\ p \text{ prime}  }} p ^{\alpha(N,p)}
+,\]
+where
+\[
+    \alpha(N,p) = \sum _{i \in \mathbb{N} } \left\lfloor \frac{N}{p ^{i}}  \right\rfloor = \sum _{i \leq \log _{p} \left( N \right) } \left\lfloor \frac{N}{p ^{i}}  \right\rfloor  =\sum _{i \leq \log _{2} \left( N \right) } \left\lfloor \frac{N}{p ^{i}}  \right\rfloor 
+.\]
+It follows that
+\begin{align*}
+    \log \left( N! \right) & = \sum _{\substack{ p \leq N \\p \text{ prime}  }} \alpha(N,p) \log \left( p \right) \\
+    & = \sum _{\substack{ p \leq N \\p \text{ prime} \\ i \leq \log _{p} \left( N \right)   }} \left\lfloor \frac{N}{p ^{i}}  \right\rfloor \log \left( p \right) \\
+    & = \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{p} \left( N \right)  }} \left( \frac{N}{p ^{i}} - \delta(p) \right) \log \left( p \right) \\
+    & = N\sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{p} \left( N \right) }} \frac{\log \left( p \right) }{p ^{i}} - \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{p} \left( N \right)  }} \delta(p) \log \left( p \right) 
+\end{align*}
+and therefore that
+\[
+    \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{2} \left( N \right)  }} \frac{\log \left( p \right) }{p} \leq  \frac{\log \left( N! \right) }{N} + \psi(N)
+\]
 \end{proof}
 
 \end{document}

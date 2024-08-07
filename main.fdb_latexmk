@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1722891034 "main.aux" "main.bbl" "main" 1722891037 0
+["bibtex main"] 1723068641 "main.aux" "main.bbl" "main" 1723069582 0
   "./bibliography.bib" 1722882179 985 bfa9206fa27bc648e2c2637159638831 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/amscls/amsalpha.bst" 1513722769 28675 71ba1b1ee8387ac88670b0ea0eb2399a ""
-  "main.aux" 1722891037 3070 5cc36c74d73ac0a4cde0bc3b82cd04c9 "pdflatex"
+  "main.aux" 1723069582 3070 4a0dbdf1fc9e0b2d9c221ffb8fada13c "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1722891036 "/Users/adam/Documents/TeX2/REU Report/main.tex" "main.pdf" "main" 1722891037 0
-  "/Users/adam/Documents/TeX2/REU Report/main.tex" 1722891036 43702 9b82621420f08092d85e13df8b3050d0 ""
+["pdflatex"] 1723069581 "/Users/adam/Documents/TeX2/REU Report/main.tex" "main.pdf" "main" 1723069582 0
+  "/Users/adam/Documents/TeX2/REU Report/main.tex" 1723069581 47596 4ff4e3ab8819c8c5314966e4747be0bd ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecbi1200.tfm" 1136768653 3072 ccae1a240ab272417e4399fe942df546 ""
@@ -78,6 +78,7 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb" 1215737283 140176 d4962f948b4cc0adf4d3dde77a128c95 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb" 1215737283 109713 30d6420127e1c84309fa7008a69b7170 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb" 1215737283 108594 1a08a22405bc37650b977f219cc3597d ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb" 1215737283 164227 3df942b4ff2124425d8fb1b6d3e01c7a ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb" 1215737283 149037 995a6f1e12c1d647b99b1cf55db78699 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb" 1215737283 138258 6525c253f16cededa14c7fd0da7f67b2 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb" 1215737283 136101 f533469f523533d38317ab5729d00c8a ""
@@ -181,10 +182,10 @@
   "Figures//cgraph.png" 1721237905 41328 73ccb7b9c62e36dd4e9153c61d4af2fb ""
   "Figures//faceimage.png" 1721238561 31917 ebe7383b8143b0659762745b1be23ce9 ""
   "Figures//mult-table.png" 1722552572 218520 d589fb102d05dd1d7f347b2ce41a1598 ""
-  "main.aux" 1722891037 3070 5cc36c74d73ac0a4cde0bc3b82cd04c9 "pdflatex"
-  "main.bbl" 1722891034 798 83338f16d1f3fa2bb30c383bfd8aea14 "bibtex main"
-  "main.out" 1722891037 1683 d3fde290aa00792bb66970510b24c719 "pdflatex"
-  "main.tex" 1722891036 43702 9b82621420f08092d85e13df8b3050d0 ""
+  "main.aux" 1723069582 3070 4a0dbdf1fc9e0b2d9c221ffb8fada13c "pdflatex"
+  "main.bbl" 1723068641 798 83338f16d1f3fa2bb30c383bfd8aea14 "bibtex main"
+  "main.out" 1723069582 1683 d3fde290aa00792bb66970510b24c719 "pdflatex"
+  "main.tex" 1723069581 47596 4ff4e3ab8819c8c5314966e4747be0bd ""
   "preamble.tex" 1721160075 2244 cca3d46751025a165a41e4420bc317d7 ""
   (generated)
   "main.aux"
