@@ -26,12 +26,6 @@ This is a latex template that demonstrates how you may type up a mathematics rep
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-\textbf{There is an issue of not specifying what tends to infinity in some places. see crossing number inequalities and sum product theorems, say something like "when asymptotic parameter is not specified, take it to be..."}
-
-\textbf{for all names add Dr or Mr or Professor or sum}
-
-\textbf{less than less than epsilon notation}
-
 \textbf{issue of "for any set A" in statements, but only as A gets sufficiently large}
 
 \textbf{We presume the reader is familiar with basic ... such as ... }
@@ -40,98 +34,112 @@ This is a latex template that demonstrates how you may type up a mathematics rep
 
 \section{Introduction and Motivation} 
 
-\textbf{I need to define all things I use like little o and big O}.
-
-\textbf{verify I have n-th moment energy defined}
-
 For any sets \(A,B\) and binary operation \(\cdot \) which acts on elements of \(A\) and \(B\), we define
 \[
     A \cdot  B = \left\{ a \cdot  b : a \in A~,~ b \in B \right\} 
 .\]
 
-Observe the following 2 examples which motivate the study of the sum-product problem.
+Observe the following example which motivates the study of the sum-product problem.
 
-Let \(A\) be a finite set of numbers given by an arbitrary arithmetic sequence, and \(G\)
-by an arbitrary geometric sequence. We will determine the size of the sets \(A + A, AA , G + G\), and \(GG\). 
+Let \(A = \left\{ 1, 2, 3, \cdots, n \right\}\) and \(G = \left\{ 2, 2^{2}, 2^{3}, \cdots , 2^{n} \right\}\).
 
-\(A\) is of the form
-\[
-    A = \left\{ a , a + d , a+2d , \cdots , a + (n-1)d \right\} 
-\]
-and \(G\) of the form
-\[
-    G = \left\{ b, br , br^{2}, \cdots , br^{k - 1} \right\} 
-.\]
+Notice that \(A\) is given by an arithmetic sequence and \(G\) by a geometric sequence.
+We are going to calculate \(\left\lvert A+A \right\rvert , \left\lvert AA \right\rvert , \left\lvert G+G \right\rvert ,\) and \(\left\lvert GG \right\rvert \).
+
 Observe that
 \begin{align*}
-    \left\lvert A + A \right\rvert  & = \left\lvert \left\{ 2a, 2a + d, 2a + 2d ,\cdots , 2a + 2(n-1)d \right\}  \right\rvert \\
-    & = 2(n-1) + 1 \\
+    \left\lvert A + A \right\rvert  & = \left\lvert \left\{2,3, \cdots ,2n \right\}  \right\rvert \\
+    & = 2n - 1 \\
     & = 2 \left\lvert A \right\rvert - 1,
 \end{align*}
 and by the same argument,
 \begin{align*}
-    \left\lvert GG \right\rvert  & = \left\lvert \left\{ b^{2} , b^{2}r , \cdots , b^{2}r^{2(k-1)} \right\} \right\rvert  \\
+    \left\lvert GG \right\rvert  & = \left\lvert \left\{2^{2}, 2^{3}, \cdots , 2^{2n} \right\} \right\rvert  \\
     & =2 \left\lvert G \right\rvert -1.
 \end{align*}
 We have
 \begin{align*}
-    \left\lvert G + G \right\rvert & = \left\lvert \left\{ g_1 + g_2 : g_1,g_2 \in G \right\} \right\rvert  \\
-    & = \left\lvert \left\{ b(r^{i} + r^{j}): i,j \in \left\{ 0, \cdots , k-1 \right\}  \right\} \right\rvert \\
-    & = \left\lvert \left\{r^{i} + r^{j}: i,j \in \left\{ 0, \cdots , k-1 \right\}  \right\} \right\rvert.
+    \left\lvert G + G \right\rvert & = \left\lvert \left\{ 2^{i} + 2^{j} : i,j \in \left\{ 1, \cdots , n \right\} \right\} \right\rvert
 \end{align*}
-For \(i \neq j\), \(r^{i} + r^{j}\) represents a number in base \(r\). By the uniqueness of representations
-in different bases (see appendix) \textbf{PUT IT IN APPENDIX}, we can conclude that there must be at least \(k^{2}- k\) many numbers in this set, that is
-\[
-    \left\lvert G + G \right\rvert = \left\lvert \left\{ r^{i} + r^{j} : i,j \in \left\{ 0 , \cdots , k-1 \right\}   \right\}  \right\rvert \geq k^{2}- k = \left\lvert G \right\rvert ^{2} - \left\lvert G \right\rvert 
-.\]
+For all \(i,j\), \(2^{i} + 2^{j}\) is a number written in base \(2\). By the uniqueness of representations
+in different bases (see appendix), we have that \(2^{i} + 2^{j}\) is distinct for every choice of \(\left\{ i,j \right\} \). Therefore,
+\begin{align*}
+    \left\lvert G + G \right\rvert & \geq  \left\lvert \left\{ \left\{ i,j \right\} : i,j \in \left\{ 1, \cdots , n \right\}  \right\}  \right\rvert \\
+    & = \binom{n}{2} + n \\
+    & = \binom{\left\lvert G \right\rvert + 1}{2} 
+\end{align*}
 
-\textbf{I NEED TO FINISH THIS EXAMPLE}
-\textbf{fix G sum set}
+Finally, I prove in the appendix that \textbf{PROVE IT IN THE APPENDIX}.
 
-Observing the trivial bound \(\left\lvert S \cdot S \right\rvert \leq \left\lvert S \right\rvert ^{2}\) for any set \(S\) and any
-operation \(\cdot \), it is clear that both \(AA\) and \(G +G\) are almost as large as they can be.
+Observing the trivial bounds \( 2 \left\lvert S \right\rvert - 1 \leq \left\lvert S \cdot S \right\rvert \leq \binom{\left\lvert S \right\rvert }{2} \) for any set \(S\) and any
+commutative operation \(\cdot \), it is clear that both \(AA\) and \(G +G\) are almost as large as they can be,
+and \(A + A, GG \) are as small as they can be.
 
-The main questions is: ``does there exist a set for which both the sum and product sets are small?''
-The sum-product conjecture states that such a set does not exist. Another good question is: ``what
-determines whether the sum set is large or the product set is large?'' A separate
-conjecture tries to partially answer this question by stating that the sum set is large
+This is the phenomenon which motivates this problem.
+One questions is: ``does there exist a set for which both the sum and product sets are small?''
+The sum-product conjecture states that such a set does not exist. 
+Another question we study in this report is: ``what
+determines if the sum set is large or the product set is large?'' A
+conjecture which tries to partially answer this question states that the sum set is large
 when the set itself is convex.
-
-\textbf{ABOVE PARAGRAPH CONVEX PRODUCT SET ARGUMENT}
 
 The rest of the report will proceed in the following way : \textbf{finish this}
 
 \section{Preliminaries}
 
-For any natural number \(n\), define
+As a useful shorthand, for any natural number \(n\), let
 \[
     [n] = \left\{ 1, 2 , \cdots , n \right\} 
 .\]
 
-For any functions \(f,g: \mathbb{N}  \to \mathbb{R} \), write
+The study of these problems requires the notion of orders of magnitude.
+For any functions \(f,g: \mathbb{R}   \to \mathbb{R} \), write
 \[
-    f(x) \gg g(x) 
+    f(x) \gg g(x) \text{ as } x \to \infty 
 \]
 if
 \[
-    \exists x_0 \in \mathbb{N} ~~\text{s.t.}~~ x > x_0 \implies \left\lvert f(x) \right\rvert \geq c \left\lvert g(x) \right\rvert  
+    \exists x_0,c \in \mathbb{R} ^{+}~~\text{s.t.}~~ x > x_0 \implies \left\lvert f(x) \right\rvert \geq c \left\lvert g(x) \right\rvert  
 ,\]
 write
 \[
-    f(x) \ll g(x) 
+    f(x) \ll g(x) \text{ as } x \to \infty 
 \]
 if
 \[
-    \exists x_0 \in \mathbb{N} ~~\text{s.t.}~~ x > x_0 \implies \left\lvert f(x) \right\rvert \leq c \left\lvert g(x) \right\rvert 
+     \exists x_0,c \in \mathbb{R} ^{+}~~\text{s.t.}~~ x > x_0 \implies \left\lvert f(x) \right\rvert \leq c \left\lvert g(x) \right\rvert 
 ,\]
 and write
 \[
-    f(x) \asymp g(x)
+    f(x) \asymp g(x) \text{ as } x \to \infty 
 \]
 if
 \[
-    f(x) \ll g(x) ~ ~ \text{and} ~ ~ f(x) \gg g(x)
+    f(x) \ll g(x)  ~ ~ \text{and} ~ ~ f(x) \gg g(x) \text{ as } x \to \infty 
 .\]
+
+We write \(\ll _{\epsilon},\gg _{\epsilon}, \asymp _{\epsilon} \) if the constant depends on \(\epsilon\). For example,
+\[
+    f(x) \gg _{\epsilon} g(x) ^{ \epsilon}
+\]
+if there is some function \(c : \mathbb{R} ^{+ }\to \mathbb{R} ^{+}\) so
+\[
+    \forall \epsilon > 0, \exists x_0\in \mathbb{N} ~~\text{s.t.}~~ x > x_0 \implies \left\lvert f(x) \right\rvert \geq c (\epsilon)\left\lvert g(x) \right\rvert ^{\epsilon}
+.\]
+This should be interpreted as
+\[
+   \forall \epsilon> 0~,~ f(x) \gg g(x) ^{\epsilon}
+.\]
+
+Throughout this report, the asymptotic parameter (in this case \(x\)) will always tend to infinity,
+so it will no longer be mentioned.
+Oftentimes the parameter will not even be in the expression. For example,
+if for some set \(A\) we write
+\[
+    \left\lvert A + A \right\rvert \gg \left\lvert A \right\rvert 
+,\]
+it is taken to mean that \(A\) is defined implicitly by \(\left\lvert A \right\rvert \), and
+\(\left\lvert A \right\rvert \) is the parameter which tends to \(\infty \).
 
 For any sets \(A,B\) and any binary operation \(\cdot \) acting on elements of \(A\) and \(B\), define the representation function
 \(r_{A \cdot B} : A \cdot B \to \mathbb{N} \) by
@@ -139,50 +147,74 @@ For any sets \(A,B\) and any binary operation \(\cdot \) acting on elements of \
     r_{A \cdot B} (x) = \left\lvert \left\{ (a,b)\in  A \times B : x = a \cdot b \right\}  \right\rvert
 .\]
 
+Throughout this report the shorthand
+\[
+    \delta_{A,B} (x) = r_{A - B} (x)~,~ \sigma _{A,B} (x) = r_{A + B} (x)~,~ \delta_{A} (x) = \delta_{A,A} (x) ~,~ \sigma_{A} (x) = \sigma _{A,A} (x)
+\]
+will be used.
+
 For any sets \(A,B\), define the Additive Energy \(E(A,B)\) and Multiplicative Energy \(M(A,B)\) by
 \[
-    E(A,B) = \left\lvert \left\{ (a_1,a_2,b_1,b_2) \in A^{2} \times B^{2} : a_1 + b_1 = a_2 + b_2 \right\}  \right\rvert 
+    E(A,B) = \left\lvert \left\{ (a_1,a_2,b_1,b_2) \in A^{2} \times B^{2} : a_1 - b_1 = a_2 - b_2 \right\}  \right\rvert 
 \]
 and
 \[
-    M(A,B) = \left\lvert \left\{ (a_1,a_2,b_1,b_2)\in  A^{2} \times B^{2} : a_1b_1 = a_2b_2 \right\}  \right\rvert
+    M(A,B) = \left\lvert \left\{ (a_1,a_2,b_1,b_2)\in  A^{2} \times B^{2} : \frac{a_1}{b_1}  = \frac{a_2}{b_2}  \right\}  \right\rvert
 .\]
 
 Observe that
 \[
-    E(A,B) = \sum _{x \in A + B} r_{A+B} (x)^{2}
+    E(A,B) = \sum _{x \in A - B} \delta_{A,B} (x)^{2}
 \]
 and
 \[
-    M(A,B) = \sum _{x \in AB} r_{AB} (x)^{2} 
+    M(A,B) = \sum _{x \in \frac{A}{B} } r_{\frac{A}{B} } (x)^{2} 
 .\]
 
-A 4-tuple \((a_1,a_2,b_1,b_2)\in A^{2} \times B^{2}\) is a solution to
+This definition is symmetric in the sense that a 4-tuple \((a_1,a_2,b_1,b_2)\in A^{2} \times B^{2}\) is a solution to
 \[
-    a_1 + b_1 = a_2 + b_2
+    a_1 - b_1 = a_2 - b_2
 \]
 if and only if it is a solution to
 \[
-    a_1-b_2 = a_2-b_1
+    a_1+b_2 = a_2+b_1
 ,\]
 and therefore
 \[
-    E(A,B) = \sum _{x \in A + B} r_{A+B} (x)^{2} = \sum _{x \in A - B} r_{A-B} (x)^{2}
+    E(A,B) = \sum _{x \in A + B} \sigma_{A,B}  (x)^{2} = \sum _{x \in A - B} \delta_{A,B}  (x)^{2}
 .\]
 
-%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-\textbf{FINISH BELOW}
+There is a similar argument for multiplicative energy.
 Any 4-tuple \((a_1,a_2,b_1,b_2) \in A^{2} \times B^{2}\) with nonzero entries is a solution to
 \[
-    a_1b_1 = a_2b_2
+    \frac{a_1}{b_1} = \frac{a_2}{b_2}
 \]
 if and only if it is a solution to
 \[
     \frac{a_1}{b_2} = \frac{a_2}{b_1} 
+.\]
+There are at most
+\[
+    \sum _{i = 1} ^{4} \binom{4}{i}  = 15
+\]
+4-tuples with zero entries, so
+\[
+    M(A,B) = \sum _{x \in \frac{A}{B} } r_{\frac{A}{B} } (x) ^{2} \asymp \sum _{x \in AB} r_{AB} (x)^{2}
+.\]
+
+We also define higher energies
+\[
+    E_{n} (A,B) = \sum _{x \in A-B} \delta_{A,B} (x)^{n}  
 ,\]
-and therefore
+so
+\[
+    E(A) = E_{2} (A)
+,\]
+and as a shorthand use
+\[
+    E_{n} (A) = E_{n} (A,A)
+.\]
+Similar definitions and shorthand are used for multiplicative energy.
 
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -868,6 +900,10 @@ This report is based on work supported by NSF grant DMS-2051032, which we gratef
 
 \section*{Appendix}
 
+\textbf{UNIQUENESS OF REPRESENTATIONS OF DIFFERENT BASES}
+
+\textbf{I need to define all things I use like little o and big O}.
+
 \begin{theorem*}[Erd\H{o}s multiplication table theorem]
 \[
     \left\lvert [n] \cdot [n] \right\rvert = o(n^{2})
@@ -1037,16 +1073,22 @@ so
 ,\]
 and therefore
 \[
-    \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{2} \left( N \right)  }} \frac{\log \left( p \right) }{p} \leq  \frac{\log \left( N! \right) }{N} + \frac{\psi(N)}{N} 
+    \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{2} \left( N \right)  }} \frac{\log \left( p \right) }{p ^{i}} \leq  \frac{\log \left( N! \right) }{N} + \frac{\psi(N)}{N} 
 .\]
 
-Finally, via a Riemann sum,
+We also have, via a Riemann sum,
+\begin{align*}
+    \log \left( N! \right) & = \sum_{i=1}^{N} \log \left( i \right) \\
+    & = \int_{2}^{N} \log \left( i \right)  ~\mathrm{d} i + O(1) \\
+    & = \left. \left[ i\log \left( i \right) - i \right]  \right|_{i = 1}^{N} + O(1)\\
+    & = N \log \left( N \right) - N + O(1).
+\end{align*}
+
+This leads to
 \[
-    \log \left( N! \right) = \sum_{i=1}^{N} \log \left( i \right) = \int_{2}^{N}  ~\mathrm{d} x 
-\]
-\[
-    \int_{-\infty}^{\infty}  ~\mathrm{d} x 
-\]
+    \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{2} \left( N \right) }} \frac{\log \left( p \right) }{p ^{i}} = \frac{N \log \left( N \right) - N + O(1)}{N} + \frac{O(N)}{N} = \log \left( N \right)  + O(1)
+.\]
+
 \end{proof}
 
 \end{document}
