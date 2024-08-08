@@ -216,12 +216,9 @@ and as a shorthand use
 .\]
 Similar definitions and shorthand are used for multiplicative energy.
 
-%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-By the Cauchy-Schwarz Inequality
+We can relate the energies to the sizes of the sum and product sets by the Cauchy-Schwarz Inequality.
 \[
-    \left\lvert A \right\rvert \left\lvert B \right\rvert = \sum _{x \in A + B} r_{A + B} (x) \leq \left\lvert A + B \right\rvert ^{\frac{1}{2} } E(A,B)^{\frac{1}{2} }
+    \left\lvert A \right\rvert \left\lvert B \right\rvert = \sum _{x \in A + B} \sigma_{A,B}  (x) \leq \left\lvert A + B \right\rvert ^{\frac{1}{2} } E(A,B)^{\frac{1}{2} }
 ,\]
 and
 \[
@@ -229,13 +226,8 @@ and
 .\]
 Similar inequalities can be derived for \(\left\lvert A-B \right\rvert \) and \(\left\lvert \frac{A}{B}  \right\rvert \).
 
-%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-
-\textbf{CONVEXITY}
 Let \(I \subset \mathbb{R} \) be an interval. 
-    A function \(f: I \to \mathbb{R} \) is convex if for
+    We call a function \(f: I \to \mathbb{R} \) convex if for
     any 2 points \(x_1,x_2 \in I\), and any \(\lambda \in [0,1]\),
     \[
         f((x_1-x_2)\lambda + x_2) \leq \left( f(x_1)-f(x_2) \right) \lambda + f(x_2)
@@ -247,43 +239,56 @@ such that
     A = \left\{ f(i) : i \in \left\{ 1, \cdots , \left\lvert A \right\rvert  \right\}  \right\} 
 .\]
 
+A property of convex functions which will come up later, and is worth proving now, is
+\begin{lemma}
+Let \(I \subset \mathbb{R} \) be an interval. Let \(f : I \to \mathbb{R} \) be convex. Let \(T \subset \mathbb{R} ^{2}\).
+
+Take \(\ell  = \left\{ (x,f(x)) : x \in I \right\} \) to be the graph of \(f\). We have that
+\[
+    \forall t_1,t_2 \in T ~,~ \left\lvert \left( \ell + t_1 \right) \cap \left( \ell +  t_2 \right)  \right\rvert   \leq  1
+.\]
+
+That is that translations of the graph of a convex function intersect in at most one point.
+\end{lemma}
+
+\begin{proof}
+\textbf{PROVE THIS}
+\end{proof}
+
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 
-\section{ \textbf{IDK what to call this}}
+\section{Statement of Problems}
+
+We'll now move on to precise statements of the mentioned problems, and statements of the most modern results.
+
 The idea that there does not exist a set with a small sum and product set is
 stated precisely as
 \begin{conjecture}[Sum-Product Conjecture]
-For every sufficiently large finite set \(A \subset \mathbb{R} \),
+For every finite set \(A \subset \mathbb{R} \),
 \[
-    \max \left( \left\lvert A+A \right\rvert ~,~ \left\lvert A \cdot A \right\rvert  \right) \gg_{\epsilon}  \left\lvert A \right\rvert^{2-\epsilon}
+    \max \left( \left\lvert A+A \right\rvert, \left\lvert A \cdot A \right\rvert  \right) \gg_{\epsilon}  \left\lvert A \right\rvert^{2-\epsilon}
 \]
 \end{conjecture}
 
-The idea that 
+The idea that convexity opposes additive structure is stated precisely as
 
-\begin{conjecture}
-    For every sufficiently large, finite, and convex set \(A\),
+\begin{conjecture}[Convex Sumset Conjecture]
+    For finite and convex set \(A\),
     \[
         \left\lvert A+A \right\rvert \gg_{\epsilon}  \left\lvert A \right\rvert ^{2-\epsilon}
     \]
 \end{conjecture}
 
-To date, the best results for both of these conjectures are proven in \textbf{ref}.
-
-\textbf{proven in this report?}
-
-they are
+To date, the best results for both of these conjectures are proven in \cite{stevens-rudnev}.
 \begin{theorem}
     For every sufficiently large finite set \(A \subset \mathbb{R} \),
     \[
         \max \left( \left\lvert A+A \right\rvert ~,~ \left\lvert A \cdot A \right\rvert  \right) \gg_{\epsilon}   \left\lvert A \right\rvert^{\frac{4}{3} + \frac{2}{1167} - \epsilon}
     \]
 \end{theorem}
-
 and
-
 \begin{theorem}
     For every sufficiently large, finite, and convex set \(A\),
     \[
@@ -291,7 +296,8 @@ and
     \]
 \end{theorem}
 
-\textbf{if not, best results in this are ... , others are only slight improvements}
+These results will not be covered in this report.
+\textbf{best in this report is ... ,}
 
 A final result I'd like to mention, which I found interesting, is a result by Olmezov
 proven in \textbf{ref}
