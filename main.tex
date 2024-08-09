@@ -24,7 +24,7 @@ posits that any sufficiently large set must have a `relatively large' number
 of distinct sums or products between its elements.
 A newer conjecture extends this idea, positing that for convex sets there must be a `relatively large'
 number of distinct sums between its elements. Both conjectures remain open and far from being solved.
-This report provides a self-contained overview of known results and the methods
+This report provides a self-contained overview of some known results and the methods
 used to achieve them.
 \end{abstract}
 
@@ -187,6 +187,8 @@ and therefore
     E(A,B) = \sum _{x \in A + B} \sigma_{A,B}  (x)^{2} = \sum _{x \in A - B} \delta_{A,B}  (x)^{2}
 .\]
 
+\textbf{^^ switch order}
+
 There is a similar argument for multiplicative energy.
 Any 4-tuple \((a_1,a_2,b_1,b_2) \in A^{2} \times B^{2}\) with nonzero entries is a solution to
 \[
@@ -194,7 +196,7 @@ Any 4-tuple \((a_1,a_2,b_1,b_2) \in A^{2} \times B^{2}\) with nonzero entries is
 \]
 if and only if it is a solution to
 \[
-    \frac{a_1}{b_2} = \frac{a_2}{b_1} 
+    a_1 b_2 = a_2 b_1
 .\]
 There are at most
 \[
@@ -304,22 +306,6 @@ and
 These results will not be covered in this report.
 \textbf{best in this report is ... ,}
 
-A final result I'd like to mention is found in \cite{olmezov-derivative}.
-
-\begin{theorem}
-    Let \(n \geq 1\). Let \(f: [1,n]\to \mathbb{R} \) be a convex function satisfying
-    \[
-    f^{\prime}(x)>0, \quad f^{\prime \prime}(x)>0, \quad f^{\prime \prime \prime}(x)<0, \quad f^{(I V)}(x) \leq 0,
-    \]
-    and let \(A=\{f(i): i=1, \ldots, n\}\). Then
-    \[
-        \left\lvert A \pm A \right\rvert \gg_{\epsilon} \left\lvert A \right\rvert ^{\frac{5}{3} - \epsilon}
-    .\]
-\end{theorem}
-
-I have not read this article yet but I intend to do so in the future. The bound \(\frac{5}{3} \) is promising,
-even if it places strong restrictions on the structure of the set \(A\).
-
 \textbf{WHAT I DO COVER IN THIS REPORT IS ...}
 
 \section{Graphs and the Crossing Number Inequality}
@@ -392,6 +378,8 @@ graph with labelled faces:
     \includegraphics[width=0.4\textwidth]{faceimage.png}
     \caption{Drawing of Planar Graph with Labeled Faces \(f_{i} \)}
 \end{figure}
+
+\textbf{cite tao }
 
 Observe that any non-planar graph \(G = (V,E)\) can be turned into a planar graph by removing at most
 \(\crossing\left( G \right) \) edges from \(E\). Therefore, a bound on the number of
@@ -770,9 +758,6 @@ For every \(1 \leq r \leq \left\lvert A - B \right\rvert\) we have
 .\]
 \end{proof}
 
-We can directly apply this to obtain a bound on the additive energy between
-a convex set and an arbitrary set.
-
 Later in the next section we'll use these results to find bounds on the additive
 energies between certain sets, but first we'll introduce some simpler results which
 use additive and multiplicative energy to show why such bounds are useful.
@@ -902,13 +887,6 @@ The following are examples of those style of arguments.
 
 I'll first prove a handful of theorems which will be useful. The first of which
 I will restate from before, still leaving out proof.
-
-\begin{theorem}
-For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large,
-\[
-    E(A) \ll \left\lvert A \right\rvert ^{\frac{32}{13} - o(1)}
-.\]
-\end{theorem}
 
 \begin{theorem}
 For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large,
