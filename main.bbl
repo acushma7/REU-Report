@@ -10,6 +10,9 @@
 \bibitem[ENR00]{elekes}
 György Elekes, Melvyn~B Nathanson, and Imre~Z Ruzsa, \emph{Convexity and sumsets}, Journal of Number Theory \textbf{83} (2000), no.~2, 194--201.
 
+\bibitem[ES83]{erdos-szemeredi}
+P.~Erd{\H{o}}s and E.~Szemer{\'e}di, \emph{On sums and products of integers}, pp.~213--218, Birkh{\"a}user Basel, Basel, 1983.
+
 \bibitem[For08]{Ford}
 Kevin Ford, \emph{The distribution of integers with a divisor in a given interval}, Annals of Mathematics \textbf{168} (2008), 367--433.
 

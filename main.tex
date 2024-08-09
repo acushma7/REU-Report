@@ -6,21 +6,26 @@
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 \begin{document}
-\title{Basic template for mathematics reports} 
+\title{\textbf{TITLE}} 
 
-\author[Doe]{John Doe}
+%%%% DEPARTMENT OF MATHEMATICS???????? Why not CAS?
+
+\author[Cushman]{Adam Cushman}
 \address{Department of Mathematics\\
-         Research Institution,
-         City, State XXXXX
-         Country} 
-\email{jdoe@example.edu}
+         Indiana University,
+         Bloomington, IN 47405
+         USA} 
+\email{acushma@iu.edu}
 \date{\today}
 
 \begin{abstract}
-This is a latex template that demonstrates how you may type up a mathematics report in Latex. The reports in the summer REU at Indiana University can be found in \url{https://math.indiana.edu/undergraduate/reu-summer-research-program/past-reu/index.html}.
-
-
-\textbf{note that all of the contents are known, and I am not passing this off as my own original thoughts}
+The sum-product conjecture, posed in 1983 by Erd{\H{o}}s and Szemer{\'e}di \cite{erdos-szemeredi}, 
+posits that any sufficiently large set must have a `relatively large' number
+of distinct sums or products between its elements.
+A newer conjecture extends this idea, positing that for convex sets there must be a `relatively large'
+number of distinct sums between its elements. Both conjectures remain open and far from being solved.
+This report provides a self-contained overview of known results and the methods
+used to achieve them.
 \end{abstract}
 
 \maketitle
@@ -319,6 +324,8 @@ even if it places strong restrictions on the structure of the set \(A\).
 
 \section{Graphs and the Crossing Number Inequality}
 
+\textbf{simple, connected}
+
 \textbf{Tao's article reread to see what I missed}
 
 \textbf{First proven in ...}
@@ -586,8 +593,6 @@ so
 
 We'll now go over some direct applications of the Szemeredi-Trotter theorem
 to sum product theorems. The main theorem which does this is proven in \cite{elekes}.
-
-\textbf{EMERGENCY : REWIRTE SO S HAS ARBITRARY : , NOT [n], THEN CHANGE BELOW}.
 
 \begin{theorem} \label{thm:translations-of-convex-szt}
 For some \(n \in \mathbb{N} \), let \(f : [1,n] \to \mathbb{R} \) be convex.
