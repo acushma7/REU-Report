@@ -19,6 +19,8 @@
 \begin{abstract}
 This is a latex template that demonstrates how you may type up a mathematics report in Latex. The reports in the summer REU at Indiana University can be found in \url{https://math.indiana.edu/undergraduate/reu-summer-research-program/past-reu/index.html}.
 
+
+\textbf{note that all of the contents are known, and I am not passing this off as my own original thoughts}
 \end{abstract}
 
 \maketitle
@@ -27,10 +29,6 @@ This is a latex template that demonstrates how you may type up a mathematics rep
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 \textbf{issue of "for any set A" in statements, but only as A gets sufficiently large}
-
-\textbf{We presume the reader is familiar with basic ... such as ... }
-
-\textbf{note that all of the contents are known, and I am not passing this off as my own original thoughts}
 
 \section{Introduction and Motivation} 
 
@@ -255,6 +253,8 @@ That is that translations of the graph of a convex function intersect in at most
 \textbf{PROVE THIS}
 \end{proof}
 
+\textbf{Dyadic partitioning introduction}
+
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -299,8 +299,7 @@ and
 These results will not be covered in this report.
 \textbf{best in this report is ... ,}
 
-A final result I'd like to mention, which I found interesting, is a result by Olmezov
-proven in \textbf{ref}
+A final result I'd like to mention is found in \cite{olmezov-derivative}.
 
 \begin{theorem}
     Let \(n \geq 1\). Let \(f: [1,n]\to \mathbb{R} \) be a convex function satisfying
@@ -313,43 +312,64 @@ proven in \textbf{ref}
     .\]
 \end{theorem}
 
-I will not discuss this result further in this paper.
+I have not read this article yet but I intend to do so in the future. The bound \(\frac{5}{3} \) is promising,
+even if it places strong restrictions on the structure of the set \(A\).
+
+\textbf{WHAT I DO COVER IN THIS REPORT IS ...}
 
 \section{Graphs and the Crossing Number Inequality}
 
-\textbf{Make a note about how this is the dumbed down version (no topology)}
-
-A very useful tool in proving sum-product theorems is the Szemeredi-Trotter theorem. The
-easiest proof of this theorem is as a corollary of the Crossing Number Inequality, which gives
-an estimate on how close a graph is to being planar. The purpose of this section
-is to provide a brief introduction to graphs and prove the Crossing Number Inequality.
-
-\textbf{define connected}
 \textbf{Tao's article reread to see what I missed}
 
-Abstractly, a graph \(G\) is a pair \(G = (V,E)\) where each \(e \in E\) is of the form \(e \subset V\) with \(\left\lvert e \right\rvert = 2\).
-The call the set \(V\) the vertices, and the set \(E\) the edges. A drawing of a graph
-is a depiction of a graph with vertices as points in the plane and edges as curves between the
-vertices they consist of. For example:
+\textbf{First proven in ...}
+
+\textbf{Theres something going on with connectedness here}
+
+%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+\textbf{rewrite this paragraph}
+
+A profoundly useful theorem in the study of sum-product conjectures is the
+Szemeredi-Trotter theorem, a statement about systems of points and lines.
+
+The easiest way to prove this theorem is through the use of the crossing number inequality,
+a statement about how planar a given graph can be. The purpose of this section is to give a proof
+of the crossing number inequality.
+
+Due to the brevity of this report, the definitions and proofs given will not be
+as rigorous as they should be. There are also pictures to help understand.
+
+%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+\textbf{define connected}
+
+A graph \(G\) is a pair \(G = (V,E)\) where each \(e \in E\) is of the form \(e \subset V\) with \(\left\lvert e \right\rvert = 2\).
+We call the set \(V\) the vertices, and the set \(E\) the edges. A drawing is
+a representation of a graph with vertices as points in the plane and edges as curves between their
+respective vertices. For example:
 
 \begin{figure}[h]
     \centering
-    \subfloat{{\includegraphics[width=4cm]{3graph.png} }}
-    \qquad
-    \subfloat{{\includegraphics[width=6cm]{cgraph.png} }}
-    \caption{Drawings of Graphs}
+    \includegraphics[width=0.1\textwidth]{3graph.png}
+    \caption{A drawing of a graph with \(V = \left\{ A,B,C \right\}\) and \(E = \left\{ \left\{ A,B \right\} , \left\{ B,C \right\} ,\left\{ A,C \right\}  \right\} \)}
 \end{figure}
+
+A graph is connected if for any 2 vertices, there exists a sequence of edges which join them.
+Note that connectedness is a property of a graph and not of the drawing of a graph.
 
 There are infinitely many ways to draw any given graph. A crossing in a drawing
 of a graph is an intersection between 2 curves which represent edges. The 
-crossing number of a graph is the minimum number of crossings
-over all drawings of the graph \(G\). Denote this by
+crossing number of a graph is the minimum number of crossings a drawing
+of the graph can have. Denote this by
 \(\crossing(G)\). A graph \(G\) is called planar if its crossing number is 0.
 
 A precise statement of the Crossing Number Inequality is
 
 \begin{theorem}\label{thm:crossing-number-inequality}
-    If \(G = (V,E)\) is a sufficiently large graph, with \(\left\lvert E \right\rvert \geq 4 \left\lvert V \right\rvert \),
+    Let \(G = (V,E)\) be a connected graph. If \(\left\lvert E \right\rvert \geq 4 \left\lvert V \right\rvert \)
     then
     \[
         \crossing\left( G \right) \gg \frac{\left\lvert E \right\rvert ^{3} }{\left\lvert V \right\rvert ^{2}}  
@@ -362,14 +382,14 @@ graph with labelled faces:
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{faceimage.png}
+    \includegraphics[width=0.4\textwidth]{faceimage.png}
     \caption{Drawing of Planar Graph with Labeled Faces \(f_{i} \)}
 \end{figure}
 
 Observe that any non-planar graph \(G = (V,E)\) can be turned into a planar graph by removing at most
-\(\crossing\left( G \right) \) edges from \(E\). Therefore, an upper bound on the number of edges of a
-planar graph can be used to find a lower bound on the crossing number of a non-planar graph.
-An obvious tool to use for a statement about planar graphs is
+\(\crossing\left( G \right) \) edges from \(E\). Therefore, a bound on the number of
+edges a graph can have and remain planar yields a bound on the crossing number for any graph.
+A famous theorem relating the vertices and edges of planar graphs is
 
 \begin{theorem}[Euler's Formula for Planar Graphs]\label{thm:euler-formula-graphs}
 Let \(G = (V,E)\) be a connected planar graph, with \(\left\lvert V \right\rvert \geq 1\), and consider some drawing with 0 crossings.
@@ -382,30 +402,31 @@ Let \(F\) be the set of all faces of this drawing.
 \begin{proof}
 We may construct our drawing of \(G\) by first drawing a vertex, and then doing combination of the following steps: 
 
-\textbf{FINISH PROOF}
+\textbf{PROOF}
 \end{proof}
 
+The dependence on \(\left\lvert F \right\rvert \) in Euler's formula can be removed by using
+its obvious dependence on \(\left\lvert E \right\rvert \). 
 
-\textbf{below paragraph is ugly}
-The dependence on \(\left\lvert F \right\rvert \) in Euler's formula can be removed by bounding
-it in terms of \(\left\lvert E \right\rvert \). This can be done by double counting the face-edge
-incidences. Let an edge be incident to a face if the edge is one of the bounding
-edges which defines the face. Define \(\chi : F \times E \to \left\{ 0,1 \right\} \) by
+We call an edge incident to a face if the edge is one of the bounding edges which define the face. 
+Define \(\chi : F \times E \to \left\{ 0,1 \right\} \) as the incidence function, so
 \(\chi(f,e) = 1\) if \(f\) and \(e\) are incident, and \(\chi(f,e) = 0\) otherwise.
 The total number of face edge incidences is
 \[
-    I = \sum_{f\in F} \sum _{e \in E} \chi(f,e)
+    I(F,E) = \sum_{f\in F} \sum _{e \in E} \chi(f,e)
 .\]
-We may assume \(E \geq 3\). It follows that every face is incident to at least 3 edges,
-so
+
+\textbf{JUSTIFY THIS ASSUMPTION SOMEWHERE}
+We assume \(\left\lvert E \right\rvert  \geq 3\), so that every face is incident to at least 3 edges.
+It follows that
 \[
     I \geq \sum _{f \in F} 3 = 3 \left\lvert F \right\rvert 
 .\]
-Every edge is incident to at most 2 faces, so
+Every edge is incident to at most 2 faces, so it follows that
 \[
     I \leq \sum _{e \in E} 2 = 2 \left\lvert E \right\rvert 
 .\]
-It follows that
+Therefore
 \[
     3 \left\lvert F \right\rvert \leq 2 \left\lvert E \right\rvert 
 \]
@@ -420,18 +441,30 @@ Applying this to Euler's formula,
 or
 \[
     \left\lvert E \right\rvert \leq 3 \left\lvert V \right\rvert -6
+\]
+when \(\left\lvert E \right\rvert \geq 3\).
+Now suppose that \(G = (V,E)\) is non-planar and connected. As mentioned before, \(G\) may be turned planar by removing
+at most \(\crossing\left( G \right) \) edges.
+
+\textbf{READ TAO AND JUSTIFY ABOVE BETTER}
+Therefore, for any graph \(G\) with \(\left\lvert E \right\rvert  \geq 3\),
+\[
+    \left\lvert E \right\rvert - \crossing\left( G \right) \leq 3 \left\lvert V \right\rvert - 6
+\]
+or
+\[
+    \crossing\left( G \right) > \left\lvert E \right\rvert - 3 \left\lvert V \right\rvert 
 .\]
-Now suppose that \(G = (V,E)\) is non-planar. As mentioned before, \(G\) may be turned planar
-\textbf{I NEED BETTER LOGIC FOR WHY I CAN REMOVE CRG AND MAKE IT PLANAR}
 
-
-Therefore, if \(\left\lvert E \right\rvert \geq 3 \left\lvert V \right\rvert \), then \(\crossing\left( G \right) \geq \left\lvert E \right\rvert  - 3 \left\lvert V \right\rvert \).
-To further improve this inequality, apply the probabilistic method to the deletion of vertices of \(G\).
+To further improve this inequality, we apply the probabilistic method
+to the deletion of vertices of \(G\).
 
 Let each \(v \in V\) be
-removed with a probability \(1-p~,~  p \in (0,1)\). Let the remaining set of vertices be \(V'\). An edge is
-removed whenever either of the corresponding vertices are removed. Let the remaining set of edges be \(E'\). The remaining graph is then
-\(G' = (V',E')\). We have
+removed with a probability \(1-p~,~  p \in (0,1)\). Let the remaining set of vertices be \(V'\). 
+
+An edge is
+removed whenever either of the corresponding vertices are removed. Let the remaining set of edges be \(E'\). Let the remaining graph be
+\(G' = (V',E')\). We have that if \(\left\lvert E' \right\rvert \geq 3\),
 \[
     \crossing\left( G' \right) \geq \left\lvert E' \right\rvert - 3 \left\lvert V' \right\rvert 
 ,\]
@@ -452,9 +485,12 @@ independently with a probability \(p\), so
 \[
     \mathbb{E} \left( \left\lvert E' \right\rvert  \right) = p^{2}\left\lvert E \right\rvert 
 .\]
-Considering a drawing of \(G\) with the minimum number of crossings. Each crossing remains
-only if both corresponding edges remain. Each edge remains independently with a probability
-\(p^{2}\), so the expected value of the number of crossings remaining in the drawing is \(p^{4} \crossing\left( G \right) \).
+
+We can bound \(\mathbb{E} \left( \crossing\left( G' \right)  \right) \) by considering a drawing of \(G\) with the minimum number of crossings. 
+Each crossing remains and only when both corresponding edges remain, each of which occurs independently with probability
+\(p^{2}\).
+
+The expected value of the number of crossings remaining in the drawing is \(p^{4} \crossing\left( G \right) \).
 There is no guarantee that this drawing is optimal to minimize the crossings of \(G'\), but we may conclude that
 \[
     \mathbb{E} \left( \crossing\left( G' \right)  \right) \leq p ^{4} \crossing\left( G \right)
@@ -463,16 +499,21 @@ and therefore that
 \[
     p^{4} \crossing\left( G \right) \geq \mathbb{E} \left( \crossing\left( G \right)  \right) \geq p^{2} \left\lvert E \right\rvert - 3 p \left\lvert V \right\rvert 
 \]
-for any \(p \in (0,1)\). Assuming \(\left\lvert E \right\rvert \geq 4\left\lvert V \right\rvert \), and taking \(p = \frac{4\left\lvert V \right\rvert }{\left\lvert E \right\rvert }\),
+for any \(p \in (0,1)\). 
+
+
+Because we are only concerned with an order of magnitude bound, we assume \(\left\lvert E \right\rvert \geq 4\left\lvert V \right\rvert \), and take \(p = \frac{4\left\lvert V \right\rvert }{\left\lvert E \right\rvert }\).
+This yields the result
 \[
     \crossing\left( G \right) \geq \frac{\left\lvert E \right\rvert }{\left( \frac{4 \left\lvert V \right\rvert }{\left\lvert E \right\rvert }   \right)^{2} } - \frac{3 \left\lvert V \right\rvert }{\left( \frac{4 \left\lvert V \right\rvert }{\left\lvert E \right\rvert }  \right) ^{3} } = \frac{1}{16} \left( \frac{\left\lvert E \right\rvert ^{3} }{\left\lvert V \right\rvert ^{2}} - \frac{3 \left\lvert E \right\rvert ^{3} }{4 \left\lvert V \right\rvert ^{2}}  \right) \gg \frac{\left\lvert E \right\rvert ^{3} }{\left\lvert V \right\rvert ^{2}}
 .\]
 
 \section{The Szemeredi-Trotter Theorem}
 
+With this we can quite easily prove the Szemeredi-Trotter Theorem.
 A precise statement of the Szemeredi-Trotter Theorem is
 
-\textbf{I think there is a better way to write the set of curves below that is less restrictive on their domain}
+\textbf{First proven in ...}
 
 \begin{theorem}[Szemeredi-Trotter Theorem]
 Let \(P \subset \mathbb{R} ^{2}\) be a finite set of points. Let \(\mathcal{L} \) be a finite set of curves in \(\mathbb{R} ^{2}\). 
@@ -501,25 +542,50 @@ satisfies
 .\]
 \end{theorem}
 
-\textbf{First proven in ...}
+\begin{proof}
+This is proven by turning a system of curves and points into a graph. We first omit all points and curves which
+contribute to one or fewer incidences. 
 
-\textbf{I need to prove that the crossing number inequality can be used}
+For each remaining curve, if there are \(n\) incidences
+along it, we partition it into \(n-1\) curves, each with 2 incidences. These become
+the edges of the drawing of some graph. Let the set of edges be \(E\).
 
-\textbf{Proof}
+If \(I_0(P , \mathcal{L} )\) is the remaining number of incidences,
+\[
+    \left\lvert E \right\rvert \geq  I_0(P , \mathcal{L} ) - \left\lvert \mathcal{L}  \right\rvert 
+.\]
 
-\textbf{revise below dialogue}
+Let the vertices of the graph, \(V\), be the remaining points in the system. Obviously, \(\left\lvert V \right\rvert \leq \left\lvert P \right\rvert \).
 
-A particular case of the Szemeredi-Trotter theorem is when all the curves in \(\mathcal{L} \) are lines.
-Heuristically, the Szemeredi-Trotter theorem is useful in the study of Sum-Product problems
-because equations of lines are given by addition and multiplication. You can construct a system of
-lines and points whose incidences relate to the sum or product set you are studying, and apply the Szemeredi-Trotter
-theorem to bound these incidences.
+Because any two curves intersect in at most one point, \(\crossing\left( G \right) \) is at most
+\(\left\lvert \mathcal{L}  \right\rvert ^{2}\).
 
-Recalling the property of convexity, \textbf{... finish this dialogue}.
+Supposing that \(\left\lvert E \right\rvert \geq 4 \left\lvert V \right\rvert \), we have that
+\[
+    \left\lvert \mathcal{L}  \right\rvert ^{2} \geq \crossing\left( G \right) \gg \frac{\left( I_0 \left( P, \mathcal{L}  \right) - \left\lvert \mathcal{L}  \right\rvert \right)  ^{3}  }{\left\lvert P \right\rvert ^{2}} 
+\]
+or
+\[
+    I_0(P , \mathcal{L} ) \ll \left\lvert \mathcal{L}  \right\rvert ^{\frac{2}{3} } \left\lvert P \right\rvert ^{\frac{2}{3} } + \left\lvert \mathcal{L}  \right\rvert 
+.\]
 
+If \(\left\lvert V \right\rvert \geq \frac{1}{4} \left\lvert E \right\rvert \), then \(\left\lvert V \right\rvert  \gg \left\lvert E \right\rvert \), or
+\[
+    \left\lvert P \right\rvert \gg I_0\left( P , \mathcal{L}  \right) - \left\lvert \mathcal{L}  \right\rvert \implies I_0(P,\mathcal{L} ) \ll \left\lvert P \right\rvert  + \left\lvert \mathcal{L}  \right\rvert  
+.\]
 
-We'll begin with a theorem which applies the Szemeredi-Trotter theorem to
-a system whose curves consist of translations of convex functions.
+Finally, the remaining incidences not yet counted is 
+\[
+    I(P, \mathcal{L} ) - I_0 (P , \mathcal{L} ) \ll \left\lvert \mathcal{L} \right\rvert + \left\lvert P \right\rvert
+,\]
+so
+\[
+    I(P, \mathcal{L} ) \ll \left\lvert P \right\rvert ^{\frac{2}{3} }\left\lvert \mathcal{L}  \right\rvert ^{\frac{2}{3} } + \left\lvert P \right\rvert + \left\lvert \mathcal{L}  \right\rvert 
+.\]
+\end{proof}
+
+We'll now go over some direct applications of the Szemeredi-Trotter theorem
+to sum product theorems. The main theorem which does this is proven in \cite{elekes}.
 
 \textbf{EMERGENCY : REWIRTE SO S HAS ARBITRARY : , NOT [n], THEN CHANGE BELOW}.
 
@@ -563,6 +629,7 @@ Let \(S = \left\{ (i,f(i)) : i \in [n] \right\} \) and \(T \subset \mathbb{R} ^{
 \end{proof}
 
 \textbf{this theorem very useful blah blah blah}
+The following corollaries are also proven in \cite{elekes}.
 
 \begin{theorem}
 For sufficiently large sets \(A \subset \mathbb{R} \), which are finite and convex, and any set \(B \subset \mathbb{R} \) with \(\left\lvert A \right\rvert = \left\lvert B \right\rvert \),
@@ -661,7 +728,8 @@ so
 
 \end{proof}
 
-We also have results like
+The Szemeredi-Trotter theorem also provides more general tools which can be
+used alongside other results to sharpen the above bounds.
 
 \begin{theorem}
 
@@ -677,37 +745,34 @@ We also have results like
 \textbf{PROOF}
 \end{proof}
 
-An immediate and useful corollary of this is
-
-\textbf{REPLACE WITH A,B VERSION}
+An immediate corollary of this is
 
 \begin{corollary}
-Let \(A \subset \mathbb{R} \) be a sufficiently large, convex, finite set.
-Order elements \(a_{i} \in A\) such that 
+Let \(A \subset \mathbb{R} \) be a convex and finite set. Let \(B \subset \mathbb{R} \) be finite.
+Order elements \(s_{i} \in A-B\) such that 
 \[
-    \delta_{A} (s_1) \geq \delta_{A} (s_2) \geq \cdots \geq \delta_{A} (s _{\left\lvert A+A \right\rvert } )
+    \delta_{A,B} (s_1) \geq \delta_{A,B} (s_2) \geq \cdots \geq \delta_{A,B} (s _{\left\lvert A - B \right\rvert } )
 .\]
-For every \(1 \geq r \leq \left\lvert A+A \right\rvert\) we have
+For every \(1 \leq r \leq \left\lvert A - B \right\rvert\) we have
 \[
-    \delta_{A} (s _{r} ) \ll \frac{\left\lvert A \right\rvert }{r^{\frac{1}{3} }}
+    \delta_{A,B} (s _{r} ) \ll \frac{\left\lvert A \right\rvert^{\frac{1}{3} } \left\lvert B \right\rvert ^{\frac{2}{3} } }{r^{\frac{1}{3} }}
 .\]
 \end{corollary}
 
 \begin{proof}
 \[
-    r = \left\lvert \left\{ x \in A-A : \delta _{A} (x) \geq \delta_{A} (s _{r} ) \right\}  \right\rvert \ll \frac{\left\lvert A \right\rvert ^{3} }{\delta_{A} (s _{r} )^{3} } \implies \delta_{A} (s _{r} ) \ll \frac{\left\lvert A \right\rvert }{r^{\frac{1}{3} }}
+    r = \left\lvert \left\{ x \in A-B : \delta _{A,B} (x) \geq \delta_{A,B} (s _{r} ) \right\}  \right\rvert \ll \frac{\left\lvert A \right\rvert \left\lvert B \right\rvert ^{2} }{\delta_{A,B} (s _{r} )^{3} } \implies \delta_{A} (s _{r} ) \ll \frac{\left\lvert A \right\rvert ^{\frac{1}{3} } \left\lvert B \right\rvert ^{\frac{2}{3} }}{r^{\frac{1}{3} }}
 .\]
 \end{proof}
 
-\textbf{any more results here?}
+We can directly apply this to obtain a bound on the additive energy between
+a convex set and an arbitrary set.
 
-\section{Additive and Multiplicative Energy Results \textbf{ew bad title} }
+Later in the next section we'll use these results to find bounds on the additive
+energies between certain sets, but first we'll introduce some simpler results which
+use additive and multiplicative energy to show why such bounds are useful.
 
-\textbf{Dyadic partitioning introduction}
-
-\begin{lemma}
-\textbf{dyadic partitioning}
-\end{lemma}
+\section{Additive and Multiplicative Energy \textbf{rename section}}
 
 Recall that
 \[
@@ -891,8 +956,10 @@ Therefore,
 \[
     E(A,B) = \sum _{x \in P} \delta_{A,B} (x)^{2} + \sum _{x \in P ^{*}} \delta_{A,B} (x)^{2} \ll \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{3}{2} } 
 .\]
-
 \end{proof}
+
+\section{ \textbf{IDK the title }}
+\textbf{put shkredov and olmezov results here}
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -1094,6 +1161,42 @@ This leads to
 \[
     \sum _{\substack{ p \leq N \\ p \text{ prime} \\ i \leq \log _{2} \left( N \right) }} \frac{\log \left( p \right) }{p ^{i}} = \frac{N \log \left( N \right) - N + O(1)}{N} + \frac{O(N)}{N} = \log \left( N \right)  + O(1)
 .\]
+
+Moreover, we have that
+\begin{align*}
+\sum  _{\substack{ p \leq N \\ p \text{ prime} \\ 2 \leq i \leq \log _{2} \left( N \right)  }} \frac{\log \left( p \right) }{p ^{i}} & \leq \sum  _{\substack{ x,i \geq 2}} \frac{\log \left( x \right) }{x ^{i}} \\
+& = \sum _{x \geq 2} \sum _{i \geq 2} \frac{\log \left( x \right) }{x^{i}} \\
+& = \sum _{x \geq 2} \frac{1}{x^{2}} \left( \frac{\log \left( x \right) }{1-\frac{1}{x} }  \right)\\
+& = \sum _{x \geq 2} \frac{\log \left( x \right) }{x ^{2} - x} 
+\end{align*}
+which, by the limit comparison test, converges if
+\[
+    \sum _{x \geq 2} \frac{\log \left( x \right) }{x^{2}}
+\]
+converges.
+
+Apply L'Hopital's rule to see that
+\[
+    \forall \epsilon > 0 ~,~ \log \left( x \right) = o(x^{\epsilon})
+,\]
+and therefore that
+\begin{align*}
+\sum _{x \geq 2} \frac{\log \left( x \right)}{x ^{2}} & = \sum _{x\geq 2} \frac{o(1)}{x^{2 - \epsilon}} \\
+& \ll \sum _{x \geq 2} \frac{1}{x^{2-\epsilon}} \\
+& \asymp \int_{2}^{\infty} \frac{1}{x^{2-\epsilon}}  ~\mathrm{d} x 
+\end{align*}
+which converges for \(\epsilon < 1\). It follows that
+\[
+    \sum _{\substack{ p \leq N \\p \text{ prime}  }}\frac{ \log \left( p \right) }{p} = \log\log \left( N \right) + O(1)
+.\]
+
+Applying Abel's summation formula,
+\begin{align*}
+\sum  _{\substack{ p \leq N \\p \text{ prime}  }} \frac{1}{p} = \sum _{\substack{ p \leq N \\ p \text{ prime}  }}   \frac{\log \left( p \right) }{p} \cdot \frac{1}{\log \left( p \right) } 
+\end{align*}
+
+
+
 
 \end{proof}
 
