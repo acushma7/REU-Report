@@ -1118,16 +1118,16 @@ this quantity. In \cite{Ford}, Kevin Ford proved that the exact order of this qu
 ,\]
 where \(\delta = 1 - \frac{1 + \log \log \left( 2 \right)  }{2} \) is the Erd\H{o}s-Tenenbaum-Ford constant.
 
-A tool that will prove useful in evaluating sums is the Abel summation formula.
+We require a lemma and a prerequisite theorem.
 
 \begin{lemma*}
 Let \(\left( a_{n}  \right) _{n = 1} ^{\infty }\) be a sequence of real numbers. Let \(A: \mathbb{R} \to \mathbb{R} \) be defined by
 \[
     A(t) = \sum _{n \leq t} a_{n} 
 .\]
-For \(x,y \in \mathbb{R} \), with \(x < y\), and any differentiable function \(\phi : [x,y] \to \mathbb{R} \),
+For \(x \in \mathbb{R} \) and any differentiable function \(\phi : [1,y] \to \mathbb{R} \),
 \[
-    \sum _{x < n \leq y} a_{n} \phi(n) = A(y)\phi(y) - A(x) \phi(x) - \int_{x}^{y} A(t)\phi'(t) ~\mathrm{d} t
+    \sum _{n \leq x} a_{n} \phi(n) = A(x)\phi(x) - A(1) \phi(1) - \int_{1}^{x} A(t)\phi'(t) ~\mathrm{d} t
 \]
 \end{lemma*}
 
@@ -1141,24 +1141,31 @@ For \(x,y \in \mathbb{R} \), with \(x < y\), and any differentiable function \(\
 \end{align*}
 \end{proof}
 
-We will also need to use the Chebyshev psi function
+A prerequisite theorem gives the order of magnitude of 3 functions which
+will prove useful.
 
-\begin{lemma}
-Let \(\psi : \mathbb{R} ^{+} \to \mathbb{N}  \) be defined by
+\begin{theorem}
+Define the functions \(\theta,\psi, \pi : [1, \infty) \to \mathbb{R} \) by
 \[
-    \psi(t) = \sum _{\substack{ p ^{\alpha}\leq t \\ p \text{ prime} \\ \alpha \in \mathbb{N} }} \log \left( p \right) 
+    \theta(x) = \sum _{\substack{ p \leq x \\ p \text{ prime}  }} \log \left( p \right) 
+,\]
+\[
+    \psi(x) = \sum _{\substack{ p^{\alpha} \leq x \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \log \left( p \right) 
+,\]
+\[
+    \pi(x) = \sum _{\substack{ p \leq x \\ p \text{ prime}  }} 1
 .\]
 We have
 \[
-    \psi(t) \ll t
+    \psi(x) \asymp \theta(x) \asymp x
+\]
+and
+\[
+    \pi(x) \asymp \frac{x}{\log \left( x \right) } 
 .\]
-\end{lemma}
+\end{theorem}
 
 \begin{proof}
-First we'll introduce the function \(\theta : \mathbb{R} ^{+ } \to \mathbb{N} \) defined by
-\[
-    \theta(t) = \sum _{\substack{ p \leq t \\ p \text{ prime}  }} \log \left( p \right)
-.\]
 The functions \(\theta\) and \(\psi\) are clearly related by
 \[
     \psi(t) = \prod _{\substack{ p \leq N^{\frac{1}{\alpha} } \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \log \left( p \right) = \sum _{\alpha \in \mathbb{N} } \theta\left( t ^{\frac{1}{\alpha} } \right)  = \theta(t) + \sum _{\alpha \geq 2} \theta \left( t ^{\frac{1}{\alpha} } \right) 
@@ -1182,7 +1189,8 @@ or
 \[
     \psi(t) \ll \max \left( \theta(t), t^{\frac{1}{2} }\log \left( t \right) ^{2} \right) 
 .\]
-Therefore, it suffices to show \(\theta(t) \ll t\).
+By showing \(\theta(t) \ll t\), we will have shown \(\psi(t) \ll \theta(t) \ll t\). Because \(\theta(t) \leq \psi(t)\),
+we will have shown that \(\psi(t) \asymp \theta(t) \ll t\).
 
 We have
 \[
@@ -1224,6 +1232,9 @@ We have
 & \ll e^{m + 1} 4^{m} \\
 & \ll e^{m+1} e^{m} = e^{2m+1}. 
 \end{align*}
+Thus, \(\psi(t) \asymp \theta(t) \ll t\). To prove \(\psi(t) \asymp \theta(t) \asymp t\),
+it suffices to show that \(\psi(t) \gg t\).
+
 \end{proof}
 
 More accurately, \(\psi(t) \asymp \theta(t) \asymp t\), but this is not necessary to get the desired result,
