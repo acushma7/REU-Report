@@ -947,10 +947,14 @@ In this section we'll prove the \textbf{... more exposition} \cite{shkredov}
 Throughout this section, in the same convention as \textbf{CITED}, we'll use the
 notation
 \[
-    A_{x} = A \cap \left( A + x \right) = \left\{ a \in A : a - x \in A \right\} 
+    A_{x} = A \cap \left( A + x \right) = \left\{ a \in A : a - x \in A \right\} = \left\{ a \in A : \exists a_0 \in A ~~\text{s.t.}~~ a - a_0 = x \right\} 
+.\]
+Observe that
+\[
+    \left\lvert A_{x}  \right\rvert = \delta_{A} (x) 
 .\]
 
-\begin{theorem}
+\begin{theorem} \label{thm:shkredov}
 Let \(A \subset \mathbb{R} \) be a convex set. Then
 \[
     \max \left( \left\lvert A+A \right\rvert , \left\lvert A - A \right\rvert  \right) \gg_{\epsilon}  \left\lvert A \right\rvert ^{\frac{8}{5} - \epsilon }
@@ -965,8 +969,36 @@ Let \(A \subset \mathbb{R} \) be a convex set. Then
 
 We require the following lemmata
 \begin{lemma}
-For every set \(A\) we have
+For every set \(A \subset \mathbb{R} \) we have
+\[
+    \sum _{x} E\left( A, A_{x}  \right) = E_{3} (A)
+.\]
 \end{lemma}
+
+\begin{proof}
+\textbf{PROOF}
+\end{proof}
+
+\begin{lemma}
+For every set \(A \subset \mathbb{R} \), and \(P \subset A - A\), if \(\eta\) is the number for which
+\[
+    \sum _{x \in P} \left\lvert A_{x}  \right\rvert = \eta \left\lvert A \right\rvert ^{2}
+,\]
+then
+\[
+    \sum _{x \in P} \left\lvert A \pm A_{x}  \right\rvert \geq \frac{\eta ^{2} \left\lvert A \right\rvert ^{6}}{E_{3} (A)} 
+.\]
+\end{lemma}
+
+\begin{proof}
+\textbf{PROOF}  
+\end{proof}
+
+We're now able to prove Theorem \ref{thm:shkredov}.
+
+\begin{proof}[Proof of Theorem \ref{thm:shkredov}]
+
+\end{proof}
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
