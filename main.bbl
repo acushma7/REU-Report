@@ -19,10 +19,10 @@ Kevin Ford, \emph{The distribution of integers with a divisor in a given interva
 \bibitem[RS21]{stevens-rudnev}
 Misha Rudnev and Sophie Stevens, \emph{An update on the sum-product problem}, 2021.
 
-\bibitem[Shk12]{shkredov-new-results-higher-energy}
-Ilya~D. Shkredov, \emph{Some new results on higher energies}, 2012.
-
 \bibitem[Sol09]{Solymosi}
 József Solymosi, \emph{Bounding multiplicative energy by the sumset}, Advances in Mathematics \textbf{222} (2009), 402--408.
+
+\bibitem[SS11]{shkredov}
+Tomasz Schoen and Ilya~D. Shkredov, \emph{On sumsets of convex sets}, 2011.
 
 \end{thebibliography}

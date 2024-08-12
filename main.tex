@@ -942,7 +942,31 @@ Therefore,
 \end{proof}
 
 \section{ \textbf{IDK the title }}
-\textbf{put shkredov and olmezov results here}
+In this section we'll prove the \textbf{... more exposition} \cite{shkredov}
+
+Throughout this section, in the same convention as \textbf{CITED}, we'll use the
+notation
+\[
+    A_{x} = A \cap \left( A + x \right) = \left\{ a \in A : a - x \in A \right\} 
+.\]
+
+\begin{theorem}
+Let \(A \subset \mathbb{R} \) be a convex set. Then
+\[
+    \max \left( \left\lvert A+A \right\rvert , \left\lvert A - A \right\rvert  \right) \gg_{\epsilon}  \left\lvert A \right\rvert ^{\frac{8}{5} - \epsilon }
+,\]
+\[
+    \left\lvert A-A \right\rvert \gg_{\epsilon}  \left\lvert A \right\rvert ^{\frac{8}{5} - \epsilon }
+,\]
+\[
+    \left\lvert A+A \right\rvert \gg_{\epsilon}  \left\lvert A \right\rvert ^{\frac{14}{9} - \epsilon}
+.\]
+\end{theorem}
+
+We require the following lemmata
+\begin{lemma}
+For every set \(A\) we have
+\end{lemma}
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -1170,12 +1194,15 @@ and therefore that
 \end{align*}
 which converges for \(\epsilon < 1\). It follows that
 \[
-    \sum _{\substack{ p \leq N \\p \text{ prime}  }}\frac{ \log \left( p \right) }{p} = \log\log \left( N \right) + O(1)
+    \sum _{\substack{ p \leq N \\p \text{ prime}  }}\frac{ \log \left( p \right) }{p} = \log \left( N \right) + O(1)
 .\]
 
 Applying Abel's summation formula,
 \begin{align*}
-\sum  _{\substack{ p \leq N \\p \text{ prime}  }} \frac{1}{p} = \sum _{\substack{ p \leq N \\ p \text{ prime}  }}   \frac{\log \left( p \right) }{p} \cdot \frac{1}{\log \left( p \right) } 
+\sum  _{\substack{ p \leq N \\p \text{ prime}  }} \frac{1}{p} & = \sum _{\substack{ p \leq N \\ p \text{ prime}  }}   \frac{\log \left( p \right) }{p} \cdot \frac{1}{\log \left( p \right) } \\
+& = \left( \sum _{\substack{ p \leq N \\ p \text{ prime}  }} \frac{\log \left( p \right) }{p}  \right) \cdot \frac{1}{\log \left( N \right) } + O(1) + \int_{2}^{N} \frac{ \sum _{\substack{ p \leq t \\ p \text{ prime}  }}\frac{ \log \left( p \right) }{p} }{t \log ^{2}\left( t \right) }  ~\mathrm{d} t \\
+& = \frac{ \log \left( N \right) + O(1)  }{\log \left( N \right) } + O(1) + \int_{2}^{N} \frac{\log \left( t \right) + O(1)}{t \log ^{2}\left( t \right) }  ~\mathrm{d} t\\
+& = O(1) + \int_{2}^{N} \frac{1}{t \log \left( t \right) }  ~\mathrm{d} t + \int_{2}^{N} \frac{O(1)}{t \log ^{2}\left( t \right) }  ~\mathrm{d} t 
 \end{align*}
 
 
