@@ -1,4 +1,4 @@
-\documentclass[12pt]{amsart}
+\documentclass[12pt,reqno]{amsart}
 \input{preamble}
 \graphicspath{{Figures/}}
 
@@ -24,7 +24,7 @@ posits that any sufficiently large set must have a `relatively large' number
 of distinct sums or products between its elements.
 A newer conjecture extends this idea, positing that for convex sets there must be a `relatively large'
 number of distinct sums between its elements. Both conjectures remain open and far from being solved.
-This report provides a self-contained overview of some known results and the methods
+This report provides an entirely self-contained overview of some known results and the methods
 used to achieve them.
 \end{abstract}
 
@@ -33,7 +33,11 @@ used to achieve them.
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
+\textbf{TILDE NOTATION}
+
 \textbf{issue of "for any set A" in statements, but only as A gets sufficiently large}
+
+\textbf{GO THROUGH WHOLE THING AND USE TILDE NOTATION}
 
 \section{Introduction and Motivation} 
 
@@ -911,7 +915,7 @@ E_3(A) & = \sum _{x \in A-A} \delta_{A} (x)^{3} \\
 \end{align*}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem} \label{thm:szt-energy-convex-and-arbitrary}
 For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large, and any finite set \(B \subset \mathbb{R} \)
 \[
     E(A,B) \ll \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{3}{2} }
@@ -979,7 +983,7 @@ For every set \(A \subset \mathbb{R} \) we have
 \textbf{PROOF}
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{lem:shkredov-main-lem}
 For every set \(A \subset \mathbb{R} \), and \(P \subset A - A\), if \(\eta\) is the number for which
 \[
     \sum _{x \in P} \left\lvert A_{x}  \right\rvert = \eta \left\lvert A \right\rvert ^{2}
@@ -997,8 +1001,81 @@ then
 We're now able to prove Theorem \ref{thm:shkredov}.
 
 \begin{proof}[Proof of Theorem \ref{thm:shkredov}]
+Define the difference and sum sets with \(D = \left\lvert A-A \right\rvert \) and \(S = \left\lvert A+A \right\rvert \).
+Observe that
+\[
+    A - A_{x} \subset D \cap D_{x} 
+\]
+and
+\[
+    A + A_{x} \subset S \cap S_{x} 
+.\]
+We use this observation along with Lemma \ref{lem:shkredov-main-lem} to find bounds on
+the additive energies between \(D\) and \(S\) and \(A\).
 
+Consider the popular sets of differences \(P,P'\) defined by
+\[
+    P = \left\{ x \in A - A : \delta_{A} (x) \geq \frac{\left\lvert A \right\rvert ^{2}}{2 \left\lvert A-A \right\rvert }  \right\} 
+\]
+and
+\[
+    P ' = \left\{ x \in A-A : \delta_{A} (x) \geq \frac{\left\lvert A \right\rvert ^{2}}{2\left\lvert A + A \right\rvert }  \right\} 
+.\]
+
+Let \(P^{*}\) and \(P^{'*}\) be their respective compliments. We have
+\[
+    \sum _{x \in P^{*}} \left\lvert A_{x} \right\rvert < \frac{\left\lvert A \right\rvert ^{2}}{2 \left\lvert A-A \right\rvert } \cdot  \left\lvert P^{*} \right\rvert \leq \frac{\left\lvert A \right\rvert ^{2}}{2} 
+,\]
+so
+\begin{equation} \label{eq:shkredov-1}
+    \sum _{x \in P} \left\lvert A_{x}  \right\rvert \gg \left\lvert A \right\rvert ^{2}
+    .
+\end{equation}
+
+We also have
+\[
+    \sum _{x \in P ^{'*}} \left\lvert A_{x}  \right\rvert ^{2} < \frac{\left\lvert A \right\rvert ^{2}}{2 \left\lvert A+A \right\rvert } \cdot \left\lvert A \right\rvert ^{2}
+,\]
+so
+\[
+    \sum _{x \in P'} \left\lvert A_{x}  \right\rvert ^{2} \gg \frac{\left\lvert A \right\rvert ^{4}}{\left\lvert A+A \right\rvert } 
+.\]
 \end{proof}
+
+We can directly apply (\ref{eq:shkredov-1}) to Lemma \ref{lem:shkredov-main-lem}. We have
+\[
+    \eta \left\lvert A \right\rvert ^{2} = \sum _{x \in P} \left\lvert A_{x}  \right\rvert \gg \left\lvert A \right\rvert ^{2} \implies \eta \gg 1
+\]
+so
+\[
+    \sum _{x \in P} \left\lvert A \pm  A_{x}  \right\rvert \gg \frac{\left\lvert A \right\rvert ^{6}}{E_{3} (A)} \gtrsim \left\lvert A \right\rvert ^{3}
+.\]
+
+Recall that \(A - A_{x} \subset D \cap D_{x} \), or \(\left\lvert A - A_{x}  \right\rvert \leq \left\lvert D_{x}  \right\rvert = \delta_{D} (x)\). It follows that
+\[
+    \sum _{x \in P} \delta_{D} (x) \gtrsim \left\lvert A \right\rvert ^{3}
+.\]
+By the definition of \(P\) it follows that
+\[
+    E(A,D) \geq \sum _{x \in P} \delta_{A} (x)\delta_{D} (x) \geq \frac{\left\lvert A \right\rvert ^{2}}{2 \left\lvert A-A \right\rvert } \sum _{x \in P} \delta_{D} (x) \gtrsim \frac{\left\lvert A \right\rvert ^{5}}{\left\lvert A-A \right\rvert }
+.\]
+By applying Theorem \ref{thm:szt-energy-convex-and-arbitrary},
+\[
+    \frac{\left\lvert A \right\rvert ^{5}}{\left\lvert A-A \right\rvert } \lesssim \left\lvert A \right\rvert \left\lvert A-A \right\rvert ^{\frac{3}{2} } \implies \left\lvert A-A \right\rvert \gtrsim \left\lvert A \right\rvert ^{\frac{8}{5} }
+.\]
+
+Recalling that \(A + A_{x} \subset S_{x} \), we get that
+\[
+    \sum _{x \in P} \delta_{S} (x) \gtrsim \left\lvert A \right\rvert ^{3} 
+,\]
+which by an identical argument yields
+\[
+    \frac{\left\lvert A \right\rvert ^{5} }{\left\lvert A-A \right\rvert } \lesssim E(A,S) \ll \left\lvert A \right\rvert \left\lvert S \right\rvert ^{\frac{3}{2} }
+,\]
+or
+\[
+    \left\lvert A-A \right\rvert ^{2} \left\lvert A+A \right\rvert ^{3} \gtrsim \left\lvert A \right\rvert ^{8} \implies \max \left( \left\lvert A-A \right\rvert , \left\lvert A+A \right\rvert  \right) \gtrsim \left\lvert A \right\rvert^{\frac{8}{5} }
+.\]
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
