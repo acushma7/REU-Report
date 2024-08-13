@@ -25,4 +25,10 @@ József Solymosi, \emph{Bounding multiplicative energy by the sumset}, Advances 
 \bibitem[SS11]{shkredov}
 Tomasz Schoen and Ilya~D. Shkredov, \emph{On sumsets of convex sets}, 2011.
 
+\bibitem[ST83]{SzT-original}
+E.~Szemer{\'e}di and W.~T. Trotter, \emph{Extremal problems in discrete geometry}, Combinatorica \textbf{3} (1983), no.~3, 381--392.
+
+\bibitem[SZE97]{szekely-SzT}
+LASZLO~A. SZEKELY, \emph{Crossing numbers and hard erd{\H{o}}s problems in discrete geometry}, Combinatorics, Probability and Computing \textbf{6} (1997), no.~3, 353--358.
+
 \end{thebibliography}

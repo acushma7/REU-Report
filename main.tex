@@ -37,6 +37,8 @@ used to achieve them.
 
 \textbf{GO THROUGH WHOLE THING AND USE TILDE NOTATION}
 
+\textbf{introduce f(A) notation}
+
 \section{Introduction and Motivation} 
 
 For any sets \(A,B\) and binary operation \(\cdot \) which acts on elements of \(A\) and \(B\), we define
@@ -324,25 +326,30 @@ For finite sets \(A \subset \mathbb{R} \),
     \max \left( \left\lvert A+A \right\rvert , \left\lvert AA \right\rvert  \right) \gtrsim \left\lvert A \right\rvert ^{\frac{4}{3} }
 .\]
 \end{theorem}
-\begin{theorem}
+\begin{theorem}\label{thm:shkredov-sum}
 For finite and convex sets \(A \subset \mathbb{R} \),
 \[
     \left\lvert A + A \right\rvert \gtrsim  \left\lvert A \right\rvert ^{\frac{14}{9} }
 .\]
 \end{theorem}
 and
-\begin{theorem}
+\begin{theorem}\label{thm:shkredov-diff}
 For finite and convex sets \(A \subset \mathbb{R} \),
 \[
     \left\lvert A - A \right\rvert \gtrsim \left\lvert A \right\rvert ^{\frac{8}{5} }
 .\]
 \end{theorem}
 
-Theorem \ref{thm:solymosi-sp}
+Theorem \ref{thm:solymosi-sp} is the weakest amongst these results, although it is
+still near the best known result.
+Theorem \ref{thm:shkredov-diff} gives the best known exponent on \(\left\lvert A \right\rvert \), and
+Theorem \ref{thm:shkredov-sum} is obtained by a slight variation on the same methods.
 
 \section{Graphs and the Crossing Number Inequality}
 
 \textbf{simple, connected}
+
+\textbf{cite szekely and tao}
 
 \textbf{Tao's article reread to see what I missed}
 
@@ -537,16 +544,15 @@ This yields the result
 
 \section{The Szemeredi-Trotter Theorem}
 
-With this we can quite easily prove the Szemeredi-Trotter Theorem.
-A precise statement of the Szemeredi-Trotter Theorem is
+\textbf{LOOK OVER WHOLE SECTION}
 
-\textbf{First proven in ...}
+\textbf{CONCAVE OR CONVEX}
+
+With this, we can employ the argument of \cite{szekely-SzT} to prove the Szemeredi-Trotter Theorem.
+A precise statement of the Szemeredi-Trotter Theorem, first proven in \cite{SzT-original} is
 
 \begin{theorem}[Szemeredi-Trotter Theorem]
 Let \(P \subset \mathbb{R} ^{2}\) be a finite set of points. Let \(\mathcal{L} \) be a finite set of curves in \(\mathbb{R} ^{2}\). 
-
-More precisely,
-every \(l \in \mathcal{L} \) is of the form \(l = \left\{ (x(t),y(t)) : t\in \mathbb{R}  \right\} \) for some \(x,y \in C^{0}(\mathbb{R} )\). 
 
 Let \(\chi : P \times \mathcal{L}  \to \left\{ 0,1 \right\} \) be the incidence function
 between a point and a line, so
@@ -559,7 +565,7 @@ between a point and a line, so
 \]
 
 If any two \( l \in \mathcal{L} \) intersect in at most one point,
-then the total number of point-line incidences,
+then the total number of point-curve incidences,
 \[
     I(P, \mathcal{L} ) = \sum _{(p,l)\in P \times \mathcal{L} } \chi(p,l)
 \]
@@ -611,13 +617,19 @@ so
 .\]
 \end{proof}
 
-We'll now go over some direct applications of the Szemeredi-Trotter theorem
-to sum product theorems. The main theorem which does this is proven in \cite{elekes}.
+The Szemeredi Trotter theorem has a handful of direct applications to the sum
+product conjecture and the convex sumset conjecture. The main theorem which leads
+to these results is proven in \cite{elekes}.
 
 \begin{theorem} \label{thm:translations-of-convex-szt}
-For some \(n \in \mathbb{N} \), let \(f : [1,n] \to \mathbb{R} \) be convex.
+Let \(A \subset \mathbb{R} \) be finite, with \(\left\lvert A \right\rvert = n\). 
 
-Let \(S = \left\{ (i,f(i)) : i \in [n] \right\} \) and \(T \subset \mathbb{R} ^{2}\) be finite. We have
+Label the
+elements of \(A\) so that \(a_1 < a_2 < \cdots < a_{n} \). 
+
+Let \(f : [a_1,a_{n} ] \to \mathbb{R} \) be convex. Let \(S = \left\{ (a,f(a)) : a \in A \right\} \) and \(T \subset \mathbb{R} ^{2}\) be finite. 
+
+We have
 \[
     \left\lvert S + T \right\rvert \gg \max \left( \left\lvert S \right\rvert ^{\frac{3}{2} } \left\lvert T \right\rvert ^{\frac{1}{2} } , \left\lvert S \right\rvert \left\lvert T \right\rvert  \right)
 .\]
@@ -626,15 +638,16 @@ Let \(S = \left\{ (i,f(i)) : i \in [n] \right\} \) and \(T \subset \mathbb{R} ^{
 \begin{proof}
     Let
     \[
-        L_{t} = \left\{ (x,f(x)) + t : x \in [1,n], t \in T \right\} 
+        L_{t} = \left\{ (x,f(x)) + t : x \in [a_1,a_{n} ], t \in T \right\} 
     ,\]
     and let
     \[
         \mathcal{L} = \left\{ L_{t} : t \in T \right\} 
     .\]
-    For every \(x \in [n]\), \((x,f(x)) + t \in S + T\). Therefore, there are \(\left\lvert S \right\rvert \) incidences
-    between \(L_{t} \) and the point set \(S + T\) for all \(t \in T\). The set \(\mathcal{L} \) consists of
-    translations of the graph of a convex function, so the Szemeredi-Trotter theorem is satisfied.
+    For every \(x \in A\), \((x,f(x)) + t \in S + T\). Therefore, there are \(\left\lvert A \right\rvert = \left\lvert S \right\rvert \) incidences
+    between \(L_{t} \) and the point set \(S + T\), for all \(t \in T\). It follows that there are \(\left\lvert S \right\rvert \left\lvert T \right\rvert \)
+    total incidences. The set \(\mathcal{L} \) consists of
+    translations of the graph of a convex function, so the Szemeredi-Trotter theorem is satisfied. Thus
     
     \[
         \left\lvert S \right\rvert \left\lvert T \right\rvert \ll \left\lvert S + T \right\rvert ^{\frac{2}{3} } \left\lvert T \right\rvert ^{\frac{2}{3} } + \left\lvert S + T \right\rvert + \left\lvert T \right\rvert 
@@ -653,104 +666,97 @@ Let \(S = \left\{ (i,f(i)) : i \in [n] \right\} \) and \(T \subset \mathbb{R} ^{
     .\]
 \end{proof}
 
-\textbf{this theorem very useful blah blah blah}
 The following corollaries are also proven in \cite{elekes}.
 
-\begin{theorem}
-For sufficiently large sets \(A \subset \mathbb{R} \), which are finite and convex, and any set \(B \subset \mathbb{R} \) with \(\left\lvert A \right\rvert = \left\lvert B \right\rvert \),
-\[
-    \left\lvert A + B \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} }
-.\]
-\end{theorem}
-
+\begin{corollary}
+    For convex and finite sets \(A \subset \mathbb{R} \), and finite sets \(B \subset \mathbb{R} \),
+    \[
+        \left\lvert A + B \right\rvert \gg \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{1}{2} }
+    .\]
+\end{corollary}
+    
 \begin{proof}
-Let \(\left\lvert A \right\rvert = n\) and \(f : [1,n] \to \mathbb{R} \) be the convex function
-such that
+Let \(A \subset \mathbb{R} \) be finite. Let \(n = \left\lvert A \right\rvert \). Let \(f : [1,n] \to \mathbb{R} \) be the
+convex function for which
 \[
-    A = \left\{ f(i): i \in [n] \right\}
+    A = \left\{ f(i) : i \in [n] \right\} 
 .\]
 Take
 \[
-    S = \left\{ (i,f(i)) : i \in [n] \right\} 
+    S = \left\{ (i,f(i)) : i \in [n]\right\} 
 \]
 and
 \[
     T = [n] \times B
 .\]
-Observe that \(S + T \subset [2n] \times (A + B)\), so \(\left\lvert S + T \right\rvert \ll \left\lvert A \right\rvert \left\lvert A + B \right\rvert \). Applying Theorem \ref{thm:translations-of-convex-szt},
+We have
 \[
-    \left\lvert A \right\rvert \left\lvert A + B \right\rvert \gg \max \left( \left\lvert S \right\rvert ^{\frac{3}{2} }\left\lvert T \right\rvert ^{\frac{1}{2} } , \left\lvert S \right\rvert \left\lvert T \right\rvert  \right) = \max \left( \left\lvert A \right\rvert ^{\frac{3}{2} }\left\lvert A \right\rvert , \left\lvert A \right\rvert ^{3} \right) = \left\lvert A \right\rvert ^{\frac{5}{2} }
+    S + T \subset \left( [n] + [n] \right)  \times \left( A + B \right) 
 ,\]
 so
 \[
-    \left\lvert A + B \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} }
+    \left\lvert S + T \right\rvert \leq \left\lvert [n] + [n] \right\rvert \left\lvert A + B \right\rvert \ll \left\lvert A \right\rvert \left\lvert A + B \right\rvert 
 .\]
-\end{proof}
-
-\textbf{better dialogue}
-Another variation of this theorem is
-
-\begin{theorem}
-For finite sets \(A \subset \mathbb{R} \) which are convex and sufficiently large, and
-any set \(B \subset \mathbb{R} \),
+Apply Theorem \ref{thm:translations-of-convex-szt} to get
 \[
-    \left\lvert A + B \right\rvert \gg \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{1}{2} }
+    \left\lvert A \right\rvert \left\lvert A + B \right\rvert \gg \left\lvert S + T \right\rvert \gg \max \left( \left\lvert A \right\rvert ^{\frac{3}{2} }\left( \left\lvert A \right\rvert \left\lvert B \right\rvert  \right) ^{\frac{1}{2} }, \left\lvert A \right\rvert \left( \left\lvert A \right\rvert \left\lvert B \right\rvert  \right)  \right) 
+\]
+or
+\[
+    \left\lvert A \right\rvert \left\lvert A + B \right\rvert \gg \left\lvert A \right\rvert ^{2}\left\lvert B \right\rvert ^{\frac{1}{2} } \implies  \left\lvert A + B \right\rvert \gg \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{1}{2} }
 .\]
-\end{theorem}
-
-\begin{proof}
-\textbf{PROOF}
 \end{proof}
 
-In particular, both of these theorems give the result
-\begin{theorem}
+This will be used to achieve stronger results later, but in particular, this gives the result
+\begin{corollary}
 For sufficiently large sets \(A \subset \mathbb{R} \) which are finite and convex,
 \[
     \left\lvert A+A \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} }
 .\]
-\end{theorem}
+\end{corollary}
 
-
-\begin{theorem}
-    For sufficiently large sets \(A \subset \mathbb{R} \),
+We can also use Theorem \ref{thm:translations-of-convex-szt} to get a result
+on the Sum-Product conjecture.
+\begin{corollary}
+    For finite sets \(A \subset \mathbb{R}^{+} \) of positive real numbers,
     \[
         \max \left( \left\lvert A+A \right\rvert, \left\lvert A\cdot A \right\rvert  \right) \gg \left\lvert A \right\rvert ^{\frac{5}{4} }
     .\]
-\end{theorem}
+\end{corollary}
 
 \begin{proof}
-Take \(P = \left( A + A \right) \times \left( A \cdot A \right) \). 
+Let \(A \subset \mathbb{R} \) be finite. 
 
-For any \(a,b \in A\), let \(\ell _{a,b} : \mathbb{R} \to \mathbb{R} \) be defined by
-\(\ell _{a,b} (x) = (x-a)\cdot b\). Let \(L_{a,b} = \left\{ (x, \ell _{a,b} (x)) : x \in \mathbb{R}  \right\} \)
-be the graph of \(\ell _{a,b} \).
-
-Take \(\mathcal{L} = \left\{ L_{a,b} : a,b \in A \right\} \). There are \(\left\lvert A \right\rvert \) many numbers in
-\(A + A\) of the form \(x + a\) where \(x \in A\). For all of these numbers, \(\ell _{a,b} (x + a) = xb \in A\cdot A\).
-
-We have shown that for each choice of \(a,b \in A\), there are \(\left\lvert A \right\rvert \) many numbers
-\(z \in A+A\) such that \(\ell _{a,b} (z) \in A\cdot A\), or that there are \(\left\lvert A \right\rvert \) many
-incidences between \(P\) and \(L_{a,b} \). It follows that there are \(\left\lvert A \right\rvert ^{3} \) total incidences
-between \(\mathcal{L} \) and \(P\). Because \(\mathcal{L} \) is a set of lines, the Szemeredi-Trotter theorem holds.
-
+Label the elements of \(A\) so that \(a_1 < \cdots < a_{n} \).
+Let \(f : [a_1,a_{n} ] \to \mathbb{R} \) be concave or convex.
+Take
 \[
-    \left\lvert A \right\rvert ^{3} \ll \left\lvert A + A \right\rvert ^{\frac{2}{3} } \left\lvert A \cdot A \right\rvert ^{\frac{2}{3} } \left\lvert A \right\rvert ^{\frac{4}{3} } + \left\lvert A + A \right\rvert \left\lvert A \cdot A \right\rvert + \left\lvert A \right\rvert ^{2}
+    S = \left\{ (a,f(a)) : a \in A \right\} 
+,\]
+and
+\[
+    T = A \times f(A)
+.\]
+Observe that
+\[
+    S + T \subset \left( A + A \right) \times \left( f(A) + f(A) \right) 
+,\]
+so that
+\[
+    \left\lvert S + T \right\rvert \ll \left\lvert A + A \right\rvert \left\lvert f(A) + f(A) \right\rvert
+.\]
+
+Apply Theorem \ref{thm:translations-of-convex-szt} to get
+\[
+    \left\lvert A+A \right\rvert \left\lvert f(A) + f(A) \right\rvert \gg \left\lvert S+T \right\rvert \gg \max \left( \left\lvert A \right\rvert ^{\frac{3}{2} } \left( \left\lvert A \right\rvert ^{2} \right) ^{\frac{1}{2} }, \left\lvert A \right\rvert \left\lvert A \right\rvert ^{2} \right) 
 \]
 or
 \[
-    \left\lvert A \right\rvert ^{3} \ll \max \left( \left\lvert A + A \right\rvert ^{\frac{2}{3} } \left\lvert A \cdot A \right\rvert ^{\frac{2}{3} } \left\lvert A \right\rvert ^{\frac{4}{3} } , \left\lvert A + A \right\rvert \left\lvert A \cdot A \right\rvert , \left\lvert A \right\rvert ^{2} \right) 
-.\]
+    \max \left( \left\lvert A + A \right\rvert , \left\lvert f(A) + f(A) \right\rvert  \right) \gg \left\lvert A \right\rvert ^{\frac{5}{4} }
+\]
+for any convex or concave function \(f : [a_1,a_{n} ] \to \mathbb{R}\).
 
-Applying trivial inequalities,
-\[
-    \left\lvert A \right\rvert ^{2} \leq \left\lvert A+A \right\rvert \left\lvert A \cdot A \right\rvert \leq \left\lvert A+A \right\rvert \left\lvert A \cdot A \right\rvert \left( \frac{\left\lvert A \right\rvert ^{\frac{4}{3} }}{\left\lvert A+A \right\rvert ^{\frac{1}{3} }\left\lvert A \cdot A \right\rvert ^{\frac{1}{3} }}  \right) 
-,\]
-so
-\begin{align*}
-    \left\lvert A \right\rvert ^{3} \ll \left\lvert A+A \right\rvert ^{\frac{2}{3} }\left\lvert A \cdot A \right\rvert ^{\frac{2}{3} } \left\lvert A \right\rvert ^{\frac{4}{3} } & \implies \max \left( \left\lvert A + A \right\rvert , \left\lvert A \cdot A \right\rvert  \right) ^{\frac{4}{3} } \gg \left\lvert A \right\rvert ^{\frac{5}{3} } \\
-    & \implies \max \left( \left\lvert A + A \right\rvert , \left\lvert A \cdot A \right\rvert  \right) \gg \left\lvert A \right\rvert ^{\frac{5}{4} }.
-\end{align*}
-
+If \(A \subset \mathbb{R} ^{+}\), we may take \(f(x) = \log \left( x \right) \), immediately yielding the desired result.
 \end{proof}
 
 The Szemeredi-Trotter theorem also provides more general tools which can be
@@ -758,7 +764,7 @@ used alongside other results to sharpen the above bounds.
 
 \begin{theorem}
 
-    Let \(A \subset \mathbb{R} \) be a sufficiently large convex and finite set, then for every 
+    Let \(A \subset \mathbb{R} \) be convex, then for every 
     finite set \(B \subset \mathbb{R} \) we have
 
     \[
