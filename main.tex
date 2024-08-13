@@ -33,8 +33,6 @@ used to achieve them.
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-\textbf{TILDE NOTATION}
-
 \textbf{issue of "for any set A" in statements, but only as A gets sufficiently large}
 
 \textbf{GO THROUGH WHOLE THING AND USE TILDE NOTATION}
@@ -76,18 +74,21 @@ in different bases (see appendix), we have that \(2^{i} + 2^{j}\) is distinct fo
     & = \binom{\left\lvert G \right\rvert + 1}{2} 
 \end{align*}
 
-Finally, I prove in the appendix that \textbf{PROVE IT IN THE APPENDIX}.
+Finally, I prove in the appendix that there exists \(c \in \mathbb{R} ^{+}\) such that
+\[
+    \left\lvert AA \right\rvert \geq  \frac{c \left\lvert A \right\rvert ^{2}}{\log \left( \left\lvert A \right\rvert  \right) }
+.\]
 
 Observing the trivial bounds \( 2 \left\lvert S \right\rvert - 1 \leq \left\lvert S \cdot S \right\rvert \leq \binom{\left\lvert S \right\rvert }{2} \) for any set \(S\) and any
-commutative operation \(\cdot \), it is clear that both \(AA\) and \(G +G\) are almost as large as they can be,
+commutative operation \(\cdot \), it is clear that both \(AA\) and \(G +G\) are, as \(\left\lvert A \right\rvert, \left\lvert G \right\rvert \to \infty  \), almost as large as they can be,
 and \(A + A, GG \) are as small as they can be.
 
 This is the phenomenon which motivates this problem.
-One questions is: ``does there exist a set for which both the sum and product sets are small?''
+One questions is: ``does there exist a set for which neither the sum nor the product set is large?''
 The sum-product conjecture states that such a set does not exist. 
 Another question we study in this report is: ``what
 determines if the sum set is large or the product set is large?'' A
-conjecture which tries to partially answer this question states that the sum set is large
+conjecture which partially attacks this question states that the sum set is large
 when the set itself is convex.
 
 The rest of the report will proceed in the following way : \textbf{finish this}
@@ -125,20 +126,30 @@ if
     f(x) \ll g(x)  ~ ~ \text{and} ~ ~ f(x) \gg g(x) \text{ as } x \to \infty 
 .\]
 
-We write \(\ll _{\epsilon},\gg _{\epsilon}, \asymp _{\epsilon} \) if the constant depends on \(\epsilon\). For example,
+We write \(\ll _{\epsilon},\gg _{\epsilon} \) if the constant depends on \(\epsilon\). For example,
 \[
     f(x) \gg _{\epsilon} g(x) ^{ \epsilon}
 \]
-if there is some function \(c : \mathbb{R} ^{+ }\to \mathbb{R} ^{+}\) so
-\[
-    \forall \epsilon > 0, \exists x_0\in \mathbb{N} ~~\text{s.t.}~~ x > x_0 \implies \left\lvert f(x) \right\rvert \geq c (\epsilon)\left\lvert g(x) \right\rvert ^{\epsilon}
-.\]
-This should be interpreted as
+means
 \[
    \forall \epsilon> 0~,~ f(x) \gg g(x) ^{\epsilon}
 .\]
+More precisely, there is some function \(c : \mathbb{R} ^{+ }\to \mathbb{R} ^{+}\) so
+\[
+    \forall \epsilon > 0, \exists x_0\in \mathbb{N} ~~\text{s.t.}~~ x > x_0 \implies \left\lvert f(x) \right\rvert \geq c (\epsilon)\left\lvert g(x) ^{\epsilon} \right\rvert
+.\]
 
-Throughout this report, the asymptotic parameter (in this case \(x\)) will always tend to infinity,
+We write \(\lesssim , \gtrsim \) if, along with a constant factor, there is also a logarithmic factor.
+That is
+\[
+    f(x) \lesssim  g(x)
+\]
+if there is some \(c \in \mathbb{R} \) such that
+\[
+    f(x) \ll \left( \log \left( x \right)  \right) ^{c} g(x)
+.\]
+
+Throughout this report, the asymptotic parameter (in this case \(x\)) will always tend to \(\infty \),
 so it will no longer be mentioned.
 Oftentimes the parameter will not even be in the expression. For example,
 if for some set \(A\) we write
@@ -188,10 +199,8 @@ if and only if it is a solution to
 ,\]
 and therefore
 \[
-    E(A,B) = \sum _{x \in A + B} \sigma_{A,B}  (x)^{2} = \sum _{x \in A - B} \delta_{A,B}  (x)^{2}
+    E(A,B) =\sum _{x \in A - B} \delta_{A,B}  (x)^{2} = \sum _{x \in A + B} \sigma_{A,B}  (x)^{2}
 .\]
-
-\textbf{^^ switch order}
 
 There is a similar argument for multiplicative energy.
 Any 4-tuple \((a_1,a_2,b_1,b_2) \in A^{2} \times B^{2}\) with nonzero entries is a solution to
@@ -279,7 +288,7 @@ stated precisely as
 \begin{conjecture}[Sum-Product Conjecture]
 For every finite set \(A \subset \mathbb{R} \),
 \[
-    \max \left( \left\lvert A+A \right\rvert, \left\lvert A \cdot A \right\rvert  \right) \gg_{\epsilon}  \left\lvert A \right\rvert^{2-\epsilon}
+    \max \left( \left\lvert A+A \right\rvert, \left\lvert A \cdot A \right\rvert  \right) \gtrsim   \left\lvert A \right\rvert^{2}
 \]
 \end{conjecture}
 
@@ -288,7 +297,7 @@ The idea that convexity opposes additive structure is stated precisely as
 \begin{conjecture}[Convex Sumset Conjecture]
     For finite and convex set \(A\),
     \[
-        \left\lvert A+A \right\rvert \gg_{\epsilon}  \left\lvert A \right\rvert ^{2-\epsilon}
+        \left\lvert A+A \right\rvert \gtrsim   \left\lvert A \right\rvert ^{2}
     \]
 \end{conjecture}
 
@@ -296,21 +305,40 @@ To date, the best results for both of these conjectures are proven in \cite{stev
 \begin{theorem}
     For every sufficiently large finite set \(A \subset \mathbb{R} \),
     \[
-        \max \left( \left\lvert A+A \right\rvert ~,~ \left\lvert A \cdot A \right\rvert  \right) \gg_{\epsilon}   \left\lvert A \right\rvert^{\frac{4}{3} + \frac{2}{1167} - \epsilon}
+        \max \left( \left\lvert A+A \right\rvert ~,~ \left\lvert A \cdot A \right\rvert  \right) \gtrsim    \left\lvert A \right\rvert^{\frac{4}{3} + \frac{2}{1167}}
     \]
 \end{theorem}
 and
 \begin{theorem}
     For every sufficiently large, finite, and convex set \(A\),
     \[
-        \left\lvert A+A \right\rvert \gg_{\epsilon}  \left\lvert A \right\rvert ^{\frac{30}{19} - \epsilon }
+        \left\lvert A+A \right\rvert \gtrsim   \left\lvert A \right\rvert ^{\frac{30}{19} }
     \]
 \end{theorem}
 
-These results will not be covered in this report.
-\textbf{best in this report is ... ,}
+These results will not be covered in this report. In this report,
+the strongest results proven are
+\begin{theorem}\label{thm:solymosi-sp}
+For finite sets \(A \subset \mathbb{R} \),
+\[
+    \max \left( \left\lvert A+A \right\rvert , \left\lvert AA \right\rvert  \right) \gtrsim \left\lvert A \right\rvert ^{\frac{4}{3} }
+.\]
+\end{theorem}
+\begin{theorem}
+For finite and convex sets \(A \subset \mathbb{R} \),
+\[
+    \left\lvert A + A \right\rvert \gtrsim  \left\lvert A \right\rvert ^{\frac{14}{9} }
+.\]
+\end{theorem}
+and
+\begin{theorem}
+For finite and convex sets \(A \subset \mathbb{R} \),
+\[
+    \left\lvert A - A \right\rvert \gtrsim \left\lvert A \right\rvert ^{\frac{8}{5} }
+.\]
+\end{theorem}
 
-\textbf{WHAT I DO COVER IN THIS REPORT IS ...}
+Theorem \ref{thm:solymosi-sp}
 
 \section{Graphs and the Crossing Number Inequality}
 
@@ -1076,6 +1104,8 @@ or
 \[
     \left\lvert A-A \right\rvert ^{2} \left\lvert A+A \right\rvert ^{3} \gtrsim \left\lvert A \right\rvert ^{8} \implies \max \left( \left\lvert A-A \right\rvert , \left\lvert A+A \right\rvert  \right) \gtrsim \left\lvert A \right\rvert^{\frac{8}{5} }
 .\]
+
+\textbf{REFRENCE EARLIER STATEMENT OF THEOREM}
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -1090,6 +1120,11 @@ This report is based on work supported by NSF grant DMS-2051032, which we gratef
 \section*{Appendix}
 
 \textbf{UNIQUENESS OF REPRESENTATIONS OF DIFFERENT BASES}
+
+\textbf{BELOW}
+\[
+    \left\lvert A + A \right\rvert \geq  \frac{ c \left\lvert A \right\rvert ^{2}}{\log \left( \left\lvert A \right\rvert  \right) } 
+.\]
 
 \textbf{I need to define all things I use like little o and big O}.
 
@@ -1236,9 +1271,6 @@ Thus, \(\psi(t) \asymp \theta(t) \ll t\). To prove \(\psi(t) \asymp \theta(t) \a
 it suffices to show that \(\psi(t) \gg t\).
 
 \end{proof}
-
-More accurately, \(\psi(t) \asymp \theta(t) \asymp t\), but this is not necessary to get the desired result,
-so I am omitting it from this report.
 
 The final lemma needed is
 \begin{lemma*}
