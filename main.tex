@@ -800,7 +800,7 @@ Later in the next section we'll use these results to find bounds on the additive
 energies between certain sets, but first we'll introduce some simpler results which
 use additive and multiplicative energy to show why such bounds are useful.
 
-\section{Additive and Multiplicative Energy \textbf{rename section}}
+\section{Additive and Multiplicative Energy Estimates}
 
 Recall that
 \[
@@ -812,23 +812,22 @@ and
 .\]
 
 Observe that finding an upper bound on \(E(A)\) or \(M(A)\) in terms of \(\left\lvert A + A \right\rvert, \left\lvert AA \right\rvert    \), and \(\left\lvert A \right\rvert \)
-yields a sum product theorem. This section consists of results which employ this general idea.
+yields a sum product theorem. In this section we showcase a result which employs this idea.
+We also give other, more complicated, estimates on additive energies involving a convex set which
+will be used later.
 
-The simplest of which is a result in \cite{Solymosi}, which gives a stronger result
+The aforementioned result is Theorem \ref{thm:solymosi-sp}, found in \cite{Solymosi}. It gives a stronger result
 on the sum-product conjecture than the Szemeredi-Trotter theorem. 
 
-\begin{theorem}
-Let \(A \subset \mathbb{R}^{+} \) be finite and sufficiently large.
+\textbf{THIS IS A RECALL THEOREM}
+\begin{theorem}\label{thm:solymosi}
+Let \(A \subset \mathbb{R}^{+} \) be finite.
 \[
-    \max \left( \left\lvert A+A \right\rvert , \left\lvert AA \right\rvert  \right) \gg \left\lvert A \right\rvert ^{\frac{4}{3} - o(1)}
+    \max \left( \left\lvert A+A \right\rvert , \left\lvert AA \right\rvert  \right) \gtrsim  \left\lvert A \right\rvert ^{\frac{4}{3}}
 .\]
 \end{theorem}
 
 \begin{proof}
-
-\textbf{FIX THIS BEGINNING PART}
-
-\textbf{THE WHOLE THING NEEDS REVISION}
 
 We begin with a construction. Consider the set \(A^{2}\), along with the smallest set of lines
 through the origin which cover \(A^{2}\).
@@ -839,18 +838,30 @@ through the origin which cover \(A^{2}\).
     \caption{Example with \(A = \left\{ 1,2,4,8 \right\} \).}
 \end{figure}
 
-Two pairs \((a_1,a_2),(b_1,b_2) \in A^{2}\) give the same representation as a quotient if
+The claim is that each line represents an element of \(\frac{A}{A} \). This is
+easy to see, two pairs \((a_1,a_2),(b_1,b_2) \in A^{2}\) give the same representation as a quotient if
 and only if
 \[
     \frac{a_2}{a_1} = \frac{b_2}{b_1} 
 .\]
-Observe that this is the slope of a line through the origin and the points \((a_1,a_2), (b_1,b_2)\).
+Observe that this is the slope of the line through the origin and the points \((a_1,a_2), (b_1,b_2)\).
+This shows that the number of lines in the construction is \(\left\lvert \frac{A}{A}  \right\rvert \), the slope
+of each line is an element in \(\frac{A}{A} \), and the number of points on a line
+of slope \(m\) is the number of representations of \(m\) as a quotient, \(r_{\frac{A}{A} } (m)\).
 
-It follows that \(\left\lvert \frac{A}{A} \right\rvert \) is the number of lines through the origin
-necessary to cover the point set \(A^{2}\). The slope of the line is the value the line represents 
-in \(\frac{A}{A} \), and the number of points on the line is the number of representations of that number in \(\frac{A}{A} \).
+We'll now prove 2 facts about the set of vector sums of 2 points lying on consecutive lines.
 
-Consider 2 consecutive lines and the set of all vector sums between a point on each line.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{sol2.png}
+    \caption{Vector sums of 2 points lying on consecutive lines. Figure taken from \cite{Solymosi}, where the argument was first given.}
+    \label{fig:solymosi}
+\end{figure}
+
+Firstly, that the set of vector sums of points along either line is disjoint for each
+choice of consecutive lines. In figure \ref{fig:solymosi}, this is represented by the blue arrow between lines
+\(l _{j} , l _{j + 1} \) and \(l _{k}  , l _{k+1} \).
+To show this, consider 2 consecutive lines and the set of all vector sums between a point on each line.
 If our points are \(\left( a_1,a_2 \right)\) and \(\left( b_1,b_2 \right) \), with
 \[
     \frac{a_2}{a_1} > \frac{b_2}{b_1}
@@ -864,77 +875,66 @@ which satisfies
     \frac{b_2}{b_1} < \frac{a_2+b_2}{a_1+b_1} < \frac{a_2}{a_1}
 .\]
 That is, the vector sum must ``lie between'' the two lines which the original vectors are on.
-More precisely, for any pairs of consecutive lines, the vector sums of all points along the lines are disjoint.
+A consequence of this is that, for any pairs of consecutive lines, 
+the vector sums of all points along the lines are disjoint.
 
-We also have that the sums of any 2 points on each line are distinct. This is because a
-solution to
+The remaining claim is that for any choice of points on consecutive lines, the vector sum is distinct.
+To show this, consider solutions to
 \[
-    \lambda_1 v + \lambda_2 w = \lambda_3 v + \lambda_4 w \iff \left( \lambda_1 - \lambda_3 \right) v + \left( \lambda_2 - \lambda_4 \right) w
-\]
-where \(\lambda_1 \neq \lambda_3\) or \(\lambda_2 \neq \lambda_4\) exists only if \(v\) and \(w\) are linearly dependent.
+    \lambda_1 v + \lambda_2 w = \lambda_3 v + \lambda_4 w
+.\]
+We have a solution if and only if
+\[
+    \left( \lambda_1 - \lambda_3 \right) v + \left( \lambda_2 - \lambda_4 \right) w = 0 
+,\]
+where \(\lambda_1 \neq \lambda_3\) or \(\lambda_2 \neq \lambda_4\).
+This exists only if \(v\) and \(w\) are linearly dependent, which is untrue if
+\(\spn{ \left( v \right) } , \spn{ \left( w \right) } \) are distinct lines in \(\mathbb{R} ^{2}\).
 
-By dyadic partitioning on \(M(A)\), we have
+We are able to use these facts to prove Theorem \ref{thm:solymosi-sp}.
+Begin by applying dyadic partitioning on \(M(A)\) to get
 \[
-    M(A) = \sum _{x \in \frac{A}{A} } r_{\frac{A}{A} } (x)^{2} \leq  \log \left( \left\lvert \frac{A}{A} \right\rvert   \right) \tau ^{2} \left\lvert S \right\rvert
+    M(A) = \sum _{x \in \frac{A}{A} } r_{\frac{A}{A} } (x)^{2} \ll  \log \left( \left\lvert \frac{A}{A} \right\rvert   \right) \tau ^{2} \left\lvert S \right\rvert
 \]
 for some \(\tau\), where \(S = \left\{ x \in \frac{A}{A}  : r_{\frac{A}{A} } (x) \asymp \tau \right\} \).
 
-Consider the reduced system of points and lines, consisting only of the \(\left\lvert S \right\rvert \) many lines which
-have \(\asymp \tau\) many points on them. Consider the set of all vector sums between points on
-consecutive lines. Because all pairs of lines give disjoint sets, each with \(\asymp \tau ^{2}\) many sums, there are
-\(\tau^{2}\left\lvert S \right\rvert \) many vector sums. Because this is a subset of \((A+A)^{2}\),
-\[
-    \tau^{2} \left\lvert S \right\rvert \leq \left\lvert A+A \right\rvert  ^{2}
-,\]
+Consider a reduced system of points and lines, consisting only of the \(\left\lvert S \right\rvert \) many lines which
+have \(\asymp \tau\) many points on them. Consider the set of all vector sums between points over
+all consecutive lines. Because all pairs of lines give disjoint sets of sums, each with \(\asymp \tau ^{2}\) many distinct sums, there are
+\(\tau^{2}\left\lvert S \right\rvert \) many vector sums. The set of all vector sums between points of \(A^{2}\) is a subset of \((A+A)^{2}\),
 so
 \[
-    \frac{\left\lvert A \right\rvert ^{4}}{\left\lvert AA\right\rvert } \leq M(A) \ll \log \left( \left\lvert \frac{A}{A} \right\rvert   \right)  \left\lvert A+A \right\rvert  ^{2} \implies \max \left( \left\lvert A+A \right\rvert ,\left\lvert AA \right\rvert  \right) \gg \left\lvert A \right\rvert ^{\frac{4}{3} - o(1)}
+    \tau^{2} \left\lvert S \right\rvert \leq \left\lvert A+A \right\rvert  ^{2}
+.\]
+Therefore
+\[
+    \frac{\left\lvert A \right\rvert ^{4}}{\left\lvert AA\right\rvert } \leq M(A) \ll \log \left( \left\lvert \frac{A}{A} \right\rvert   \right) \left\lvert A + A \right\rvert ^{2} \ll \log \left( \left\lvert A \right\rvert  \right)  \left\lvert A+A \right\rvert  ^{2}
 \]
+so
+\[
+    \max \left( \left\lvert A + A \right\rvert , \left\lvert AA \right\rvert  \right) \gtrsim \left\lvert A \right\rvert ^{\frac{4}{3} }
+.\]
 
 \end{proof}
 
-\textbf{This is nearly the best known result, all others are only slight improvements, ... }
-\textbf{Only result purely obtaining upper bound on energy}
-
-Another instance of this type of result is
-
-\begin{theorem}
-For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large,
-\[
-    E(A) \ll \left\lvert A \right\rvert ^{\frac{32}{13} - o(1)}
-,\]
-\end{theorem}
-which immediately leads to the result
-
-\begin{corollary}
-For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large,
-\[
-    \left\lvert A+A \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} + \frac{1}{26} - o(1)}
-.\]
-\end{corollary}
-
-\textbf{FIX BELOW PARAGRAPH}
-This is proven in \cite{shkredov-new-results-higher-energy}. I did not read this
-paper because it includes a lot of unique ideas and complex notation. I plan to read it
-in the future.
-
 \textbf{REWRITE BELOW}
-Many arguments involving additive energy are not as straightforward
-as finding an upper bound. We often explore quantites such as \(E(A,S), E(D), E(S), E_{3} (A)\) etc.
-The following are examples of those style of arguments.
+Many arguments involving additive energy estimates are not as straightforward
+as finding an upper bound. We are often interested in quantites such as 
+\(E(A,A + A), E(A - A), E_{3} (A)\) etc.
 
-I'll first prove a handful of theorems which will be useful. The first of which
-I will restate from before, still leaving out proof.
+In the remaining part of this section, we'll prove theorems concerning these quantities
+which we will apply to prove more advanced results in the next section. Both of these
+results come as corollaries of the Szemeredi-Trotter Theorem.
 
 \begin{theorem}
 For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large,
 \[
-    E_{3} (A) \ll \left\lvert A \right\rvert ^{ 3 - o(1)}
+    E_{3} (A) \lesssim  \left\lvert A \right\rvert ^{ 3}
 .\]
 \end{theorem}
 
 \begin{proof}
-Recall that upon ordering \(a_{i} \) such that \(\delta_A(a_1) \geq \delta_A(a_2) \geq \dots \geq \delta_{A} (a_{\left\lvert A+A \right\rvert } )\),
+Recall that upon ordering \(a_{i} \) such that \(\delta_A(a_1) \geq \delta_A(a_2) \geq \dots \geq \delta_{A} (a_{\left\lvert A-A \right\rvert } )\),
 we have that
 \[
     \delta_{A} (a_{r} ) \ll \frac{\left\lvert A \right\rvert }{r^{\frac{1}{3} }}
@@ -943,9 +943,10 @@ we have that
 With this,
 \begin{align*}
 E_3(A) & = \sum _{x \in A-A} \delta_{A} (x)^{3} \\
-& \ll \left\lvert A \right\rvert ^{3} \sum_{r=1}^{\left\lvert A+A \right\rvert } \frac{1}{r}\\
-& \asymp \left\lvert A \right\rvert ^{3} \int_{1}^{\left\lvert A+A \right\rvert } \frac{1}{r}  ~\mathrm{d} r \\
-& = \left\lvert A \right\rvert ^{3 - o(1)}
+& \ll \left\lvert A \right\rvert ^{3} \sum_{r=1}^{\left\lvert A-A \right\rvert } \frac{1}{r}\\
+& \asymp \left\lvert A \right\rvert ^{3} \int_{1}^{\left\lvert A-A \right\rvert } \frac{1}{r}  ~\mathrm{d} r \\
+& \asymp  \left\lvert A \right\rvert ^{3} \log \left( \left\lvert A-A \right\rvert  \right) \\
+& \lesssim  \left\lvert A \right\rvert ^{3}
 \end{align*}
 \end{proof}
 
@@ -980,9 +981,11 @@ Therefore,
 \end{proof}
 
 \section{ \textbf{IDK the title }}
-In this section we'll prove the \textbf{... more exposition} \cite{shkredov}
+\textbf{RESTATE THEOREMS} 
+This section will employ results from the previous section to prove Theorems \ref{thm:shkredov-diff}, \ref{thm:shkredov-sum}.
+This argument can be found in \cite{shkredov}.
 
-Throughout this section, in the same convention as \textbf{CITED}, we'll use the
+Throughout this argument, in the same convention as \cite{shkredov}, we'll use the
 notation
 \[
     A_{x} = A \cap \left( A + x \right) = \left\{ a \in A : a - x \in A \right\} = \left\{ a \in A : \exists a_0 \in A ~~\text{s.t.}~~ a - a_0 = x \right\} 
@@ -992,18 +995,6 @@ Observe that
     \left\lvert A_{x}  \right\rvert = \delta_{A} (x) 
 .\]
 
-\begin{theorem} \label{thm:shkredov}
-Let \(A \subset \mathbb{R} \) be a convex set. Then
-\[
-    \max \left( \left\lvert A+A \right\rvert , \left\lvert A - A \right\rvert  \right) \gg_{\epsilon}  \left\lvert A \right\rvert ^{\frac{8}{5} - \epsilon }
-,\]
-\[
-    \left\lvert A-A \right\rvert \gg_{\epsilon}  \left\lvert A \right\rvert ^{\frac{8}{5} - \epsilon }
-,\]
-\[
-    \left\lvert A+A \right\rvert \gg_{\epsilon}  \left\lvert A \right\rvert ^{\frac{14}{9} - \epsilon}
-.\]
-\end{theorem}
 
 We require the following lemmata
 \begin{lemma}
@@ -1034,8 +1025,8 @@ then
 
 We're now able to prove Theorem \ref{thm:shkredov}.
 
-\begin{proof}[Proof of Theorem \ref{thm:shkredov}]
-Define the difference and sum sets with \(D = \left\lvert A-A \right\rvert \) and \(S = \left\lvert A+A \right\rvert \).
+\begin{proof}[Proof of Theorem \ref{thm:shkredov-diff}, \ref{thm:shkredov-sum}]
+Denote the difference and sum sets by \(D = \left\lvert A-A \right\rvert \) and \(S = \left\lvert A+A \right\rvert \).
 Observe that
 \[
     A - A_{x} \subset D \cap D_{x} 

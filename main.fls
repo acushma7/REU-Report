@@ -961,11 +961,15 @@ INPUT ./Figures//faceimage.png
 INPUT ./Figures//faceimage.png
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecti0800.tfm
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecti0600.tfm
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecxc1200.tfm
 INPUT ./Figures//Sol1.png
 INPUT Figures//Sol1.png
 INPUT ./Figures//Sol1.png
 INPUT ./Figures//Sol1.png
+INPUT ./Figures//sol2.png
+INPUT Figures//sol2.png
+INPUT ./Figures//sol2.png
+INPUT ./Figures//sol2.png
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecxc1200.tfm
 INPUT ./main.bbl
 INPUT main.bbl
 INPUT ./main.bbl
