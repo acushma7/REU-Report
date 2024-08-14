@@ -33,6 +33,8 @@ used to achieve them.
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
+\textbf{motivate erdos multiplication table}
+
 \textbf{issue of "for any set A" in statements, but only as A gets sufficiently large}
 
 \textbf{GO THROUGH WHOLE THING AND USE TILDE NOTATION}
@@ -996,7 +998,7 @@ Observe that
 .\]
 
 
-We require the following lemmata
+We require the following lemmata, proven in \cite{Schoen-lemma} and \cite{shkredov}.
 \begin{lemma}
 For every set \(A \subset \mathbb{R} \) we have
 \[
@@ -1020,10 +1022,24 @@ then
 \end{lemma}
 
 \begin{proof}
-\textbf{PROOF}  
+\begin{align*}
+\left\lvert A \right\rvert \left\lvert A_{x}  \right\rvert & = \sum _{s \in A + A_{x} } \sigma_{A, A_{x} } (s) = \sum _{s \in A-A} \delta_{A, A_{x} } (s)\\
+& \leq E\left( A, A_{x}  \right) ^{\frac{1}{2} } \left\lvert A \pm  A_{x}  \right\rvert ^{\frac{1}{2} }
+\end{align*}
+so
+\begin{align*}
+\eta \left\lvert A \right\rvert ^{3} & =  \sum _{x \in P} \left\lvert A \right\rvert \left\lvert A_{x}  \right\rvert \\
+& \leq \sum _{x \in P} E(A, A_{x} )^{\frac{1}{2} }\left\lvert A \pm A_{x}  \right\rvert ^{\frac{1}{2} } \\
+& \leq \left( \sum _{x\in P} E(A,A_{x} ) \right)  ^{\frac{1}{2} } \left( \sum _{x \in P} \left\lvert A \pm A_{x}  \right\rvert  \right) ^{\frac{1}{2} }
+\end{align*}
+and therefore
+\[
+    \sum _{x \in P} \left\lvert A \pm A_{x}  \right\rvert \geq \frac{\eta ^{2}\left\lvert A \right\rvert ^{6}}{E_{3} (A)} 
+.\]
+
 \end{proof}
 
-We're now able to prove Theorem \ref{thm:shkredov}.
+We're now able to prove the theorems.
 
 \begin{proof}[Proof of Theorem \ref{thm:shkredov-diff}, \ref{thm:shkredov-sum}]
 Denote the difference and sum sets by \(D = \left\lvert A-A \right\rvert \) and \(S = \left\lvert A+A \right\rvert \).
@@ -1116,14 +1132,35 @@ This report is based on work supported by NSF grant DMS-2051032, which we gratef
 
 \section*{Appendix}
 
-\textbf{UNIQUENESS OF REPRESENTATIONS OF DIFFERENT BASES}
-
-\textbf{BELOW}
+\begin{theorem*}[Uniqueness of Basis Representations]
+For any \(x,r \in \mathbb{N} \), there is a unique sequence of natural numbers \(\left( a_{i}  \right) _{i = 0} ^{I} \), with
+\(I \leq \log _{r} \left( x \right) \) and \(a_{i} < r\) such that
 \[
-    \left\lvert A + A \right\rvert \geq  \frac{ c \left\lvert A \right\rvert ^{2}}{\log \left( \left\lvert A \right\rvert  \right) } 
+    x = \sum _{i \leq \log _{r} \left( x \right) } a_{i} r^{i}
+\]
+\end{theorem*}
+
+\begin{proof}
+\textbf{PROOF}
+\end{proof}
+
+Past this point, we will freely use shorthand which was discussed in the preliminaries
+section. We also introduce the notation
+\[
+    f(x) = o(g(x))
+\]
+if
+\[
+    \lim_{x \to \infty} \frac{f(x)}{g(x)} = 0 
 .\]
 
-\textbf{I need to define all things I use like little o and big O}.
+We'll introduce the following theorems together due to their relatedness.
+
+\begin{theorem*}
+\[
+    \left\lvert [n] \cdot [n] \right\rvert \gg \frac{n ^{2}}{\log \left( n \right) }    
+.\]
+\end{theorem*}
 
 \begin{theorem*}[Erd\H{o}s multiplication table theorem]
 \[
@@ -1143,14 +1180,17 @@ is the number of distinct numbers in an \(n \times n\) multiplication table:
     \caption{10 \(\times \) 10 multiplication table with distinct numbers highlighted in red.}
 \end{figure}
 
-The theorem I am proving here is just an ``upper bound'' on the asymptotic behavior of
-this quantity. In \cite{Ford}, Kevin Ford proved that the exact order of this quantity is
+These theorems are just bounds on the asymptotic behavior of \(\left\lvert [n] \cdot [n] \right\rvert \). 
+In \cite{Ford}, Kevin Ford proved that the exact order of this quantity is
 \[
     \left\lvert [n] \cdot [n] \right\rvert \asymp \frac{n^{2}}{\log \left( n^{2} \right) ^{\delta} \left( \log \log \left( n^{2} \right) \right) ^{\frac{3}{2} } } 
 ,\]
-where \(\delta = 1 - \frac{1 + \log \log \left( 2 \right)  }{2} \) is the Erd\H{o}s-Tenenbaum-Ford constant.
-
-We require a lemma and a prerequisite theorem.
+where
+\[
+    \delta = 1 - \frac{1 + \log \log \left( 2 \right)  }{2} 
+.\]
+The exact asymptotic behavior of this quantity is not known. 
+To prove these, we require a lemma and a prerequisite theorem.
 
 \begin{lemma*}
 Let \(\left( a_{n}  \right) _{n = 1} ^{\infty }\) be a sequence of real numbers. Let \(A: \mathbb{R} \to \mathbb{R} \) be defined by

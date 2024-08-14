@@ -22,7 +22,10 @@ Misha Rudnev and Sophie Stevens, \emph{An update on the sum-product problem}, 20
 \bibitem[Sol09]{Solymosi}
 József Solymosi, \emph{Bounding multiplicative energy by the sumset}, Advances in Mathematics \textbf{222} (2009), 402--408.
 
-\bibitem[SS11]{shkredov}
+\bibitem[SS11a]{Schoen-lemma}
+T.~Schoen and I.~D. Shkredov, \emph{On a question of cochrane and pinner concerning multiplicative subgroups}, 2011.
+
+\bibitem[SS11b]{shkredov}
 Tomasz Schoen and Ilya~D. Shkredov, \emph{On sumsets of convex sets}, 2011.
 
 \bibitem[ST83]{SzT-original}
