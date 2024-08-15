@@ -1189,8 +1189,8 @@ where
 \[
     \delta = 1 - \frac{1 + \log \log \left( 2 \right)  }{2} 
 .\]
-The exact asymptotic behavior of this quantity is not known. 
-To prove these, we require a lemma and a prerequisite theorem.
+The exact asymptotic behavior of this quantity is not known.
+To prove the first, we require a lemma and a prerequisite theorem.
 
 \begin{lemma*}
 Let \(\left( a_{n}  \right) _{n = 1} ^{\infty }\) be a sequence of real numbers. Let \(A: \mathbb{R} \to \mathbb{R} \) be defined by
@@ -1206,10 +1206,9 @@ For \(x \in \mathbb{R} \) and any differentiable function \(\phi : [1,y] \to \ma
 \textbf{FINISH THIS LATER}
 \begin{proof}
 \begin{align*}
-    \sum _{x < n \leq y} a_{n} \phi(n) & = a_{\left\lceil x \right\rceil } \phi(\left\lceil x \right\rceil ) + \cdots  + a_{\left\lfloor y \right\rfloor } \phi(\left\lfloor y \right\rfloor )\\
-    & = \left( A(x + 1) - A(x) \right) \phi(\left\lceil x \right\rceil ) + \cdots + \left( A(y) - A(y-1) \right) \phi(\left\lfloor y \right\rfloor ) \\
-    & = \\
-    & = A(y) \phi\left( \left\lfloor y \right\rfloor \right)  - A(x)\phi\left( \left\lceil x \right\rceil  \right) + \sum_{i= 1 }^{} \left( \phi\left( \left\lceil x \right\rceil + i \right) - \phi\left( \left\lceil x \right\rceil + 1 + i \right) \right) A(x + i)  
+    \sum _{n \leq x} a_{n} \phi(n) & = a_1\phi(1 ) + \cdots  + a_{\left\lfloor x \right\rfloor } \phi(\left\lfloor x \right\rfloor )\\
+    & = \left( A(2) - A(1) \right) \phi(1) + \cdots + \left( A(\left\lfloor x \right\rfloor ) - A(\left\lfloor x \right\rfloor -1) \right) \phi(\left\lfloor x \right\rfloor )\\
+    & = -A(1)\phi(1) + \left( \phi(1) - \phi(2) \right) A (2) + \cdots +
 \end{align*}
 \end{proof}
 
