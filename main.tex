@@ -1181,9 +1181,9 @@ is the number of distinct numbers in an \(n \times n\) multiplication table:
 \end{figure}
 
 These theorems are just bounds on the asymptotic behavior of \(\left\lvert [n] \cdot [n] \right\rvert \). 
-In \cite{Ford}, Kevin Ford proved that the exact order of this quantity is
+In \cite{Ford}, it is proven that the exact order of this quantity is
 \[
-    \left\lvert [n] \cdot [n] \right\rvert \asymp \frac{n^{2}}{\log \left( n^{2} \right) ^{\delta} \left( \log \log \left( n^{2} \right) \right) ^{\frac{3}{2} } } 
+    \left\lvert [n] \cdot [n] \right\rvert \asymp \frac{n^{2}}{\log \left( n \right) ^{\delta} \left( \log \log \left( n \right) \right) ^{\frac{3}{2} } } 
 ,\]
 where
 \[
@@ -1408,17 +1408,61 @@ We are now able to prove the first theorem.
 \end{theorem*}
 
 \begin{proof}
-ok
+Let \(p_{i} \) be the \(i\)-th prime number and \(k\) be chosen such that \(p_{k} \) is the largest prime
+\(p_{k} \leq n\). Consider the set of numbers
+\[
+    P = \left\{ p_{i} \cdot m : i \leq k ~,~ m \leq p_{i}  \right\} 
+.\]
+We have \(P \subset [n] \cdot [n]\) and \(p_{i} \cdot m\) is distinct for every choice of \(i,m\).
+
+It follows that, by applying Abel's summation formula,
+\begin{align*}
+\left\lvert [n]\cdot [n] \right\rvert & \geq \left\lvert P \right\rvert \\
+& = \sum _{\substack{ p \leq n \\ p \text{ prime}  }} p\\
+& = \pi(n)\cdot n - \int_{2}^{n} \pi(t) ~\mathrm{d} t \\
+& \gg \pi(n)\cdot n\\
+& \gg \frac{n^{2}}{\log \left( n \right) } 
+\end{align*}
 \end{proof}
 
-The final lemma needed is
+We require 2 additional lemmata to prove the second theorem.
+
+\begin{lemma*}
+Let \(X\) be a real random variable with variance \(\sigma^{2}\). For any \(t \in \mathbb{R} ^{+}\),
+\[
+    \mathbb{P} \left( \left\lvert X - \mathbb{E} (X) \right\rvert ^{2} \geq t^{2} \right) \leq \frac{\sigma^{2}}{t^{2}} 
+\]
+\end{lemma*}
+
+\begin{proof}
+We prove this for the case of discrete \(X\).
+The proof for continuous \(X\) follows similarly.
+
+Let \(N\) be the number of possible values of \(X\).
+
+For any interval \(I \subset \mathbb{R} \), let \(1_{I} : \mathbb{R} \to \left\{ 1,0 \right\} \) be
+defined by
+\[
+    1_{I} (x) = 1 \text{ if } x \in I ~,~ 1_{I} (x) = 0 \text{ if } x \not \in I
+.\]
+
+We have
+\[
+    \mathbb{P} (X \geq t) = \frac{ \sum _{x} 1_{[t,\infty )} (x)}{N} \leq \frac{ \sum _{x} \frac{x}{t} }{N} = \frac{ \sum _{x} \frac{x}{N} }{t}  = \frac{\mathbb{E} (X)}{t} 
+\]
+so
+\[
+    \mathbb{P} \left( \left\lvert X - \mathbb{E} (X) \right\rvert ^{2} \geq t ^{2} \right) \leq \frac{\sigma^{2}}{t^{2}} 
+.\]
+\end{proof}
+
 \begin{lemma*}
 \[
     \sum _{\substack{ p \leq n \\ p\text{ prime}  }} \frac{1}{p}  = \log\log \left( n \right) + O(1)
 .\]
 \end{lemma*}
 
-\begin{proof}[Proof of Lemma]
+\begin{proof}
 Recall that for some number \(N \in \mathbb{N} \), the prime factorization of \(N!\) is of the form
 \[
     N! = \prod _{\substack{ p \leq N \\ p \text{ prime}  }} p ^{\alpha(N,p)}
