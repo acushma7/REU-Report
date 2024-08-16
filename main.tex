@@ -1192,27 +1192,51 @@ where
 The exact asymptotic behavior of this quantity is not known.
 To prove the first, we require a lemma and a prerequisite theorem.
 
-\begin{lemma*}
+\begin{lemma*}[Abel's Summation Formula]
 Let \(\left( a_{n}  \right) _{n = 1} ^{\infty }\) be a sequence of real numbers. Let \(A: \mathbb{R} \to \mathbb{R} \) be defined by
 \[
     A(t) = \sum _{n \leq t} a_{n} 
 .\]
 For \(x \in \mathbb{R} \) and any differentiable function \(\phi : [1,y] \to \mathbb{R} \),
 \[
-    \sum _{n \leq x} a_{n} \phi(n) = A(x)\phi(x) - A(1) \phi(1) - \int_{1}^{x} A(t)\phi'(t) ~\mathrm{d} t
+    \sum _{n \leq x} a_{n} \phi(n) = A(x)\phi(x) - \int_{1}^{x} A(t)\phi'(t) ~\mathrm{d} t
 \]
 \end{lemma*}
 
-\textbf{FINISH THIS LATER}
 \begin{proof}
 \begin{align*}
     \sum _{n \leq x} a_{n} \phi(n) & = a_1\phi(1 ) + \cdots  + a_{\left\lfloor x \right\rfloor } \phi(\left\lfloor x \right\rfloor )\\
-    & = \left( A(2) - A(1) \right) \phi(1) + \cdots + \left( A(\left\lfloor x \right\rfloor ) - A(\left\lfloor x \right\rfloor -1) \right) \phi(\left\lfloor x \right\rfloor )\\
-    & = -A(1)\phi(1) + \left( \phi(1) - \phi(2) \right) A (2) + \cdots +
+    & = A(1) \phi(1)+ \left( A(2) - A(1)\right)\phi(2)  + \cdots + \left( A(\left\lfloor x \right\rfloor ) - A(\left\lfloor x \right\rfloor -1) \right) \phi(\left\lfloor x \right\rfloor )\\
+    & = \left( \phi(1) - \phi(2) \right) A(1) + \cdots + \left( \phi(\left\lfloor x \right\rfloor -1)- \phi(\left\lfloor x \right\rfloor ) \right) A \left( \left\lfloor x \right\rfloor -1 \right) + \phi(\left\lfloor x \right\rfloor )A(\left\lfloor x \right\rfloor )\\
+    & = \phi(\left\lfloor x \right\rfloor )A(\left\lfloor x \right\rfloor ) - \sum _{i = 2} ^{\left\lfloor x \right\rfloor } \left( \phi(i) - \phi(i-1) \right) A(i - 1)\\
+    & = \phi\left( \left\lfloor x \right\rfloor  \right) A (\left\lfloor x \right\rfloor ) - \sum_{i=2}^{\left\lfloor x \right\rfloor } \left( \int_{i-1}^{i} \phi'(t) ~\mathrm{d} t  \right) A(i-1)
+\end{align*}
+
+Observe that, for \(i\in \mathbb{Z} \) and \(t \in [i - 1,i)\),
+\[
+    A(t) = A(\left\lfloor t \right\rfloor ) = A(i - 1)
+,\]
+so
+
+\begin{align*}
+    \sum _{n \leq x} a_{n} \phi(n) & = \phi\left( \left\lfloor x \right\rfloor  \right) A (\left\lfloor x \right\rfloor ) - \sum_{i=2}^{\left\lfloor x \right\rfloor } \left( \int_{i-1}^{i} \phi'(t) ~\mathrm{d} t  \right) A(i-1)\\
+    & = \phi(\left\lfloor x \right\rfloor ) A(\left\lfloor x \right\rfloor ) - \sum_{i=2}^{\left\lfloor x \right\rfloor } \int_{i-1}^{i} A(t)\phi'(t) ~\mathrm{d} t\\
+    & = \phi(\left\lfloor x \right\rfloor )A(\left\lfloor x \right\rfloor )- \int_{1}^{\left\lfloor x \right\rfloor } A(t)\phi'(t) ~\mathrm{d} t
+\end{align*}
+and
+\begin{align*}
+    \int_{1}^{\left\lfloor x \right\rfloor } A(t)\phi'(t) ~\mathrm{d} t & = \int_{1}^{x} A(t)\phi'(t) ~\mathrm{d} t - \int_{\left\lfloor x \right\rfloor }^{x} A(t)\phi'(t) ~\mathrm{d} t \\
+    & = \int_{1}^{x} A(t)\phi'(t) ~\mathrm{d} t -  A(\left\lfloor x \right\rfloor )\left(\phi(x)- \phi(\left\lfloor x \right\rfloor ) \right) \\
+    & =\int_{1}^{x} A(t)\phi'(t) ~\mathrm{d} t - A(x)\phi(x) + A(\left\lfloor x \right\rfloor )\phi(\left\lfloor x \right\rfloor ).
+\end{align*}
+Substituting this we get
+\begin{align*}
+    \sum _{n \leq x} a_{n} \phi(n) & = \phi(\left\lfloor x \right\rfloor )A(\left\lfloor x \right\rfloor )- \int_{1}^{\left\lfloor x \right\rfloor } A(t)\phi'(t) ~\mathrm{d} t\\
+    & = A(x) \phi(x) - \int_{1}^{x} A(t)\phi'(t) ~\mathrm{d} t
 \end{align*}
 \end{proof}
 
-A prerequisite theorem gives the order of magnitude of 3 functions which
+The following prerequisite theorem gives the order of magnitude of 3 functions which
 will prove useful.
 
 \begin{theorem}
@@ -1306,6 +1330,85 @@ We have
 Thus, \(\psi(t) \asymp \theta(t) \ll t\). To prove \(\psi(t) \asymp \theta(t) \asymp t\),
 it suffices to show that \(\psi(t) \gg t\).
 
+Observe that for some number \(N \in \mathbb{N} \), the prime factorization of \(N!\) is of the form
+\[
+    N! = \prod _{\substack{ p \leq N \\ p \text{ prime}  }} p ^{\alpha(N,p)}
+,\]
+where
+\[
+    \alpha(N,p) = \sum _{i \in \mathbb{N} } \left\lfloor \frac{N}{p ^{i}}  \right\rfloor = \sum _{i \leq \log _{p} \left( N \right) } \left\lfloor \frac{N}{p ^{i}}  \right\rfloor  =\sum _{i \leq \log _{2} \left( N \right) } \left\lfloor \frac{N}{p ^{i}}  \right\rfloor 
+.\]
+
+Therefore,
+\[
+    \binom{2n}{n} = \frac{\left( 2n \right) !}{\left( n!  \right) ^{2}} = \prod _{\substack{ p \leq 2n \\ p \text{ prime}  }} p ^{ \sum _{i \in \mathbb{N} } \left( \left\lfloor \frac{2n}{p^{i}}  \right\rfloor - 2 \left\lfloor \frac{n}{p ^{i}}  \right\rfloor \right)  }
+.\]
+
+In general for some \(x \in \mathbb{R}, k \in \mathbb{N} \), if \(k \leq x < k +1\), then
+\[
+    2k \leq 2x < 2k + 2
+\]
+so
+\[
+    2\left\lfloor x \right\rfloor \leq \left\lfloor 2x \right\rfloor \leq 2\left\lfloor x \right\rfloor +1
+.\]
+
+It follows that
+\[
+    \left\lfloor \frac{2n}{p^{i}}  \right\rfloor - 2 \left\lfloor \frac{n}{p ^{i}}  \right\rfloor \leq  1
+\]
+so
+\[
+    \sum _{i \in \mathbb{N} } \left( \left\lfloor \frac{2n}{p^{i}}  \right\rfloor - 2 \left\lfloor \frac{n}{p ^{i}}  \right\rfloor  \right) \leq \sum_{i \leq \log _{p} \left( 2n \right) } 1 = \left\lfloor \frac{\log \left( 2n \right) }{\log \left( p \right) }  \right\rfloor 
+,\]
+and therefore
+\[
+    \log \binom{2n}{n} \leq \sum _{\substack{ p \leq 2n \\ p \text{ prime}  }} \left\lfloor \frac{\log \left( 2n \right) }{\log \left( p \right) }  \right\rfloor \log \left( p \right) = \psi(2n)
+.\]
+
+Observing that
+\[
+    \log \binom{2n}{n} = \log \left( \frac{n+ 1}{1} \cdot \frac{n + 2}{2} \cdot \cdots \cdot \frac{n + n }{n}   \right) \geq \log \left( 2^{n} \right) \gg n
+,\]
+it follows that
+\[
+    \psi(t) \gg t
+.\]
+
+We have shown
+\[
+    \psi(t) \asymp \theta(t) \asymp t
+.\]
+
+By applying Abel's summation formula,
+\begin{align*}
+\pi(x) & = \sum _{\substack{ p \leq x \\ p \text{ prime}  }} 1\\
+& = \sum _{\substack{ p \leq x \\ p \text{ prime}  }}  \log \left( p \right) \cdot \frac{1}{\log \left( p \right) } \\
+& = \theta(x)\cdot \frac{1}{\log \left( x \right) } + \int_{2}^{x} \frac{\theta(t)}{t \log ^{2}\left( t \right) }  ~\mathrm{d} t\\
+& \asymp \frac{x}{\log \left( x \right) } + \int_{2}^{x} \frac{1}{\log ^{2}\left( t \right) }  ~\mathrm{d} t 
+\end{align*}
+and
+\begin{align*}
+    \frac{x}{\log \left( x \right) } & \asymp \int_{2}^{x} \left( \frac{t}{\log \left( t \right) } \right) '  ~\mathrm{d} t \\
+    & = \int_{2}^{x} \frac{1}{\log \left( t \right) }  ~\mathrm{d} t - \int_{2}^{x} \frac{1}{\log ^{2}\left( t \right) }  ~\mathrm{d} t \\
+    & \gg \int_{2}^{x} \frac{1}{\log ^{2}\left( t \right) }  ~\mathrm{d} t 
+\end{align*}
+so
+\[
+    \pi(x) \asymp \frac{x}{\log \left( x \right) } 
+.\]
+\end{proof}
+
+We are now able to prove the first theorem.
+
+\begin{theorem*}
+    \[
+        \left\lvert [n] \cdot [n] \right\rvert \gg \frac{n ^{2}}{\log \left( n \right) }    
+    .\]
+\end{theorem*}
+
+\begin{proof}
+ok
 \end{proof}
 
 The final lemma needed is
@@ -1316,7 +1419,7 @@ The final lemma needed is
 \end{lemma*}
 
 \begin{proof}[Proof of Lemma]
-Observe that for some number \(N \in \mathbb{N} \), the prime factorization of \(N!\) is of the form
+Recall that for some number \(N \in \mathbb{N} \), the prime factorization of \(N!\) is of the form
 \[
     N! = \prod _{\substack{ p \leq N \\ p \text{ prime}  }} p ^{\alpha(N,p)}
 ,\]
