@@ -1162,7 +1162,7 @@ We'll introduce the following theorems together due to their relatedness.
 .\]
 \end{theorem*}
 
-\begin{theorem*}[Erd\H{o}s multiplication table theorem]
+\begin{theorem*}
 \[
     \left\lvert [n] \cdot [n] \right\rvert = o(n^{2})
 .\]
@@ -1430,7 +1430,7 @@ We require 2 additional lemmata to prove the second theorem.
 \begin{lemma*}
 Let \(X\) be a real random variable with variance \(\sigma^{2}\). For any \(t \in \mathbb{R} ^{+}\),
 \[
-    \mathbb{P} \left( \left\lvert X - \mathbb{E} (X) \right\rvert ^{2} \geq t^{2} \right) \leq \frac{\sigma^{2}}{t^{2}} 
+    \mathbb{P} \left( \left\lvert X - \mathbb{E} (X) \right\rvert \geq t \right) \leq \frac{\sigma^{2}}{t^{2}} 
 \]
 \end{lemma*}
 
@@ -1452,7 +1452,7 @@ We have
 \]
 so
 \[
-    \mathbb{P} \left( \left\lvert X - \mathbb{E} (X) \right\rvert ^{2} \geq t ^{2} \right) \leq \frac{\sigma^{2}}{t^{2}} 
+    \mathbb{P} \left( \left\lvert X - \mathbb{E} (x) \right\rvert \geq t \right) =\mathbb{P} \left( \left\lvert X - \mathbb{E} (X) \right\rvert ^{2} \geq t ^{2} \right) \leq \frac{\sigma^{2}}{t^{2}} 
 .\]
 \end{proof}
 
@@ -1537,12 +1537,100 @@ Applying Abel's summation formula,
 \sum  _{\substack{ p \leq N \\p \text{ prime}  }} \frac{1}{p} & = \sum _{\substack{ p \leq N \\ p \text{ prime}  }}   \frac{\log \left( p \right) }{p} \cdot \frac{1}{\log \left( p \right) } \\
 & = \left( \sum _{\substack{ p \leq N \\ p \text{ prime}  }} \frac{\log \left( p \right) }{p}  \right) \cdot \frac{1}{\log \left( N \right) } + O(1) + \int_{2}^{N} \frac{ \sum _{\substack{ p \leq t \\ p \text{ prime}  }}\frac{ \log \left( p \right) }{p} }{t \log ^{2}\left( t \right) }  ~\mathrm{d} t \\
 & = \frac{ \log \left( N \right) + O(1)  }{\log \left( N \right) } + O(1) + \int_{2}^{N} \frac{\log \left( t \right) + O(1)}{t \log ^{2}\left( t \right) }  ~\mathrm{d} t\\
-& = O(1) + \int_{2}^{N} \frac{1}{t \log \left( t \right) }  ~\mathrm{d} t + \int_{2}^{N} \frac{O(1)}{t \log ^{2}\left( t \right) }  ~\mathrm{d} t 
+& = O(1) + \int_{2}^{N} \frac{1}{t \log \left( t \right) }  ~\mathrm{d} t + \int_{2}^{N} \frac{O(1)}{t \log ^{2}\left( t \right) }  ~\mathrm{d} t \\
+& = \log\log \left( N \right) + O(1)
+\end{align*}
+\end{proof}
+
+We are now able to prove
+
+\begin{theorem*}
+    \[
+        \left\lvert [n] \cdot [n] \right\rvert = o(n^{2})
+    .\]
+\end{theorem*}
+
+\begin{proof}
+Define the prime power counting function \(\Omega : \mathbb{N} \to \mathbb{N} \) by
+\[
+    \Omega(x) = \sum _{\substack{ p ^{\alpha} \mid x \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} 1
+.\]
+
+Let \(N \in \mathbb{N} \). We prove this theorem by examining the distribution of \(\Omega(X)\) for an
+uniformly distributed random variable \(X\) of natural numbers \(x \leq N\).
+Let \(Y = \Omega(X)\).
+
+We first calculate \(\mathbb{E} (Y)\).
+
+\begin{align*}
+\mathbb{E} (Y) & = \sum _{x \leq N} \frac{1}{N} \cdot \Omega(x)\\
+& = \frac{1}{N} \sum _{x \leq N } \sum _{\substack{ p^{\alpha} \mid x \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} 1\\
+& = \frac{1}{N} \sum _{\substack{ p^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha}}  \right\rfloor \\
+& = \frac{1}{N} \sum _{\substack{ p^{\alpha}\leq N \\ p \text{ prime}  \\ \alpha \in \mathbb{N}   }} \left( \frac{N}{p ^{\alpha}} - \delta_{p ^{\alpha}}  \right)  \\
+& = \sum _{\substack{ p^{\alpha}\leq N \\p  \text{ prime} \\ \alpha \in  \mathbb{N}  }} \frac{1}{p ^{\alpha}} - \frac{1}{N} \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in  \mathbb{N} }}  \delta_{p ^{\alpha}} \\
+& = \log\log \left( N \right) + O(1) - \frac{O(1) \psi(N)}{N} \\
+& = \log\log \left( N \right) + O(1).
+\end{align*}
+
+To calculate \(V(Y)\), we have that
+\[
+    V(Y) = \mathbb{E} (Y^{2}) - \mathbb{E} (Y)^{2} = \mathbb{E} (Y^{2}) - \left( \log\log \left( N \right) + O(1) \right) ^{2}
+,\]
+so it suffices to calculate
+\[
+    \mathbb{E} (Y^{2})
+.\]
+
+\begin{align*}
+\mathbb{E} \left( Y^{2} \right) & = \frac{1}{N} \sum _{x \leq N} ( \sum _{\substack{ p ^{\alpha} \mid x \\ p \text{ prime} \\ \alpha \in  \mathbb{N}  }} 1 ) ^{2} \\
+& = \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},q^{\beta}) \\ p,q \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, q^{\beta} \mid x }} 1\\
+& = \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},q^{\beta})\\ p \neq q \\ p,q \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, q^{\beta} \mid x }} 1 + \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},p^{\beta}) \\ p \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, p^{\beta} \mid x }} 1\\
+& = \frac{1}{N} \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha} q ^{\beta}}  \right\rfloor + \frac{1}{N} \sum _{\substack{ (p ^{\alpha}, p ^{\beta}) \\ p ^{ \max \left( \alpha,\beta \right) }\leq N \\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\max \left( \alpha,\beta \right) }}  \right\rfloor \\
+& \leq  \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \frac{1}{ p ^{\alpha} q ^{\beta}} - \frac{1}{N}  \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \delta_{p ^{\alpha}q ^{\beta}} +2 \sum _{\substack{ p ^{\alpha} \leq N \\ \beta \leq \alpha\\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }}\frac{1}{p ^{\alpha}} - \frac{2}{N}  \sum _{\substack{ p ^{\alpha} \leq N \\ \beta \leq \alpha\\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }}\delta_{p ^{\alpha}}   \\
+& \leq \left( \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \frac{1}{p ^{\alpha}}  \right) ^{2} +  2 \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in  \mathbb{N} }} \frac{\alpha}{p ^{\alpha}}
+\end{align*}
+
+We have that
+\begin{align*}
+2 \sum _{\substack{ p ^{\alpha} \leq N \\ \alpha\geq 2\\ p \text{ prime} }} \frac{\alpha}{p ^{\alpha}} & \leq 2 \sum _{\substack{ x \geq 2 \\ \alpha \geq 2 }}  \frac{\alpha}{x ^{\alpha}} \\
+& = 2\sum _{x \geq 2} \left( x \sum _{\alpha \geq 2} \frac{\alpha}{x ^{\alpha + 1}}  \right) \\
+& = 2 \sum _{x \geq 2} \left( x \cdot \frac{\mathrm{d}}{\mathrm{d} x}\left( \sum _{\alpha \geq 2} - \frac{1}{x ^{\alpha}} \right)  \right) \\
+& = -2 \sum _{x \geq 2} \left( x \cdot \frac{\mathrm{d}}{\mathrm{d} x}\left( \frac{\frac{1}{x^{2}} }{1 - \frac{1}{x} }  \right)  \right)\\
+& = 2 \sum _{x \geq 2}  \frac{x (2x-1)}{\left( x^{2}-x \right) ^{2}}
+\end{align*}
+which, via limit comparison test with
+\[
+    \frac{1}{x^{2}} 
+,\]
+converges.
+
+It follows that
+\[
+    2 \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in  \mathbb{N} }} \frac{\alpha}{p ^{\alpha}} = 2 \sum _{\substack{ p \leq N \\ p  \text{ prime} }} \frac{1}{p}  + O(1) = 2 \log\log \left( N \right) + O(1)
+,\]
+and therefore that
+\begin{align*}
+\mathbb{E} \left( Y^{2} \right) & \leq \left( \log\log \left( N \right) + O(1) \right)^{2} + 2 \log\log \left( N \right) + O(1)\\
+& = \left( \log\log \left( N \right)  + O(1) \right) ^{2}. 
 \end{align*}
 
 
+This gives that
+\begin{align*}
+V(Y) & = \mathbb{E} \left( Y^{2} \right) - \mathbb{E} (Y)^{2}\\
+& \leq \left( \log\log \left( N \right) + O(1) \right) ^{2} - \left( \log\log \left( N \right) + O(1) \right) ^{2}\\
+& = O \left( \log\log \left( N \right)  \right).
+\end{align*}
+
+Applying the lemma, we see that for any \(\delta > 0\),
+\[
+    \mathbb{P} \left( \left\lvert Y - \log\log \left( N \right)  \right\rvert \geq \log\log \left( N \right) ^{\delta} \right) \leq \frac{O(\log\log \left( N \right) )}{\log\log \left( N \right) ^{2\delta}} 
+,\]
+this gives, for any \(\epsilon > 0\)
+\[
+    \mathbb{P} \left( \left\lvert Y - \log\log \left( N \right)  \right\rvert \geq \log\log \left( N \right) ^{\frac{1}{2} + \epsilon} \right) \leq \frac{O(\log\log \left( N \right) )}{\log\log \left( N \right) ^{1 + \epsilon}} = o(1) 
+.\]
 
 
 \end{proof}
-
 \end{document}
