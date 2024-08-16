@@ -6,12 +6,10 @@
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 \begin{document}
-\title{\textbf{TITLE}} 
-
-%%%% DEPARTMENT OF MATHEMATICS???????? Why not CAS?
+\title{The Convex Sumset Problem} 
 
 \author[Cushman]{Adam Cushman}
-\address{Department of Mathematics\\
+\address{College of Arts and Sciences\\
          Indiana University,
          Bloomington, IN 47405
          USA} 
@@ -24,16 +22,14 @@ posits that any sufficiently large set must have a `relatively large' number
 of distinct sums or products between its elements.
 A newer conjecture extends this idea, positing that for convex sets there must be a `relatively large'
 number of distinct sums between its elements. Both conjectures remain open and far from being solved.
-This report provides an entirely self-contained overview of some known results and the methods
-used to achieve them.
+This report provides an entirely self-contained overview of some known results, primarily focused on the
+latter conjecture, and the methods used to achieve them.
 \end{abstract}
 
 \maketitle
 
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-\textbf{motivate erdos multiplication table}
 
 \section{Introduction and Motivation} 
 
@@ -42,7 +38,7 @@ For any sets \(A,B\) and binary operation \(\cdot \) which acts on elements of \
     A \cdot  B = \left\{ a \cdot  b : a \in A~,~ b \in B \right\} 
 .\]
 
-Observe the following example which motivates the study of the sum-product problem.
+Observe the following example which motivates the study of these problems.
 
 Let \(A = \left\{ 1, 2, 3, \cdots, n \right\}\) and \(G = \left\{ 2, 2^{2}, 2^{3}, \cdots , 2^{n} \right\}\).
 
@@ -85,11 +81,13 @@ This is the phenomenon which motivates this problem.
 One questions is: ``does there exist a set for which neither the sum nor the product set is large?''
 The sum-product conjecture states that such a set does not exist. 
 Another question we study in this report is: ``what
-determines if the sum set is large or the product set is large?'' A
-conjecture which partially attacks this question states that the sum set is large
+determines if the sum set is large or the product set is large?'' A newer
+conjecture which partially addresses this question states that the sum set is large
 when the set itself is convex.
 
-The rest of the report will proceed in the following way : \textbf{finish this}
+The rest of the report will proceed with preliminary definitions and ideas,
+a precise statement of the main problems we'll focus on, proving a collection
+of important results, and applying these results to the conjectures we are concerned with.
 
 \section{Preliminaries}
 
@@ -251,7 +249,7 @@ Let \(I \subset \mathbb{R} \) be an interval.
     We call a function \(f: I \to \mathbb{R} \) convex if for
     any 2 points \(x_1,x_2 \in I\), with \(x_1 \neq x_2\), and any \(\lambda \in (0,1)\),
     \[
-        f((x_2-x_1)\lambda + x_1) < \left( f(x_2)-f(x_1) \right) \lambda + f(x_1)
+        f(\lambda x_1 + (1-\lambda)x_2) < \lambda f(x_1) + (1-\lambda)f(x_2)
     .\]
 
     A finite set \(A \subset \mathbb{R}\) is convex if there is a function \(f: [1, \left\lvert A \right\rvert ] \to \mathbb{R} \)
@@ -273,32 +271,68 @@ That is that translations of the graph of a convex function intersect in at most
 \end{lemma}
 
 \begin{proof}
-    \textbf{PROOF}
 We first show that for any \(x_1, x_2\) with \(x_1 < x_2\) and \(t > 0\), we have
 \[
     f(x_1 + t) - f(x_1) < f(x_2 + t) - f(x_2)
 .\]
 
-We have
+Take \(\lambda_1 = \frac{x_1 - x_2}{x_1 -x_2 -t} \) to get the result
 \[
-    f(x_1 + t) < \left( \frac{t}{x_2-x_1}  \right) f(x_2)+ f(x_1)\left( 1-\frac{t}{x_2-x_1}  \right) 
-\]
-and
+    f(x_1 + t)  = f(\lambda_1 x_1 + \left( 1- \lambda_1 \right) \left( x_2 + t \right) ) < \lambda_1 f(x_1) + \left( 1 - \lambda_1 \right) f(x_2 + t)
+.\]
+
+Take \(\lambda_2 = \frac{-t}{x_1-x_2-t} \) to get the result
 \[
-    f(x_2)
-\]
+    f(x_2) = f(\lambda_2x_1 + \left( 1 - \lambda_2 \right) \left( x_2 + t \right) ) < \lambda_2 f(x_1) + \left( 1- \lambda_2 \right) f(x_2+ t) 
+.\]
 
-
-
-Suppose we have two translations of \(\ell \),
+Observing that \(\lambda_1 = 1-\lambda_2\) and adding the inequalities we get
 \[
-    \ell + t_1 ~,~ \ell +t_2
+    f(x_1 + t) + f(x_2) < f(x_1) + f(x_2 + t)
 ,\]
-with \(t_1 = (x_1,y_1)\) and \(t_2 = (x_2,y_2)\), such that there are \(a_1,a_2 \in I\) with
+or
 \[
-(a_1 + x_1, f(a_1) +y_1) = (a_1 + x_2, f(a_1) + y_2)
+    f(x_1 + t) - f(x_1) < f(x_2 + t) - f(x_2)
+.\]
+
+Without loss of generality, we can consider \(\ell\) and a single translation \(t_0 = \left( t_1,t_2 \right) \).
+A point of intersection between these curves is a solution to the equation
+\[
+    (x_1, f(x_1)) = (x_2 + t_1, f(x_2) + t_2)
+,\]
+or
+\[
+\begin{cases}
+x_1 = x_2 + t_1 \\
+f(x_1) = f(x_2) + t_2
+\end{cases}
+,\]
+or
+\[
+    f(x_2 + t_1) = f(x_2) + t_2
+.\]
+A second point of intersection is a solution to
+\[
+    f(x_3 + t_1) = f(x_3) + t_2
 \]
+where \(x_3 \neq x_2\).
+
+Adding these equations, we see that 2 points of intersection can occur only if
+\[
+    f(x_2 + t_1) - f(x_2) = f(x_3 + t_1)- f(x_3)
+\]
+which yields a contradiction.
+
 \end{proof}
+
+A function \(f: I \to \mathbb{R} \) is concave iff \(-f\) is convex.
+An important symmetry to notice is that concave sets \(A\), defined by a 
+concave function \(f\) satisfy
+\[
+    \left\lvert A + A \right\rvert = \left\lvert \left( -A \right) + \left( -A \right)  \right\rvert 
+.\]
+That is, any results throughout the rest of this report concerning the size of convex
+sets also hold for concave sets.
 
 The final tool we'll introduce is dyadic partitioning. Let \(S \subset \mathbb{R} \) be a finite set, \(f: S \to \mathbb{R} \) be a function,
 and \(M\) be the maximum value of \(f(x)\) for \(x \in S\). We partition a sum of
@@ -353,6 +387,11 @@ The idea that convexity opposes additive structure is stated precisely as
     \]
 \end{conjecture}
 
+Both of these conjectures are sharp in the sense that the power of log is not negligible. In the appendix I prove that
+\[
+    \left\lvert \log \left( [n] \right) + \log \left( [n] \right)  \right\rvert = \left\lvert [n]\cdot [n] \right\rvert = o (n^{2})
+.\]
+
 To date, the best results for both of these conjectures are proven in \cite{stevens-rudnev}.
 \begin{theorem}
     For finite sets \(A \subset \mathbb{R} \),
@@ -379,7 +418,7 @@ For finite sets \(A \subset \mathbb{R} \),
 \begin{theorem}\label{thm:shkredov-sum}
 For finite and convex sets \(A \subset \mathbb{R} \),
 \[
-    \left\lvert A + A \right\rvert \gtrsim  \left\lvert A \right\rvert ^{\frac{14}{9} }
+    \left\lvert A + A \right\rvert \gtrsim  \left\lvert A \right\rvert ^{\frac{20}{13}  }
 .\]
 \end{theorem}
 and
@@ -397,36 +436,18 @@ Theorem \ref{thm:shkredov-sum} is obtained by a slight variation on the same met
 
 \section{Graphs and the Crossing Number Inequality}
 
-\textbf{simple, connected}
-
-\textbf{cite szekely and tao}
-
-\textbf{Tao's article reread to see what I missed}
-
-\textbf{First proven in ...}
-
-\textbf{Theres something going on with connectedness here}
-
-%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-\textbf{rewrite this paragraph}
-
 A profoundly useful theorem in the study of sum-product conjectures is the
 Szemeredi-Trotter theorem, a statement about systems of points and lines.
 
 The easiest way to prove this theorem is through the use of the crossing number inequality,
 a statement about how planar a given graph can be. The purpose of this section is to give a proof
-of the crossing number inequality.
+of the crossing number inequality. Due to the brevity of this section, the definitions and proofs given will not be
+as rigorous as they should be.
 
-Due to the brevity of this report, the definitions and proofs given will not be
-as rigorous as they should be. There are also pictures to help understand.
+The first paper to employ the crossing number inequality to proving the Szemeredi-Trotter theorem is
+\cite{szekely-SzT}. This argument was largely taken from \cite{tao-blog-CRI}.
 
-%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-%────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-
-\textbf{define connected}
+There are pictures included to help illustrate some ideas. 
 
 A graph \(G\) is a pair \(G = (V,E)\) where each \(e \in E\) is of the form \(e \subset V\) with \(\left\lvert e \right\rvert = 2\).
 We call the set \(V\) the vertices, and the set \(E\) the edges. A drawing is
@@ -468,8 +489,6 @@ graph with labelled faces:
     \caption{Drawing of Planar Graph with Labeled Faces \(f_{i} \)}
 \end{figure}
 
-\textbf{cite tao }
-
 Observe that any non-planar graph \(G = (V,E)\) can be turned into a planar graph by removing at most
 \(\crossing\left( G \right) \) edges from \(E\). Therefore, a bound on the number of
 edges a graph can have and remain planar yields a bound on the crossing number for any graph.
@@ -484,9 +503,24 @@ Let \(F\) be the set of all faces of this drawing.
 \end{theorem}
 
 \begin{proof}
-We may construct our drawing of \(G\) by first drawing a vertex, and then doing combination of the following steps: 
+We prove this by induction on the number of edges. For the base case, \(\left\lvert E \right\rvert = 0\),
+\(G\) consists of a single vertex and a single face, so
+\[
+    \left\lvert V \right\rvert - \left\lvert E \right\rvert + \left\lvert F \right\rvert =2
+.\]
+Now suppose that this equality holds for all graphs with no more than \(e - 1\) edges,
+and consider a graph with \(e\) edges. 
 
-\textbf{PROOF}
+If \(G\) contains no cycles, there
+is only one face, so we may remove a vertex and a corresponding edge, which results
+in a graph with \(e-1\) edges satisfying Euler's formula. Because we removed one
+vertex and one edge, the original graph also satisfies Euler's formula.
+
+The next case is \(G\) containing at least one cycle. If this is the case, we
+may remove an edge from the cycle, thereby decreasing the amount of faces by one.
+The remaining graph satisfies Euler's formula, and therefore the original graph does too.
+
+By induction on the number of edges, Euler's formula holds for all connected planar graphs.
 \end{proof}
 
 The dependence on \(\left\lvert F \right\rvert \) in Euler's formula can be removed by using
@@ -500,8 +534,8 @@ The total number of face edge incidences is
     I(F,E) = \sum_{f\in F} \sum _{e \in E} \chi(f,e)
 .\]
 
-\textbf{JUSTIFY THIS ASSUMPTION SOMEWHERE}
-We assume \(\left\lvert E \right\rvert  \geq 3\), so that every face is incident to at least 3 edges.
+Because the crossing number inequality is a statement about order of magnitude,
+we may assume \(\left\lvert E \right\rvert  \geq 3\), so that every face is incident to at least 3 edges.
 It follows that
 \[
     I \geq \sum _{f \in F} 3 = 3 \left\lvert F \right\rvert 
@@ -529,8 +563,6 @@ or
 when \(\left\lvert E \right\rvert \geq 3\).
 Now suppose that \(G = (V,E)\) is non-planar and connected. As mentioned before, \(G\) may be turned planar by removing
 at most \(\crossing\left( G \right) \) edges.
-
-\textbf{READ TAO AND JUSTIFY ABOVE BETTER}
 Therefore, for any graph \(G\) with \(\left\lvert E \right\rvert  \geq 3\),
 \[
     \left\lvert E \right\rvert - \crossing\left( G \right) \leq 3 \left\lvert V \right\rvert - 6
@@ -593,10 +625,6 @@ This yields the result
 .\]
 
 \section{The Szemeredi-Trotter Theorem}
-
-\textbf{LOOK OVER WHOLE SECTION}
-
-\textbf{CONCAVE OR CONVEX}
 
 With this, we can employ the argument of \cite{szekely-SzT} to prove the Szemeredi-Trotter Theorem.
 A precise statement of the Szemeredi-Trotter Theorem, first proven in \cite{SzT-original} is
@@ -812,7 +840,7 @@ If \(A \subset \mathbb{R} ^{+}\), we may take \(f(x) = \log \left( x \right) \),
 The Szemeredi-Trotter theorem also provides more general tools which can be
 used alongside other results to sharpen the above bounds.
 
-\begin{theorem}
+\begin{theorem}\label{shkredov-lemma-szt}
 
     Let \(A \subset \mathbb{R} \) be convex, then for every 
     finite set \(B \subset \mathbb{R} \) we have
@@ -823,7 +851,45 @@ used alongside other results to sharpen the above bounds.
 \end{theorem}
 
 \begin{proof}
-\textbf{PROOF}
+Let \(\left\lvert A \right\rvert  = n\). Let \(f: [1,n] \to \mathbb{R} \) be the convex
+function defining the set \(A\). Take
+\[
+    \ell _{a,b} = \left\{ \left( x,f(x) \right) + (a,b) : x \in [1,n] \right\} 
+\]
+and
+\[
+    \mathcal{L} = \left\{ \ell _{a,b} : a \in [n] , b \in -B \right\} 
+.\]
+Take
+\[
+    P = \left( [n] + [n]  \right) \times \left( A - B \right) 
+,\]
+and let \(P_{\tau}  \subset P\) be the largest subset of \(P\) for which every
+point has at least \(\tau\) lines passing through it. 
+
+For some \(y\)-axis ordinate, if \(\delta_{A} (y) \geq \tau\), there are at least
+\(\left\lvert A \right\rvert \) many points \(p \in P_{\tau} \) with the same
+\(y\) ordinate. Therefore,
+\[
+   \left\lvert  \left\{ x \in A -B : \delta_{A} (x) \geq \tau \right\}  \right\rvert \leq \frac{\left\lvert P_{\tau}  \right\rvert }{\left\lvert A \right\rvert } 
+.\]
+
+It is clear that
+\[
+    I(P_{\tau} , \mathcal{L} ) \geq \tau \left\lvert P_{\tau}  \right\rvert 
+,\]
+so by the Szemeredi-Trotter theorem
+\[
+    \tau\left\lvert P_{\tau}  \right\rvert \ll \left\lvert P_{\tau}  \right\rvert ^{\frac{2}{3} } \left\lvert \mathcal{L}  \right\rvert ^{\frac{2}{3} } + \left\lvert P_{\tau}  \right\rvert + \left\lvert \mathcal{L}  \right\rvert \ll \left\lvert P_{\tau}  \right\rvert ^{\frac{2}{3} } \left\lvert \mathcal{L}  \right\rvert ^{\frac{2}{3} } 
+.\]
+It follows that
+\[
+    \left\lvert P_{\tau}  \right\rvert \ll \frac{\left\lvert A \right\rvert ^{2} \left\lvert B \right\rvert ^{2} }{\tau^{3} } 
+,\]
+or
+\[
+    \left\lvert  \left\{ x \in A -B : \delta_{A} (x) \geq \tau \right\}  \right\rvert \ll \frac{\left\lvert A \right\rvert \left\lvert B \right\rvert ^{2} }{\tau^{3} } 
+.\]
 \end{proof}
 
 An immediate corollary of this is
@@ -965,7 +1031,6 @@ so
 
 \end{proof}
 
-\textbf{REWRITE BELOW}
 Many arguments involving energy estimates are not as straightforward
 as finding an upper bound. We are often interested in quantites such as 
 \(E(A,A + A), E(A - A), E_{3} (A)\) etc.
@@ -1027,9 +1092,7 @@ Therefore,
 .\]
 \end{proof}
 
-\section{ \textbf{IDK the title }}
-\textbf{RESTATE THEOREMS} 
-\textbf{IM MISSING SUM}
+\section{ Application of Energy Estimates}
 This section will employ results from the previous section to prove Theorems \ref{thm:shkredov-diff}, \ref{thm:shkredov-sum}.
 This argument can be found in \cite{shkredov}.
 
@@ -1110,9 +1173,23 @@ and therefore
 
 \end{proof}
 
-We're now able to prove the theorems.
+We're now able to prove the theorems. Recall the following theorems
 
-\begin{proof}[Proof of Theorem \ref{thm:shkredov-diff}, \ref{thm:shkredov-sum}]
+\begin{theorem*}
+For finite and convex sets \(A \subset \mathbb{R} \),
+\[
+    \left\lvert A + A \right\rvert \gtrsim  \left\lvert A \right\rvert ^{\frac{20}{13}  }
+.\]
+\end{theorem*}
+and
+\begin{theorem*}
+For finite and convex sets \(A \subset \mathbb{R} \),
+\[
+    \left\lvert A - A \right\rvert \gtrsim \left\lvert A \right\rvert ^{\frac{8}{5} }
+.\]
+\end{theorem*}
+
+\begin{proof}[Proof of Theorems \ref{thm:shkredov-diff}, \ref{thm:shkredov-sum}]
 Denote the difference and sum sets by \(D = \left\lvert A-A \right\rvert \) and \(S = \left\lvert A+A \right\rvert \).
 Observe that
 \[
@@ -1152,7 +1229,6 @@ so
 \[
     \sum _{x \in P'} \left\lvert A_{x}  \right\rvert ^{2} \gg \frac{\left\lvert A \right\rvert ^{4}}{\left\lvert A+A \right\rvert } 
 .\]
-\end{proof}
 
 We can directly apply (\ref{eq:shkredov-1}) to Lemma \ref{lem:shkredov-main-lem}. We have
 \[
@@ -1176,25 +1252,48 @@ By applying Theorem \ref{thm:szt-energy-convex-and-arbitrary},
     \frac{\left\lvert A \right\rvert ^{5}}{\left\lvert A-A \right\rvert } \lesssim \left\lvert A \right\rvert \left\lvert A-A \right\rvert ^{\frac{3}{2} } \implies \left\lvert A-A \right\rvert \gtrsim \left\lvert A \right\rvert ^{\frac{8}{5} }
 .\]
 
-Recalling that \(A + A_{x} \subset S_{x} \), we get that
+By applying \ref{shkredov-lemma-szt}, we have that
 \[
-    \sum _{x \in P} \delta_{S} (x) \gtrsim \left\lvert A \right\rvert ^{3} 
+    \frac{\left\lvert A \right\rvert ^{4}}{\left\lvert A+A \right\rvert } \ll \sum _{x \in P'} \left\lvert A_{x}  \right\rvert ^{2} \ll \sum _{x \in P' : \left\lvert A_{x}  \right\rvert \ll L} \left\lvert A_{x}  \right\rvert ^{2}
+.\]
+
+We apply a dyadic partitioning to get
+\begin{align*}
+\frac{\left\lvert A \right\rvert ^{4}}{\left\lvert A+A \right\rvert } &  \ll \sum _{x \in P' : \left\lvert A_{x}  \right\rvert \ll \frac{\left\lvert A+A \right\rvert }{\left\lvert A \right\rvert } } \left\lvert A_{x}  \right\rvert ^{2}\\
+& \lesssim \Delta \sum _{x \in D} \left\lvert A_{x}  \right\rvert 
+\end{align*}
+where
+\[
+    D = \left\{ x \in P' : \frac{\left\lvert A+A \right\rvert }{\left\lvert A \right\rvert }  \gg \left\lvert A_{x}  \right\rvert \asymp \Delta \right\} 
+.\]
+This gives
+\[
+    \sum _{x \in D} \left\lvert A_{x}  \right\rvert \gtrsim \frac{\left\lvert A \right\rvert ^{5}}{\left\lvert A+A \right\rvert ^{2}} 
+.\]
+
+Applying Lemma \ref{lem:shkredov-main-lem}, we get
+\[
+    \sum _{x \in D} \left\lvert A + A_{x}  \right\rvert \gtrsim \frac{\left\lvert A \right\rvert ^{9}}{\left\lvert A+A \right\rvert ^{4}} 
+.\]
+
+Recalling that \(A + A_{x} \subset S_{x} \), we have
+\[
+    \sum _{x \in D} \delta_{S} (x) \geq \sum _{x \in D} \left\lvert A + A_{x}  \right\rvert \gtrsim \frac{\left\lvert A \right\rvert ^{9}}{\left\lvert A+A \right\rvert ^{4}} 
 ,\]
-which by an identical argument yields
+which, by the definition of \(P'\) gives
 \[
-    \frac{\left\lvert A \right\rvert ^{5} }{\left\lvert A-A \right\rvert } \lesssim E(A,S) \ll \left\lvert A \right\rvert \left\lvert S \right\rvert ^{\frac{3}{2} }
+    \frac{\left\lvert A \right\rvert ^{11}}{\left\lvert A+A \right\rvert ^{5}} \lesssim \sum _{x \in D} \delta_{S} (x) \delta_{A} (x) \leq E(A,S) \ll \left\lvert A \right\rvert \left\lvert A+A \right\rvert ^{\frac{3}{2} }
 ,\]
 or
 \[
-    \left\lvert A-A \right\rvert ^{2} \left\lvert A+A \right\rvert ^{3} \gtrsim \left\lvert A \right\rvert ^{8} \implies \max \left( \left\lvert A-A \right\rvert , \left\lvert A+A \right\rvert  \right) \gtrsim \left\lvert A \right\rvert^{\frac{8}{5} }
+    \left\lvert A+A \right\rvert \gtrsim \left\lvert A \right\rvert ^{\frac{20}{13} }
 .\]
-
-\textbf{REFRENCE EARLIER STATEMENT OF THEOREM}
+\end{proof}
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-\subsection*{Acknowledgements} % Unnumbered subsection to include acknowledgements (advisor, grants, etc.) An example acknowledgement is included for reference. 
-This report is based on work supported by NSF grant DMS-2051032, which we gratefully acknowledge. I would also like to express my thanks to the Mathematics department of Indiana University for hosting the program, my mentor XXX and....
+\subsection*{Acknowledgements}
+This report is based on work supported by NSF grant DMS-2051032. I'd like to express my gratitude to the Department of Mathematics at Indiana University Bloomington, as well as thanks to my advisor Shukun Wu, who greatly assisted me in my studies.
 
 
 %% TIP: Only entries which you actually cite with \cite somewhere else in the .tex will appear.
@@ -1656,11 +1755,16 @@ We first calculate \(\mathbb{E} (Y)\).
 \mathbb{E} (Y) & = \sum _{x \leq N} \frac{1}{N} \cdot \Omega(x)\\
 & = \frac{1}{N} \sum _{x \leq N } \sum _{\substack{ p^{\alpha} \mid x \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} 1\\
 & = \frac{1}{N} \sum _{\substack{ p^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha}}  \right\rfloor \\
-& = \frac{1}{N} \sum _{\substack{ p^{\alpha}\leq N \\ p \text{ prime}  \\ \alpha \in \mathbb{N}   }} \left( \frac{N}{p ^{\alpha}} - \delta_{p ^{\alpha}}  \right)  \\
-& = \sum _{\substack{ p^{\alpha}\leq N \\p  \text{ prime} \\ \alpha \in  \mathbb{N}  }} \frac{1}{p ^{\alpha}} - \frac{1}{N} \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in  \mathbb{N} }}  \delta_{p ^{\alpha}} \\
-& = \log\log \left( N \right) + O(1) - \frac{O(1) \psi(N)}{N} \\
-& = \log\log \left( N \right) + O(1).
 \end{align*}
+
+\begin{align*}
+    \mathbb{E} \left( Y \right) & = \frac{1}{N} \sum _{\substack{ p^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha}}  \right\rfloor \\
+    & = \frac{1}{N} \sum _{\substack{ p^{\alpha}\leq N \\ p \text{ prime}  \\ \alpha \in \mathbb{N}   }} \left( \frac{N}{p ^{\alpha}} - \delta_{p ^{\alpha}}  \right)  \\
+    & = \sum _{\substack{ p^{\alpha}\leq N \\p  \text{ prime} \\ \alpha \in  \mathbb{N}  }} \frac{1}{p ^{\alpha}} - \frac{1}{N} \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in  \mathbb{N} }}  \delta_{p ^{\alpha}} \\
+    & = \log\log \left( N \right) + O(1) - \frac{O(1) \psi(N)}{N} \\
+    & = \log\log \left( N \right) + O(1).
+\end{align*}
+
 
 To calculate \(V(Y)\), we have that
 \[
@@ -1676,9 +1780,14 @@ so it suffices to calculate
 & = \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},q^{\beta}) \\ p,q \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, q^{\beta} \mid x }} 1\\
 & = \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},q^{\beta})\\ p \neq q \\ p,q \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, q^{\beta} \mid x }} 1 + \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},p^{\beta}) \\ p \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, p^{\beta} \mid x }} 1\\
 & = \frac{1}{N} \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha} q ^{\beta}}  \right\rfloor + \frac{1}{N} \sum _{\substack{ (p ^{\alpha}, p ^{\beta}) \\ p ^{ \max \left( \alpha,\beta \right) }\leq N \\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\max \left( \alpha,\beta \right) }}  \right\rfloor \\
-& \leq  \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \frac{1}{ p ^{\alpha} q ^{\beta}} - \frac{1}{N}  \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \delta_{p ^{\alpha}q ^{\beta}} +2 \sum _{\substack{ p ^{\alpha} \leq N \\ \beta \leq \alpha\\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }}\frac{1}{p ^{\alpha}} - \frac{2}{N}  \sum _{\substack{ p ^{\alpha} \leq N \\ \beta \leq \alpha\\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }}\delta_{p ^{\alpha}}   \\
-& \leq \left( \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \frac{1}{p ^{\alpha}}  \right) ^{2} +  2 \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in  \mathbb{N} }} \frac{\alpha}{p ^{\alpha}}
 \end{align*}
+
+\begin{align*}
+    \mathbb{E} \left( Y^{2} \right) & = \frac{1}{N} \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha} q ^{\beta}}  \right\rfloor + \frac{1}{N} \sum _{\substack{ (p ^{\alpha}, p ^{\beta}) \\ p ^{ \max \left( \alpha,\beta \right) }\leq N \\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\max \left( \alpha,\beta \right) }}  \right\rfloor \\
+    & \leq  \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \frac{1}{ p ^{\alpha} q ^{\beta}} - \frac{1}{N}  \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \delta_{p ^{\alpha}q ^{\beta}} +2 \sum _{\substack{ p ^{\alpha} \leq N \\ \beta \leq \alpha\\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }}\frac{1}{p ^{\alpha}} - \frac{2}{N}  \sum _{\substack{ p ^{\alpha} \leq N \\ \beta \leq \alpha\\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }}\delta_{p ^{\alpha}}   \\
+    & \leq \left( \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \frac{1}{p ^{\alpha}}  \right) ^{2} +  2 \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in  \mathbb{N} }} \frac{\alpha}{p ^{\alpha}}
+\end{align*}
+
 
 We have that
 \begin{align*}
