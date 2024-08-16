@@ -70,8 +70,8 @@ We have
 \begin{align*}
     \left\lvert G + G \right\rvert & = \left\lvert \left\{ 2^{i} + 2^{j} : i,j \in \left\{ 1, \cdots , n \right\} \right\} \right\rvert
 \end{align*}
-For all \(i,j\), \(2^{i} + 2^{j}\) is a number written in base \(2\). By the uniqueness of representations
-in different bases (see appendix), we have that \(2^{i} + 2^{j}\) is distinct for every choice of \(\left\{ i,j \right\} \). Therefore,
+For all \(i,j\), \(2^{i} + 2^{j}\) is a number written in base \(2\). By the uniqueness of binary representations
+(see appendix), we have that \(2^{i} + 2^{j}\) is distinct for every choice of \(\left\{ i,j \right\} \). Therefore,
 \begin{align*}
     \left\lvert G + G \right\rvert & \geq  \left\lvert \left\{ \left\{ i,j \right\} : i,j \in \left\{ 1, \cdots , n \right\}  \right\}  \right\rvert \\
     & = \binom{n}{2} + n \\
@@ -250,9 +250,9 @@ Similar inequalities can be derived for \(\left\lvert A-B \right\rvert \) and \(
 
 Let \(I \subset \mathbb{R} \) be an interval. 
     We call a function \(f: I \to \mathbb{R} \) convex if for
-    any 2 points \(x_1,x_2 \in I\), and any \(\lambda \in [0,1]\),
+    any 2 points \(x_1,x_2 \in I\), with \(x_1 \neq x_2\), and any \(\lambda \in (0,1)\),
     \[
-        f((x_1-x_2)\lambda + x_2) \leq \left( f(x_1)-f(x_2) \right) \lambda + f(x_2)
+        f((x_2-x_1)\lambda + x_1) < \left( f(x_2)-f(x_1) \right) \lambda + f(x_1)
     .\]
 
     A finite set \(A \subset \mathbb{R}\) is convex if there is a function \(f: [1, \left\lvert A \right\rvert ] \to \mathbb{R} \)
@@ -274,10 +274,59 @@ That is that translations of the graph of a convex function intersect in at most
 \end{lemma}
 
 \begin{proof}
-\textbf{PROVE THIS}
+    \textbf{PROOF}
+We first show that for any \(x_1, x_2\) with \(x_1 < x_2\) and \(t > 0\), we have
+\[
+    f(x_1 + t) - f(x_1) < f(x_2 + t) - f(x_2)
+.\]
+
+We have
+\[
+    f(x_1 + t) < \left( \frac{t}{x_2-x_1}  \right) f(x_2)+ f(x_1)\left( 1-\frac{t}{x_2-x_1}  \right) 
+\]
+and
+\[
+    f(x_2)
+\]
+
+
+
+Suppose we have two translations of \(\ell \),
+\[
+    \ell + t_1 ~,~ \ell +t_2
+,\]
+with \(t_1 = (x_1,y_1)\) and \(t_2 = (x_2,y_2)\), such that there are \(a_1,a_2 \in I\) with
+\[
+(a_1 + x_1, f(a_1) +y_1) = (a_1 + x_2, f(a_1) + y_2)
+\]
 \end{proof}
 
-\textbf{Dyadic partitioning introduction}
+The final tool we'll introduce is dyadic partitioning. Let \(S \subset \mathbb{R} \) be a finite set, \(f: S \to \mathbb{R} \) be a function,
+and \(M\) be the maximum value of \(f(x)\) for \(x \in S\). We partition a sum of
+\(f(x)\) in the following way
+\[
+    \sum _{x \in S} f(x) = \sum _{j \leq \log _{2} \left( M \right)} \sum _{\substack{ x \in S \\ 2^{j-1} \leq f(x) < 2^{j} }} f(x)
+.\]
+Out of the \(\log _{2} \left( M \right) \) partitions of the sum, one of them must be the largest, so
+\[
+    \sum _{x \in S} f(x) \leq  \log _{2} \left( M \right)  \sum _{\substack{ x \in S \\ 2^{k-1} \leq f(x) < 2^{k} }} f(x)
+\]
+for some \(k \leq \log _{2} \left( M \right) \).
+
+We use this notation introduce the technique. Throughout this report, we write
+\(\Delta= 2^{k-1}\), and
+\[
+    D =\left\{ x \in S : f(x) \asymp \Delta\right\} 
+\]
+so that
+\[
+    \sum _{x \in S} f(x) \ll \log \left( M \right) \sum _{x \in D} f(x)\asymp \log \left( M \right) \Delta \left\lvert D \right\rvert 
+.\]
+
+This technique is useful in this problem because a factor of \(\log \left( M \right) \) will
+be negligible in most circumstances. This allows us to sum only over \(x\) for which \(f(x)\) is
+a particular order and use this to find an upper bound.
+
 
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 %────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -1132,19 +1181,38 @@ This report is based on work supported by NSF grant DMS-2051032, which we gratef
 
 \section*{Appendix}
 
-\begin{theorem*}[Uniqueness of Basis Representations]
-For any \(x,r \in \mathbb{N} \), there is a unique sequence of natural numbers \(\left( a_{i}  \right) _{i = 0} ^{I} \), with
-\(I \leq \log _{r} \left( x \right) \) and \(a_{i} < r\) such that
+\begin{theorem*}[Uniqueness of Binary Representations]
+For any \(x \in \mathbb{N}_{0}  \), there is a unique sequence of numbers \(\left( a_{i}  \right) _{i = 0} ^{I} \), with
+\(I \leq \log _{2} \left( x \right) \) and \(a_{i} \in \left\{ 0,1 \right\} \) such that
 \[
-    x = \sum _{i \leq \log _{r} \left( x \right) } a_{i} r^{i}
+    x = \sum _{i \leq \log _{2} \left( x \right) } a_{i} 2^{i}
 \]
 \end{theorem*}
 
 \begin{proof}
-\textbf{PROOF}
+Let \(x \in \mathbb{N}_{0}  \) and suppose that there are two binary representations for \(x\),
+that is, there are \(r,s \in \mathbb{N}_{0}  \), and sequences \((a_{i} )_{i = 0} ^{r-1}\) and \(\left( b_{i}  \right) _{i = 0} ^{s - 1}\)
+such that
+\[
+    x = 2^{r} + a_{r-1}2^{r-1} + \cdots + a_{0} = 2^{s} + b_{s - 1} 2^{s - 1} + \cdots + b_0  
+.\]
+
+We first prove that both binary representations must be of the same degree, or have
+the same highest power of 2. Without loss of generality, suppose \(s > r\). It follows that
+\[
+    x = 2^{r} + a_{r-1} 2^{r-1} + \cdots + a_0 \leq \sum _{i \leq r} 2^{i} = 2^{r+1} - 1 < 2^{s} \leq 2^{s} + b_{s-1} 2^{s-1} + \cdots  + b_0
+,\]
+a contradiction. With the fact that any representations must be of the same degree,
+we have that
+\[
+    0 = \left( a_{r-1} - b_{r-1}  \right) 2^{r-1} + \cdots + \left( a_0-b_0 \right)
+\]
+is of degree 0, and therefore that for all \(i\), \(a_{i} = b_{i} \), or that
+the binary representation is unique.
+
 \end{proof}
 
-Past this point, we will freely use shorthand which was discussed in the preliminaries
+Past this point in the appendix, we will freely use shorthand which was discussed in the preliminaries
 section. We also introduce the notation
 \[
     f(x) = o(g(x))
@@ -1631,6 +1699,34 @@ this gives, for any \(\epsilon > 0\)
     \mathbb{P} \left( \left\lvert Y - \log\log \left( N \right)  \right\rvert \geq \log\log \left( N \right) ^{\frac{1}{2} + \epsilon} \right) \leq \frac{O(\log\log \left( N \right) )}{\log\log \left( N \right) ^{1 + \epsilon}} = o(1) 
 .\]
 
+We have proven the following statement: For any \(\epsilon > 0\) and \(N \in \mathbb{N} \), all but \(o(N)\) of the
+numbers \(x \leq N\) satisfy
+\[
+    \log\log \left( N \right) - \log\log \left( N \right) ^{\frac{1}{2} + \epsilon} \leq \Omega(x) \leq \log\log \left( N \right) + \log\log \left( N \right) ^{\frac{1}{2} + \epsilon} 
+.\]
+
+For products \(ab\), we clearly have that
+\[
+    \Omega(ab) = \Omega(a) + \Omega(b)
+,\]
+and so all but \(o(N^{2})\) of the products \(ab\) with \(a,b \leq N\) satisfy
+\[
+    2\log\log \left( N \right) - 2\log\log \left( N \right) ^{\frac{1}{2} + \epsilon} \leq \Omega(ab) \leq 2\log\log \left( N \right) + 2\log\log \left( N \right) ^{\frac{1}{2} + \epsilon} 
+.\]
+
+On the contrary, all but \(o(N^{2})\) of the numbers \(x \leq N^{2}\) satisfy
+\[
+    \log\log \left( N^{2} \right) - \log\log \left( N^{2} \right) ^{\frac{1}{2} + \epsilon} \leq \Omega(x) \leq \log\log \left( N^{2} \right) + \log\log \left( N^{2} \right) ^{\frac{1}{2} + \epsilon} 
+\]
+and, for \(\epsilon < \frac{1}{2} \),
+\begin{align*}
+\lim_{N \to \infty} \frac{\log\log \left( N^{2} \right) + \log\log \left( N^{2} \right) ^{\frac{1}{2} + \epsilon}}{2 \log\log \left( N \right) - 2 \log\log \left( N \right) ^{\frac{1}{2} +\epsilon}} = \frac{1}{2}.
+\end{align*}
+That is, the majority of products \(ab\) are only a small portion of the total numbers
+\(x \leq N^{2}\). Precisely,
+\[
+    \left\lvert [n] \cdot [n] \right\rvert - o(N^{2}) = o(N^{2}) \implies \left\lvert [n] \cdot [n] \right\rvert = o(N^{2})
+.\]
 
 \end{proof}
 \end{document}
