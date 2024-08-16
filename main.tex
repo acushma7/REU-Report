@@ -35,12 +35,6 @@ used to achieve them.
 
 \textbf{motivate erdos multiplication table}
 
-\textbf{issue of "for any set A" in statements, but only as A gets sufficiently large}
-
-\textbf{GO THROUGH WHOLE THING AND USE TILDE NOTATION}
-
-\textbf{introduce f(A) notation}
-
 \section{Introduction and Motivation} 
 
 For any sets \(A,B\) and binary operation \(\cdot \) which acts on elements of \(A\) and \(B\), we define
@@ -102,6 +96,11 @@ The rest of the report will proceed in the following way : \textbf{finish this}
 As a useful shorthand, for any natural number \(n\), let
 \[
     [n] = \left\{ 1, 2 , \cdots , n \right\} 
+.\]
+
+For a set \(S\), and function \(f : S \to \mathbb{R} \),
+\[
+    f(S) = \left\{ f(s) : s \in S\right\} 
 .\]
 
 The study of these problems requires the notion of orders of magnitude.
@@ -356,14 +355,14 @@ The idea that convexity opposes additive structure is stated precisely as
 
 To date, the best results for both of these conjectures are proven in \cite{stevens-rudnev}.
 \begin{theorem}
-    For every sufficiently large finite set \(A \subset \mathbb{R} \),
+    For finite sets \(A \subset \mathbb{R} \),
     \[
         \max \left( \left\lvert A+A \right\rvert ~,~ \left\lvert A \cdot A \right\rvert  \right) \gtrsim    \left\lvert A \right\rvert^{\frac{4}{3} + \frac{2}{1167}}
     \]
 \end{theorem}
 and
 \begin{theorem}
-    For every sufficiently large, finite, and convex set \(A\),
+    For finite and convex sets \(A \subset \mathbb{R} \),
     \[
         \left\lvert A+A \right\rvert \gtrsim   \left\lvert A \right\rvert ^{\frac{30}{19} }
     \]
@@ -760,7 +759,7 @@ or
 
 This will be used to achieve stronger results later, but in particular, this gives the result
 \begin{corollary}
-For sufficiently large sets \(A \subset \mathbb{R} \) which are finite and convex,
+For finite and convex sets \(A \subset \mathbb{R} \),
 \[
     \left\lvert A+A \right\rvert \gg \left\lvert A \right\rvert ^{\frac{3}{2} }
 .\]
@@ -869,14 +868,12 @@ will be used later.
 
 The aforementioned result is Theorem \ref{thm:solymosi-sp}, found in \cite{Solymosi}. It gives a stronger result
 on the sum-product conjecture than the Szemeredi-Trotter theorem. 
-
-\textbf{THIS IS A RECALL THEOREM}
-\begin{theorem}\label{thm:solymosi}
+\begin{theorem*}
 Let \(A \subset \mathbb{R}^{+} \) be finite.
 \[
     \max \left( \left\lvert A+A \right\rvert , \left\lvert AA \right\rvert  \right) \gtrsim  \left\lvert A \right\rvert ^{\frac{4}{3}}
 .\]
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
 
@@ -969,16 +966,16 @@ so
 \end{proof}
 
 \textbf{REWRITE BELOW}
-Many arguments involving additive energy estimates are not as straightforward
+Many arguments involving energy estimates are not as straightforward
 as finding an upper bound. We are often interested in quantites such as 
 \(E(A,A + A), E(A - A), E_{3} (A)\) etc.
 
-In the remaining part of this section, we'll prove theorems concerning these quantities
-which we will apply to prove more advanced results in the next section. Both of these
+In the remaining part of this section, we'll prove two theorems concerning these quantities
+which we will then apply to prove more advanced results in the next section. Both of these
 results come as corollaries of the Szemeredi-Trotter Theorem.
 
 \begin{theorem}
-For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large,
+For finite and convex sets \(A \subset \mathbb{R} \),
 \[
     E_{3} (A) \lesssim  \left\lvert A \right\rvert ^{ 3}
 .\]
@@ -1002,13 +999,12 @@ E_3(A) & = \sum _{x \in A-A} \delta_{A} (x)^{3} \\
 \end{proof}
 
 \begin{theorem} \label{thm:szt-energy-convex-and-arbitrary}
-For convex sets \(A \subset \mathbb{R} \) which are finite and sufficiently large, and any finite set \(B \subset \mathbb{R} \)
+For finite and convex sets \(A \subset \mathbb{R} \), and finite sets \(B \subset \mathbb{R} \)
 \[
     E(A,B) \ll \left\lvert A \right\rvert \left\lvert B \right\rvert ^{\frac{3}{2} }
 .\]
 \end{theorem}
 
-\textbf{I NEED TO REDO PROOF WITH MORE LOGIC BEHIND WHY I CHOSE B 1/2}
 \begin{proof}
 Denote the elements of \(A-B\) by \(s_{i} \) where \(\delta_{A,B} (s_1) \geq \cdots \geq \delta_{A,B} (s _{\left\lvert A-B \right\rvert } )\)
 
@@ -1033,6 +1029,7 @@ Therefore,
 
 \section{ \textbf{IDK the title }}
 \textbf{RESTATE THEOREMS} 
+\textbf{IM MISSING SUM}
 This section will employ results from the previous section to prove Theorems \ref{thm:shkredov-diff}, \ref{thm:shkredov-sum}.
 This argument can be found in \cite{shkredov}.
 
@@ -1056,7 +1053,32 @@ For every set \(A \subset \mathbb{R} \) we have
 \end{lemma}
 
 \begin{proof}
-\textbf{PROOF}
+For a set \(S\), let the function \(S\) be the indicator function, so
+\[S(x)= 
+\begin{cases}
+1 \text{ if } x \in S\\
+0 \text{ otherwise}
+\end{cases}
+\]
+
+We begin by observing that
+\[
+    A_{x} (s) A_{x} (s + t) = A(s) A(s + x) A(s + t) A(s+t+x) = A_{t} (s) A_{t} (s + x)
+,\]
+and therefore that
+\[
+    \delta_{A_{x} } (t) = \sum _{s} A_{x} (s) A_{x} (s + t) = \sum _{s} A_{t} (s) A_{t} (s + x) = \delta_{A_{t} } (x)
+.\]
+
+With this, we have
+\begin{align*}
+    \sum _{x} E(A,A_{x} )& = \sum _{s} \sum _{x} \delta_{A} (s) \delta_{A_{x} } (s)\\
+    & = \sum _{s} \delta_{A} (s) \left( \sum _{x} \delta_{A_{x} } (s) \right) \\
+    & = \sum _{s} \delta_{A} (s) \left( \sum _{x}  \delta_{A_{s} } (x) \right) \\
+    & = \sum _{s} \delta_{A} (s) \left\lvert A_{s}  \right\rvert ^{2}\\
+    & = E_{3} (A)
+\end{align*}
+
 \end{proof}
 
 \begin{lemma}\label{lem:shkredov-main-lem}
