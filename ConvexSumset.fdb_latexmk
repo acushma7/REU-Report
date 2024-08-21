@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex ConvexSumset"] 1723808720 "ConvexSumset.aux" "ConvexSumset.bbl" "ConvexSumset" 1723808722 0
+["bibtex ConvexSumset"] 1723808720 "ConvexSumset.aux" "ConvexSumset.bbl" "ConvexSumset" 1724271234 0
   "./bibliography.bib" 1723806304 3639 5b73ce4a4c4bc1f9889a3209a9383ecc ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/amscls/amsalpha.bst" 1513722769 28675 71ba1b1ee8387ac88670b0ea0eb2399a ""
-  "ConvexSumset.aux" 1723808722 4697 9e82ecb2bb5af1d43a0ec8d032643a57 "pdflatex"
+  "ConvexSumset.aux" 1724271233 4697 9e82ecb2bb5af1d43a0ec8d032643a57 "pdflatex"
   (generated)
   "ConvexSumset.bbl"
   "ConvexSumset.blg"
   (rewritten before read)
-["pdflatex"] 1723808721 "/Users/adam/Documents/TeX2/REU Report/ConvexSumset.tex" "ConvexSumset.pdf" "ConvexSumset" 1723808722 0
-  "/Users/adam/Documents/TeX2/REU Report/ConvexSumset.tex" 1723808619 84497 32407c628bd8fbee08a39188882409a9 ""
+["pdflatex"] 1724271232 "/Users/adam/Documents/TeX2/REU Report/ConvexSumset.tex" "ConvexSumset.pdf" "ConvexSumset" 1724271234 0
+  "/Users/adam/Documents/TeX2/REU Report/ConvexSumset.tex" 1724271232 84497 32407c628bd8fbee08a39188882409a9 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
@@ -175,10 +175,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1695245745 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1695245715 7883453 1c3bf5172f58c90081bb3d24fc8a61b4 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "ConvexSumset.aux" 1723808722 4697 9e82ecb2bb5af1d43a0ec8d032643a57 "pdflatex"
+  "ConvexSumset.aux" 1724271233 4697 9e82ecb2bb5af1d43a0ec8d032643a57 "pdflatex"
   "ConvexSumset.bbl" 1723808721 1829 7e8cc5139411262c6dbf85736af05ba5 "bibtex ConvexSumset"
-  "ConvexSumset.out" 1723808722 1831 569bae9db791056639afcb061f93edae "pdflatex"
-  "ConvexSumset.tex" 1723808619 84497 32407c628bd8fbee08a39188882409a9 ""
+  "ConvexSumset.out" 1724271233 1831 569bae9db791056639afcb061f93edae "pdflatex"
+  "ConvexSumset.tex" 1724271232 84497 32407c628bd8fbee08a39188882409a9 ""
   "Figures//3graph.png" 1721237701 6848 a85daa0813d49a1b7a03f16071735afb ""
   "Figures//Sol1.png" 1722877212 85249 b0ead035599a3fc1d3fc0ff659f1b8dc ""
   "Figures//faceimage.png" 1721238561 31917 ebe7383b8143b0659762745b1be23ce9 ""
