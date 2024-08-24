@@ -1,0 +1,2 @@
+- Splitting sums with order of magnitude
+- Connection to fourier analysis

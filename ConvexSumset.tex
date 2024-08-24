@@ -20,7 +20,7 @@
 The sum-product conjecture, posed in 1983 by Erd{\H{o}}s and Szemer{\'e}di \cite{erdos-szemeredi}, 
 posits that any sufficiently large set must have a `relatively large' number
 of distinct sums or products between its elements.
-A newer conjecture extends this idea, positing that for convex sets there must be a `relatively large'
+A similar conjecture extends this idea, positing that for convex sets there must be a `relatively large'
 number of distinct sums between its elements. Both conjectures remain open and far from being solved.
 This report provides an entirely self-contained overview of some known results, primarily focused on the
 latter conjecture, and the methods used to achieve them.
@@ -81,7 +81,7 @@ This is the phenomenon which motivates this problem.
 One questions is: ``does there exist a set for which neither the sum nor the product set is large?''
 The sum-product conjecture states that such a set does not exist. 
 Another question we study in this report is: ``what
-determines if the sum set is large or the product set is large?'' A newer
+determines if the sum set is large or the product set is large?'' A similar
 conjecture which partially addresses this question states that the sum set is large
 when the set itself is convex.
 
@@ -840,7 +840,7 @@ If \(A \subset \mathbb{R} ^{+}\), we may take \(f(x) = \log \left( x \right) \),
 The Szemeredi-Trotter theorem also provides more general tools which can be
 used alongside other results to sharpen the above bounds.
 
-\begin{theorem}\label{shkredov-lemma-szt}
+\begin{theorem}\label{thm:shkredov-lemma-szt}
 
     Let \(A \subset \mathbb{R} \) be convex, then for every 
     finite set \(B \subset \mathbb{R} \) we have
@@ -894,7 +894,7 @@ or
 
 An immediate corollary of this is
 
-\begin{corollary}
+\begin{corollary}\label{cor:szt-delta}
 Let \(A \subset \mathbb{R} \) be a convex and finite set. Let \(B \subset \mathbb{R} \) be finite.
 Order elements \(s_{i} \in A-B\) such that 
 \[
@@ -1252,9 +1252,22 @@ By applying Theorem \ref{thm:szt-energy-convex-and-arbitrary},
     \frac{\left\lvert A \right\rvert ^{5}}{\left\lvert A-A \right\rvert } \lesssim \left\lvert A \right\rvert \left\lvert A-A \right\rvert ^{\frac{3}{2} } \implies \left\lvert A-A \right\rvert \gtrsim \left\lvert A \right\rvert ^{\frac{8}{5} }
 .\]
 
-By applying \ref{shkredov-lemma-szt}, we have that
+Recall that we have 
 \[
-    \frac{\left\lvert A \right\rvert ^{4}}{\left\lvert A+A \right\rvert } \ll \sum _{x \in P'} \left\lvert A_{x}  \right\rvert ^{2} \ll \sum _{x \in P' : \left\lvert A_{x}  \right\rvert \ll L} \left\lvert A_{x}  \right\rvert ^{2}
+    \frac{\left\lvert A \right\rvert ^{4}}{\left\lvert A+A \right\rvert } \ll \sum _{x \in P'} \left\lvert A_{x}  \right\rvert ^{2}
+.\]
+
+Additionally, by applying Theorem \ref{thm:shkredov-lemma-szt} and Corollary \ref{cor:szt-delta}
+we have that
+\begin{align*}
+\sum _{x \in P' : \left\lvert A_{x}  \right\rvert \gg \frac{\left\lvert A+A \right\rvert }{\left\lvert A \right\rvert } } \left\lvert A_{x}  \right\rvert ^{2} & \ll \sum_{r=1}^{\frac{\left\lvert A \right\rvert ^{6}}{\left\lvert A+A \right\rvert ^{3} } } \left( \frac{\left\lvert A \right\rvert }{r^{\frac{1}{3} }}  \right) ^{2} \\
+& \asymp \left\lvert A \right\rvert ^{2} \int_{1}^{\frac{\left\lvert A \right\rvert ^{6}}{\left\lvert A+A \right\rvert ^{3} } }\frac{1}{r^{\frac{2}{3} }}   ~\mathrm{d} r\\
+& \asymp \left\lvert A \right\rvert ^{2} \cdot \frac{\left\lvert A \right\rvert ^{2}}{\left\lvert A+A \right\rvert } \\
+& =\frac{\left\lvert A \right\rvert ^{4}}{\left\lvert A+A \right\rvert } 
+\end{align*}
+and therefore that
+\[
+    \frac{\left\lvert A \right\rvert ^{4}}{\left\lvert A+A \right\rvert } \ll \sum _{x \in P' : \left\lvert A_{x}  \right\rvert \ll \frac{\left\lvert A+A \right\rvert }{\left\lvert A \right\rvert } } \left\lvert A_{x}  \right\rvert ^{2}
 .\]
 
 We apply a dyadic partitioning to get
@@ -1755,18 +1768,14 @@ We first calculate \(\mathbb{E} (Y)\).
 \mathbb{E} (Y) & = \sum _{x \leq N} \frac{1}{N} \cdot \Omega(x)\\
 & = \frac{1}{N} \sum _{x \leq N } \sum _{\substack{ p^{\alpha} \mid x \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} 1\\
 & = \frac{1}{N} \sum _{\substack{ p^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha}}  \right\rfloor \\
-\end{align*}
-
-\begin{align*}
-    \mathbb{E} \left( Y \right) & = \frac{1}{N} \sum _{\substack{ p^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha}}  \right\rfloor \\
-    & = \frac{1}{N} \sum _{\substack{ p^{\alpha}\leq N \\ p \text{ prime}  \\ \alpha \in \mathbb{N}   }} \left( \frac{N}{p ^{\alpha}} - \delta_{p ^{\alpha}}  \right)  \\
-    & = \sum _{\substack{ p^{\alpha}\leq N \\p  \text{ prime} \\ \alpha \in  \mathbb{N}  }} \frac{1}{p ^{\alpha}} - \frac{1}{N} \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in  \mathbb{N} }}  \delta_{p ^{\alpha}} \\
-    & = \log\log \left( N \right) + O(1) - \frac{O(1) \psi(N)}{N} \\
-    & = \log\log \left( N \right) + O(1).
+& = \frac{1}{N} \sum _{\substack{ p^{\alpha}\leq N \\ p \text{ prime}  \\ \alpha \in \mathbb{N}   }} \left( \frac{N}{p ^{\alpha}} - \delta_{p ^{\alpha}}  \right)  \\
+& = \sum _{\substack{ p^{\alpha}\leq N \\p  \text{ prime} \\ \alpha \in  \mathbb{N}  }} \frac{1}{p ^{\alpha}} - \frac{1}{N} \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in  \mathbb{N} }}  \delta_{p ^{\alpha}} \\
+& = \log\log \left( N \right) + O(1) - \frac{O(1) \psi(N)}{N} \\
+& = \log\log \left( N \right) + O(1).
 \end{align*}
 
 
-To calculate \(V(Y)\), we have that
+Now we calculate \(V(Y)\), we have that
 \[
     V(Y) = \mathbb{E} (Y^{2}) - \mathbb{E} (Y)^{2} = \mathbb{E} (Y^{2}) - \left( \log\log \left( N \right) + O(1) \right) ^{2}
 ,\]
@@ -1779,11 +1788,11 @@ so it suffices to calculate
 \mathbb{E} \left( Y^{2} \right) & = \frac{1}{N} \sum _{x \leq N} ( \sum _{\substack{ p ^{\alpha} \mid x \\ p \text{ prime} \\ \alpha \in  \mathbb{N}  }} 1 ) ^{2} \\
 & = \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},q^{\beta}) \\ p,q \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, q^{\beta} \mid x }} 1\\
 & = \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},q^{\beta})\\ p \neq q \\ p,q \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, q^{\beta} \mid x }} 1 + \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},p^{\beta}) \\ p \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, p^{\beta} \mid x }} 1\\
-& = \frac{1}{N} \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha} q ^{\beta}}  \right\rfloor + \frac{1}{N} \sum _{\substack{ (p ^{\alpha}, p ^{\beta}) \\ p ^{ \max \left( \alpha,\beta \right) }\leq N \\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\max \left( \alpha,\beta \right) }}  \right\rfloor \\
 \end{align*}
 
 \begin{align*}
-    \mathbb{E} \left( Y^{2} \right) & = \frac{1}{N} \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha} q ^{\beta}}  \right\rfloor + \frac{1}{N} \sum _{\substack{ (p ^{\alpha}, p ^{\beta}) \\ p ^{ \max \left( \alpha,\beta \right) }\leq N \\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\max \left( \alpha,\beta \right) }}  \right\rfloor \\
+    \mathbb{E} \left( Y^{2} \right) & = \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},q^{\beta})\\ p \neq q \\ p,q \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, q^{\beta} \mid x }} 1 + \frac{1}{N} \sum _{x \leq N} \sum _{\substack{ (p^{\alpha},p^{\beta}) \\ p \text{ prime} \\ \alpha , \beta \in \mathbb{N} \\ p ^{\alpha}, p^{\beta} \mid x }} 1\\
+    & = \frac{1}{N} \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\alpha} q ^{\beta}}  \right\rfloor + \frac{1}{N} \sum _{\substack{ (p ^{\alpha}, p ^{\beta}) \\ p ^{ \max \left( \alpha,\beta \right) }\leq N \\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }} \left\lfloor \frac{N}{p ^{\max \left( \alpha,\beta \right) }}  \right\rfloor \\
     & \leq  \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \frac{1}{ p ^{\alpha} q ^{\beta}} - \frac{1}{N}  \sum _{\substack{ \left( p ^{\alpha} ,q^{\beta} \right) \\ p,q \text{ prime} \\ p \neq q \\ p^{\alpha}q^{\beta} \leq N \\ \alpha,\beta \in \mathbb{N}  }} \delta_{p ^{\alpha}q ^{\beta}} +2 \sum _{\substack{ p ^{\alpha} \leq N \\ \beta \leq \alpha\\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }}\frac{1}{p ^{\alpha}} - \frac{2}{N}  \sum _{\substack{ p ^{\alpha} \leq N \\ \beta \leq \alpha\\ p \text{ prime} \\ \alpha, \beta \in \mathbb{N}  }}\delta_{p ^{\alpha}}   \\
     & \leq \left( \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in \mathbb{N}  }} \frac{1}{p ^{\alpha}}  \right) ^{2} +  2 \sum _{\substack{ p ^{\alpha} \leq N \\ p \text{ prime} \\ \alpha \in  \mathbb{N} }} \frac{\alpha}{p ^{\alpha}}
 \end{align*}
