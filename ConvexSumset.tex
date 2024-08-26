@@ -867,11 +867,26 @@ Take
 and let \(P_{\tau}  \subset P\) be the largest subset of \(P\) for which every
 point has at least \(\tau\) lines passing through it. 
 
-For some \(y\)-axis ordinate, if \(\delta_{A} (y) \geq \tau\), there are at least
-\(\left\lvert A \right\rvert \) many points \(p \in P_{\tau} \) with the same
-\(y\) ordinate. Therefore,
+Observe that 
+\begin{equation} \label{eq:szt-condition}
+    \left\lvert A \right\rvert  \left\lvert  \left\{ x \in A -B : \delta_{A,B} (x) \geq \tau \right\}  \right\rvert \asymp  \left\lvert \left\{ (p_1,p_2) \in P : \delta_{A,B} (p_2)\geq \tau   \right\}  \right\rvert 
+\end{equation}
+
+Additionally,
 \[
-   \left\lvert  \left\{ x \in A -B : \delta_{A} (x) \geq \tau \right\}  \right\rvert \leq \frac{\left\lvert P_{\tau}  \right\rvert }{\left\lvert A \right\rvert } 
+    \forall n_0 \in [n]+[n]~,~  \forall x \in [n]~,~  \exists a \in [n] ~~\text{s.t.}~~ a + x = n_0
+,\]
+so if \(\left( p_1,p_2 \right) \in P\) satisfies the RHS of \ref{eq:szt-condition},
+the number of solutions to
+\[
+    \ell _{a,b} (x) = \left( p_1,p_2 \right) 
+\]
+for some \(a,b,x\) is \(\tau\).
+
+That is, every point in the RHS of \ref{eq:szt-condition} has at least \(\tau\) lines
+passing through it, so
+\[
+    \left\lvert A \right\rvert \left\lvert \left\{ x \in A - B : \delta_{A,B} (x) \geq \tau \right\}  \right\rvert \ll \left\lvert P_{\tau}  \right\rvert 
 .\]
 
 It is clear that
@@ -880,15 +895,31 @@ It is clear that
 ,\]
 so by the Szemeredi-Trotter theorem
 \[
-    \tau\left\lvert P_{\tau}  \right\rvert \ll \left\lvert P_{\tau}  \right\rvert ^{\frac{2}{3} } \left\lvert \mathcal{L}  \right\rvert ^{\frac{2}{3} } + \left\lvert P_{\tau}  \right\rvert + \left\lvert \mathcal{L}  \right\rvert \ll \left\lvert P_{\tau}  \right\rvert ^{\frac{2}{3} } \left\lvert \mathcal{L}  \right\rvert ^{\frac{2}{3} } 
+    \tau\left\lvert P_{\tau}  \right\rvert \ll \left\lvert P_{\tau}  \right\rvert ^{\frac{2}{3} } \left\lvert \mathcal{L}  \right\rvert ^{\frac{2}{3} } + \left\lvert P_{\tau}  \right\rvert + \left\lvert \mathcal{L}  \right\rvert
 .\]
-It follows that
+
+Because the Theorem is trivial for \(\tau \ll 1\) and \(\tau > \min \left( \left\lvert A \right\rvert ,\left\lvert B \right\rvert  \right) \),
+we may assume \(1 \ll \tau \leq \min \left( \left\lvert A \right\rvert , \left\lvert B \right\rvert  \right) \).
+
+We have
+\[
+    \tau \left\lvert P_{\tau}  \right\rvert \gg \left\lvert P _{\tau}  \right\rvert 
+\]
+so
+\[
+    \left\lvert P _{\tau}  \right\rvert \ll \max \left( \frac{\left\lvert A \right\rvert \left\lvert B \right\rvert }{\tau} , \frac{\left\lvert A \right\rvert ^{2}\left\lvert B \right\rvert ^{2}}{\tau ^{3} }  \right)
+,\]
+but
+\[
+    \frac{\left\lvert A \right\rvert \left\lvert B \right\rvert }{\tau ^{2}} \gg 1
+,\]
+and therefore it follows that
 \[
     \left\lvert P_{\tau}  \right\rvert \ll \frac{\left\lvert A \right\rvert ^{2} \left\lvert B \right\rvert ^{2} }{\tau^{3} } 
-,\]
-or
+.\]
+Substituting,
 \[
-    \left\lvert  \left\{ x \in A -B : \delta_{A} (x) \geq \tau \right\}  \right\rvert \ll \frac{\left\lvert A \right\rvert \left\lvert B \right\rvert ^{2} }{\tau^{3} } 
+    \left\lvert  \left\{ x \in A -B : \delta_{A,B} (x) \geq \tau \right\}  \right\rvert \ll \frac{\left\lvert A \right\rvert \left\lvert B \right\rvert ^{2} }{\tau^{3} } 
 .\]
 \end{proof}
 
