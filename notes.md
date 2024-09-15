@@ -1,3 +1,11 @@
+- Main inequality of Rudnev and Stevens
+
+- Is procedure necessary so E(R(A)) supports E(A)?
+    - Is it easy to show otherwise?
+
+------------------------------------------------------------------
+
+
 - Main issue is evaluating delta s sum
 
 - New result 17/11 still not as good as shredkov
